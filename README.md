@@ -26,15 +26,26 @@ Based in Istanbul, Türkiye · Open to remote, hybrid, and on-site opportunities
 A production-oriented full-stack bookstore built with Next.js, React,
 TypeScript, Express, MongoDB, Zod, and modern product UI practices.
 
+[Live demo](https://bookbookhaven-free.onrender.com) ·
+[Source code](https://github.com/rahman-997/bookbookhaven)
+
 ### [Eventify 1.0](https://github.com/rahman-997/backend2)
 
 An event platform and PWA with an Express and TypeScript backend, PostgreSQL,
 Prisma, Redis, BullMQ, validation, testing, and release-focused documentation.
 
+[Live demo](https://eventify-web.onrender.com) ·
+[API](https://backend2-api.onrender.com) ·
+[Source code](https://github.com/rahman-997/backend2)
+
 ### [Venues API](https://github.com/rahman-997/new97)
 
 A clean Express 5 REST API using TypeScript and Zod, with layered architecture,
 centralized validation and errors, UUIDs, JSON persistence, and automated checks.
+
+[Live API](https://venues-api-rahman.onrender.com) ·
+[Health check](https://venues-api-rahman.onrender.com/health) ·
+[Source code](https://github.com/rahman-997/new97)
 
 ## Engineering priorities
 
