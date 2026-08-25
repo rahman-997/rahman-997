@@ -17,11 +17,12 @@ I build fast, accessible, and polished product experiences—supported by reliab
 
 | Project | What it delivers | Core stack |
 | --- | --- | --- |
+| **[FitFlow Fitness](https://github.com/rahman-997/fitflow-gym)** | Premium fitness experience with a personalized plan builder, program discovery, guided interval timer, weekly tracking, accessibility, and offline-ready PWA behavior. **[Live app](https://fitflow-gym-online.netlify.app)** | Next.js, React, TypeScript, Modern CSS, PWA |
 | **[Eventify](https://github.com/rahman-997/backend2)** | Event discovery, secure booking, waitlists, organizer analytics, observability, and a responsive PWA. **[Live app](https://eventify-web.onrender.com)** · **[API](https://backend2-api.onrender.com)** | React, TypeScript, Express, PostgreSQL, Prisma, Redis, BullMQ |
 | **[BookHaven](https://github.com/rahman-997/bookbookhaven)** | Editorial bookstore with catalog search, cart, wishlist, reviews, checkout, orders, inventory, and admin workflows. **[Live app](https://bookbookhaven-free.onrender.com)** | Next.js, React, TypeScript, Express, MongoDB, Zod |
 | **[Venues API](https://github.com/rahman-997/new97)** | Focused REST API with layered architecture, strict validation, centralized errors, persistence, and contract tests. **[Live API](https://venues-api-rahman.onrender.com)** | Node.js, TypeScript, Express 5, Zod 4 |
 
-> All three live deployments were checked and are available. Free instances may need a short wake-up after inactivity.
+> All four live deployments were checked and are available. Free instances may need a short wake-up after inactivity.
 
 ## Technology toolbox
 
