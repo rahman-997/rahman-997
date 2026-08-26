@@ -2,11 +2,11 @@
 
 # Abdulrahman Hajar
 
-**Software Engineer · Full-Stack Developer · Backend & AI Systems**
+### Software Engineer · Full-Stack · Backend Systems · AI
 
-I build complete software products across interface, APIs, data, background workflows, testing, observability, and deployment.
+I build complete software products — polished interfaces, robust APIs, reliable data flows, background workflows, testing, observability, and production delivery.
 
-[Portfolio](https://abdulrahman-hajar-dev.netlify.app) · [Résumé](https://abdulrahman-hajar-dev.netlify.app/resume/) · [LinkedIn](https://www.linkedin.com/in/abdulrahman-hajjar-5430281a1/) · [Repositories](https://github.com/rahman-997?tab=repositories)
+[**Portfolio**](https://abdulrahman-hajar-dev.netlify.app) · [**Résumé**](https://abdulrahman-hajar-dev.netlify.app/resume/) · [**LinkedIn**](https://www.linkedin.com/in/abdulrahman-hajjar-5430281a1/) · [**All repositories**](https://github.com/rahman-997?tab=repositories)
 
 Computer Engineering · Nişantaşı University · Istanbul, Türkiye
 
@@ -14,55 +14,68 @@ Computer Engineering · Nişantaşı University · Istanbul, Türkiye
 
 ---
 
-## Engineering snapshot
+## Selected systems
 
-- **Product engineering** — React, Next.js, TypeScript, responsive UX, accessibility, and PWA behavior.
-- **Backend systems** — Node.js, Express, REST, GraphQL, WebSockets, gRPC, validation, auth, and service boundaries.
-- **Data & reliability** — PostgreSQL, Prisma, MongoDB, Redis, BullMQ, caching, queues, health checks, and observability.
-- **AI & interactive systems** — FastAPI, LLM integrations, MCP workflows, Flutter, WebGL, Three.js, and real-time interaction.
+<table>
+<tr>
+<td width="33%" valign="top">
+<a href="https://github.com/rahman-997/eventify"><img src="https://raw.githubusercontent.com/rahman-997/portfolio/main/public/projects/eventify-cover.jpg" alt="Eventify" width="100%"></a>
+<h3>Eventify</h3>
+<p>Distributed event product with PostgreSQL/Prisma, Redis, BullMQ, secure auth, bookings, waitlists, durable async work, readiness, metrics, and CI/security gates.</p>
+<p><a href="https://eventify-web.onrender.com">Live</a> · <a href="https://github.com/rahman-997/eventify">Source</a> · <a href="https://abdulrahman-hajar-dev.netlify.app/work/eventify/">Case study</a></p>
+</td>
+<td width="33%" valign="top">
+<a href="https://github.com/rahman-997/fitflow-gym"><img src="https://raw.githubusercontent.com/rahman-997/fitflow-gym/main/public/assets/fitflow-hero.png" alt="FitFlow" width="100%"></a>
+<h3>FitFlow</h3>
+<p>Installable fitness PWA with personalized planning, guided intervals, local-first progress, accessibility, responsive UX, offline-ready behavior, and CI validation.</p>
+<p><a href="https://fitflow-gym-online.netlify.app">Live</a> · <a href="https://github.com/rahman-997/fitflow-gym">Source</a> · <a href="https://abdulrahman-hajar-dev.netlify.app/work/fitflow/">Case study</a></p>
+</td>
+<td width="33%" valign="top">
+<a href="https://github.com/rahman-997/bookbookhaven"><img src="https://raw.githubusercontent.com/rahman-997/portfolio/main/public/projects/bookhaven-cover.jpg" alt="BookHaven" width="100%"></a>
+<h3>BookHaven</h3>
+<p>Full-stack commerce with Next.js, Express, MongoDB, auth/RBAC, cart, wishlist, checkout, orders, inventory, administration, validation, and automated tests.</p>
+<p><a href="https://bookbookhaven-free.onrender.com">Live</a> · <a href="https://github.com/rahman-997/bookbookhaven">Source</a> · <a href="https://abdulrahman-hajar-dev.netlify.app/work/bookhaven/">Case study</a></p>
+</td>
+</tr>
+</table>
 
-My strongest work is end-to-end TypeScript engineering: clear architecture, typed contracts, secure APIs, reliable data flows, automated verification, and production delivery.
+### Venues API
 
-## Selected proof
+Focused Express 5 + TypeScript REST service demonstrating Zod validation, layered responsibilities, centralized errors, UUID resources, persistence boundaries, service tests, and real HTTP contract verification.
 
-| System | What it demonstrates | Links |
-| --- | --- | --- |
-| **Eventify** | Production event platform with PostgreSQL/Prisma, Redis, BullMQ, secure auth, bookings/waitlists, cache-aside reads, durable background work, metrics, readiness, and CI/security gates. | [Live](https://eventify-web.onrender.com) · [API](https://backend2-api.onrender.com) · [Source](https://github.com/rahman-997/eventify) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/eventify/) |
-| **BookHaven** | Full-stack commerce system with Next.js, Express, MongoDB, auth/RBAC, cart, wishlist, reviews, checkout, orders, inventory, admin workflows, validation, and tests. | [Live](https://bookbookhaven-free.onrender.com) · [Source](https://github.com/rahman-997/bookbookhaven) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/bookhaven/) |
-| **FitFlow** | Installable fitness PWA with personalized planning, guided intervals, local-first progress, accessibility, responsive UX, offline-ready behavior, and CI validation. | [Live](https://fitflow-gym-online.netlify.app) · [Source](https://github.com/rahman-997/fitflow-gym) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/fitflow/) |
-| **Venues API** | Versioned Express 5 REST service with Zod validation, layered architecture, centralized errors, UUIDs, persistence, service tests, and HTTP contract tests. | [API](https://venues-api-rahman.onrender.com) · [Source](https://github.com/rahman-997/venues-api) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/venues-api/) |
+[API / health](https://venues-api-rahman.onrender.com/health) · [Source](https://github.com/rahman-997/venues-api) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/venues-api/)
 
-## Core stack
+> Some Render demos use the free tier and can take a short cold-start on the first request.
+
+---
+
+## Engineering focus
+
+- **Product engineering** — React, Next.js, TypeScript, responsive UX, accessibility, PWA behavior, and complete product states.
+- **Backend & reliability** — Node.js, Express, REST, GraphQL, WebSockets, validation, auth, PostgreSQL, MongoDB, Redis, queues, caching, observability, and graceful failure handling.
+- **AI & interactive systems** — FastAPI, LLM integrations, MCP workflows, Flutter, WebGL, Three.js, and real-time experiences.
 
 ```text
 TypeScript · React · Next.js · Node.js · Express
 PostgreSQL · Prisma · MongoDB · Redis · BullMQ
 REST · GraphQL · WebSockets · Zod
 Jest · Supertest · Docker · GitHub Actions
-FastAPI · Flutter · WebGL · Three.js · LLM/MCP
+FastAPI · Flutter · WebGL · Three.js · LLM / MCP
 ```
 
 ## How I engineer
 
-**Clarity before complexity.** I prefer explicit boundaries, predictable data ownership, and simple contracts over unnecessary abstraction.
+**Clarity before complexity.** Explicit boundaries, predictable ownership, typed contracts, and pragmatic abstractions.
 
-**Production behavior matters.** Loading, empty, error, offline, degraded, recovery, health, and readiness states are part of the product.
+**Production behavior is part of the product.** Loading, empty, error, offline, degraded, recovery, health, and readiness states are designed — not ignored.
 
-**Security and verification are design concerns.** Validation, authentication, authorization, dependency checks, tests, CI, and runtime signals belong in the engineering process from the start.
-
-**The interface is part of the system.** Responsive behavior, accessibility, hierarchy, restrained motion, and useful feedback should be engineered with the same care as the backend.
-
-## Additional systems work
-
-- **AI Doodles** — multimodal generative-AI architecture combining Flutter + Flame, WebSockets, FastAPI, Strawberry GraphQL, Redis-backed similarity workflows, 3D rendering, and pose-detection concepts.
-- **Abdulrahman-OS-v29** — operating-system-inspired interactive portfolio concept with custom commands, simulated boot flows, glassmorphism, and animated 3D interfaces.
-- **Web Planners** — productivity applications around routines, tasks, focus timers, progress, and adaptable UI systems.
+**Verification ships with the feature.** Validation, authentication, authorization, tests, CI, dependency checks, and runtime signals are part of the implementation path.
 
 ---
 
 <div align="center">
 
-### Build the interface. Engineer the system. Ship the whole product.
+### Open to software engineering opportunities
 
 [Portfolio](https://abdulrahman-hajar-dev.netlify.app) · [Résumé](https://abdulrahman-hajar-dev.netlify.app/resume/) · [LinkedIn](https://www.linkedin.com/in/abdulrahman-hajjar-5430281a1/)
 
