@@ -4,7 +4,7 @@
 
 ### Frontend Engineer · Full-Stack TypeScript · Product-minded Builder
 
-I build polished React products and the production systems behind them — accessible interfaces, typed APIs, secure data flows, testing, CI/CD, and reliable deployment.
+I build polished React products and the production systems behind them — accessible interfaces, typed APIs, secure data flows, testing, CI/CD, observability, and reliable deployment.
 
 [![Portfolio](https://img.shields.io/badge/View-Portfolio-111827?style=for-the-badge&logo=vercel&logoColor=white)](https://abdulrahman-hajjar-dev.netlify.app)
 [![Projects](https://img.shields.io/badge/Explore-Projects-24292F?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rahman-997?tab=repositories)
@@ -14,23 +14,34 @@ I build polished React products and the production systems behind them — acces
 
 </div>
 
-## Engineering profile
+## What I bring
 
 - **Frontend craft:** React, Next.js, TypeScript, responsive UI systems, accessibility, PWA behavior, and performance-minded delivery.
 - **Backend depth:** Node.js, Express, PostgreSQL, MongoDB, Prisma, Redis, validation, authentication, queues, and API design.
 - **Production mindset:** automated checks, health/readiness endpoints, structured errors, security controls, CI/CD, observability, and deployment documentation.
-- **Product thinking:** I design for real user states — loading, empty, error, offline, success, permissions, and recovery — not just the happy path.
+- **Product thinking:** real loading, empty, error, offline, success, permission, and recovery states — not only the happy path.
 
-## Selected work
+## Featured engineering work
 
-| Project | What it delivers | Core stack |
+| Project | Engineering focus | Proof |
 | --- | --- | --- |
-| **[FitFlow Fitness](https://github.com/rahman-997/fitflow-gym)** | Premium fitness experience with a personalized plan builder, program discovery, guided interval timer, weekly tracking, accessibility, and offline-ready PWA behavior. **[Live app](https://fitflow-gym-online.netlify.app)** | Next.js, React, TypeScript, Modern CSS, PWA |
-| **[Eventify](https://github.com/rahman-997/eventify)** | Event discovery, secure booking, waitlists, organizer analytics, observability, caching, and background jobs. **[Live app](https://eventify-web.onrender.com)** · **[API](https://backend2-api.onrender.com)** | React, TypeScript, Express, PostgreSQL, Prisma, Redis, BullMQ |
-| **[BookHaven](https://github.com/rahman-997/bookbookhaven)** | Full-stack bookstore with catalog search, cart, wishlist, reviews, checkout, orders, inventory, and admin workflows. **[Live app](https://bookbookhaven-free.onrender.com)** | Next.js, React, TypeScript, Express, MongoDB, Zod |
-| **[Venues API](https://github.com/rahman-997/venues-api)** | Focused REST API with layered architecture, strict validation, centralized errors, persistence, and contract tests. **[Live API](https://venues-api-rahman.onrender.com)** | Node.js, TypeScript, Express 5, Zod 4 |
+| **FitFlow Fitness** | Next.js fitness PWA with personalized planning, guided intervals, weekly progress, responsive UX, accessibility, and offline-ready behavior. | [Live](https://fitflow-gym-online.netlify.app) · [Case study](https://abdulrahman-hajjar-dev.netlify.app/work/fitflow/) · [Source](https://github.com/rahman-997/fitflow-gym) |
+| **Eventify** | Production-oriented event platform with Express, PostgreSQL/Prisma, Redis cache/rate limits, BullMQ jobs, durable outbox, metrics, health/readiness checks, and security gates. | [Live](https://eventify-web.onrender.com) · [API](https://backend2-api.onrender.com) · [Case study](https://abdulrahman-hajjar-dev.netlify.app/work/eventify/) · [Source](https://github.com/rahman-997/eventify) |
+| **BookHaven** | Full-stack bookstore with Next.js + Express + MongoDB, JWT auth/RBAC, catalog/search, cart, wishlist, reviews, checkout, orders, inventory, admin workflows, and API tests. | [Live](https://bookbookhaven-free.onrender.com) · [Case study](https://abdulrahman-hajjar-dev.netlify.app/work/bookhaven/) · [Source](https://github.com/rahman-997/bookbookhaven) |
+| **Venues API** | Focused Express 5 + Zod 4 REST API with layered architecture, strict input validation, centralized errors, UUIDs, persistence, and HTTP contract tests. | [API](https://venues-api-rahman.onrender.com) · [Health](https://venues-api-rahman.onrender.com/health) · [Case study](https://abdulrahman-hajjar-dev.netlify.app/work/venues-api/) · [Source](https://github.com/rahman-997/venues-api) |
 
-> Free-tier deployments may need a short wake-up after inactivity.
+> Free-tier Render deployments may need a short wake-up after inactivity.
+
+## Engineering signals
+
+```text
+Accessible product UX       · Responsive systems       · PWA/offline behavior
+Strict TypeScript           · Typed validation         · Layered API design
+Authentication & RBAC       · Secure error handling    · Rate limiting
+PostgreSQL / MongoDB        · Redis / BullMQ           · Durable async workflows
+Unit & contract testing     · CI/CD quality gates      · Health/readiness checks
+Structured logging          · Metrics/observability    · Production deployment
+```
 
 ## Technology toolbox
 
@@ -52,18 +63,13 @@ I build polished React products and the production systems behind them — acces
 
 </div>
 
-## What I optimize for
+## How I approach products
 
-```text
-Clear UX                  ·  Maintainable architecture
-Accessible interaction   ·  Strong TypeScript boundaries
-Secure APIs               ·  Predictable data flows
-Automated quality gates   ·  Reliable production delivery
-```
+I optimize for clear UX, maintainable architecture, strong TypeScript boundaries, secure APIs, predictable data flows, automated quality gates, and reliable production delivery. The portfolio case studies explain the product goals, architectural decisions, trade-offs, and quality signals behind each featured project.
 
 ## Portfolio
 
-For the fastest overview of my work, visit **[abdulrahman-hajjar-dev.netlify.app](https://abdulrahman-hajjar-dev.netlify.app)**. It highlights the product thinking, frontend craft, backend depth, and deployment approach behind the projects above.
+For the fastest overview, visit **[abdulrahman-hajjar-dev.netlify.app](https://abdulrahman-hajjar-dev.netlify.app)**.
 
 <div align="center">
 
