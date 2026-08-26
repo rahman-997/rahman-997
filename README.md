@@ -2,111 +2,68 @@
 
 # Abdulrahman Hajar
 
-### Software Engineer · Full-Stack Developer · Backend & AI Systems
+**Software Engineer · Full-Stack Developer · Backend & AI Systems**
 
-I build complete software systems — from product UI and APIs to data, queues, testing, observability, and deployment.
+I build complete software products across interface, APIs, data, background workflows, testing, observability, and deployment.
 
-[Portfolio](https://abdulrahman-hajar-dev.netlify.app) · [LinkedIn](https://www.linkedin.com/in/abdulrahman-hajjar-5430281a1/) · [Repositories](https://github.com/rahman-997?tab=repositories)
+[Portfolio](https://abdulrahman-hajar-dev.netlify.app) · [Résumé](https://abdulrahman-hajar-dev.netlify.app/resume/) · [LinkedIn](https://www.linkedin.com/in/abdulrahman-hajjar-5430281a1/) · [Repositories](https://github.com/rahman-997?tab=repositories)
 
-**Computer Engineering · Nişantaşı University · Istanbul, Türkiye**
+Computer Engineering · Nişantaşı University · Istanbul, Türkiye
 
 </div>
 
 ---
 
-## What I build
+## Engineering snapshot
+
+- **Product engineering** — React, Next.js, TypeScript, responsive UX, accessibility, and PWA behavior.
+- **Backend systems** — Node.js, Express, REST, GraphQL, WebSockets, gRPC, validation, auth, and service boundaries.
+- **Data & reliability** — PostgreSQL, Prisma, MongoDB, Redis, BullMQ, caching, queues, health checks, and observability.
+- **AI & interactive systems** — FastAPI, LLM integrations, MCP workflows, Flutter, WebGL, Three.js, and real-time interaction.
+
+My strongest work is end-to-end TypeScript engineering: clear architecture, typed contracts, secure APIs, reliable data flows, automated verification, and production delivery.
+
+## Selected proof
+
+| System | What it demonstrates | Links |
+| --- | --- | --- |
+| **Eventify** | Production event platform with PostgreSQL/Prisma, Redis, BullMQ, secure auth, bookings/waitlists, cache-aside reads, durable background work, metrics, readiness, and CI/security gates. | [Live](https://eventify-web.onrender.com) · [API](https://backend2-api.onrender.com) · [Source](https://github.com/rahman-997/eventify) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/eventify/) |
+| **BookHaven** | Full-stack commerce system with Next.js, Express, MongoDB, auth/RBAC, cart, wishlist, reviews, checkout, orders, inventory, admin workflows, validation, and tests. | [Live](https://bookbookhaven-free.onrender.com) · [Source](https://github.com/rahman-997/bookbookhaven) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/bookhaven/) |
+| **FitFlow** | Installable fitness PWA with personalized planning, guided intervals, local-first progress, accessibility, responsive UX, offline-ready behavior, and CI validation. | [Live](https://fitflow-gym-online.netlify.app) · [Source](https://github.com/rahman-997/fitflow-gym) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/fitflow/) |
+| **Venues API** | Versioned Express 5 REST service with Zod validation, layered architecture, centralized errors, UUIDs, persistence, service tests, and HTTP contract tests. | [API](https://venues-api-rahman.onrender.com) · [Source](https://github.com/rahman-997/venues-api) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/venues-api/) |
+
+## Core stack
 
 ```text
-PRODUCT UI            React · Next.js · TypeScript · Accessibility · PWA
-BACKEND SYSTEMS       Node.js · Express · REST · GraphQL · WebSockets · gRPC
-DATA & INFRA          PostgreSQL · Prisma · MongoDB · Redis · BullMQ · Docker
-QUALITY               Zod · Jest · Supertest · CI/CD · Security · Observability
-AI & INTERACTIVE      FastAPI · LLM integrations · MCP · Flutter · WebGL · Three.js
+TypeScript · React · Next.js · Node.js · Express
+PostgreSQL · Prisma · MongoDB · Redis · BullMQ
+REST · GraphQL · WebSockets · Zod
+Jest · Supertest · Docker · GitHub Actions
+FastAPI · Flutter · WebGL · Three.js · LLM/MCP
 ```
 
-My strongest work is full-stack TypeScript engineering with clear architecture, typed boundaries, secure APIs, reliable data flows, automated verification, and production delivery.
+## How I engineer
 
-## Selected systems
+**Clarity before complexity.** I prefer explicit boundaries, predictable data ownership, and simple contracts over unnecessary abstraction.
 
-<table>
-<tr>
-<td width="50%" valign="top">
+**Production behavior matters.** Loading, empty, error, offline, degraded, recovery, health, and readiness states are part of the product.
 
-### Eventify
-**Production event platform**
+**Security and verification are design concerns.** Validation, authentication, authorization, dependency checks, tests, CI, and runtime signals belong in the engineering process from the start.
 
-Express 5 · TypeScript · PostgreSQL · Prisma · Redis · BullMQ · React/Vite · PWA
+**The interface is part of the system.** Responsive behavior, accessibility, hierarchy, restrained motion, and useful feedback should be engineered with the same care as the backend.
 
-Secure auth, bookings and waitlists, cache-aside reads, durable background work, metrics, readiness checks, request correlation, security gates, and CI.
+## Additional systems work
 
-[Live](https://eventify-web.onrender.com) · [API](https://backend2-api.onrender.com) · [Source](https://github.com/rahman-997/eventify) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/eventify/)
+- **AI Doodles** — multimodal generative-AI architecture combining Flutter + Flame, WebSockets, FastAPI, Strawberry GraphQL, Redis-backed similarity workflows, 3D rendering, and pose-detection concepts.
+- **Abdulrahman-OS-v29** — operating-system-inspired interactive portfolio concept with custom commands, simulated boot flows, glassmorphism, and animated 3D interfaces.
+- **Web Planners** — productivity applications around routines, tasks, focus timers, progress, and adaptable UI systems.
 
-</td>
-<td width="50%" valign="top">
-
-### BookHaven
-**Full-stack commerce system**
-
-Next.js · React · Express · TypeScript · MongoDB · Mongoose · Zod
-
-Catalog, auth/RBAC, cart, wishlist, reviews, checkout, orders, inventory, admin workflows, validation, tests, and deployable production structure.
-
-[Live](https://bookbookhaven-free.onrender.com) · [Source](https://github.com/rahman-997/bookbookhaven) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/bookhaven/)
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-### FitFlow
-**Installable fitness product**
-
-Next.js · React · TypeScript · PWA · local-first progress
-
-Personalized planning, guided workout intervals, weekly progress, responsive UX, accessibility, offline-ready behavior, and CI validation.
-
-[Live](https://fitflow-gym-online.netlify.app) · [Source](https://github.com/rahman-997/fitflow-gym) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/fitflow/)
-
-</td>
-<td width="50%" valign="top">
-
-### Venues API
-**Versioned REST service**
-
-Express 5 · TypeScript · Zod 4 · UUID · JSON persistence
-
-Layered routes/controllers/services, strict body/query/param validation, centralized errors, uniqueness rules, service tests, and HTTP contract tests.
-
-[API](https://venues-api-rahman.onrender.com) · [Source](https://github.com/rahman-997/venues-api) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/venues-api/)
-
-</td>
-</tr>
-</table>
-
-## Engineering approach
-
-- **Architecture before complexity** — clear boundaries, predictable data flow, and business logic in the right layer.
-- **Production states are product states** — loading, empty, error, offline, degraded, recovery, health, and readiness all matter.
-- **Security is part of design** — validation, auth, authorization, secrets, rate limits, safe errors, and dependency checks.
-- **Verification before release** — type checking, automated tests, CI/CD, health probes, metrics, and observable runtime behavior.
-- **Interfaces should feel intentional** — responsive layout, accessibility, hierarchy, motion restraint, and useful feedback.
-
-## Broader systems work
-
-**AI Doodles** — multimodal generative-AI architecture combining Flutter + Flame, WebSockets, FastAPI, Strawberry GraphQL, Redis-backed similarity workflows, 3D rendering, and pose-detection concepts.
-
-**Abdulrahman-OS-v29** — interactive operating-system-inspired portfolio concept with custom commands, simulated boot flows, glassmorphism, and animated 3D interfaces.
-
-**Web Planners** — productivity applications around routines, tasks, focus timers, progress, and adaptable UI systems.
-
-## Current direction
-
-I am focused on becoming stronger at end-to-end software engineering: system design, backend architecture, data modeling, distributed workflows, product-quality frontend engineering, testing, deployment, and AI-assisted systems.
+---
 
 <div align="center">
 
 ### Build the interface. Engineer the system. Ship the whole product.
 
-[Portfolio](https://abdulrahman-hajar-dev.netlify.app) · [Résumé](https://abdulrahman-hajar-dev.netlify.app/resume/) · [GitHub](https://github.com/rahman-997) · [LinkedIn](https://www.linkedin.com/in/abdulrahman-hajjar-5430281a1/)
+[Portfolio](https://abdulrahman-hajar-dev.netlify.app) · [Résumé](https://abdulrahman-hajar-dev.netlify.app/resume/) · [LinkedIn](https://www.linkedin.com/in/abdulrahman-hajjar-5430281a1/)
 
 </div>
