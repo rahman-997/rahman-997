@@ -6,7 +6,7 @@
 
 I build complete software systems — from product UI and APIs to data, queues, testing, observability, and deployment.
 
-[Portfolio](https://abdulrahman-hajjar-dev.netlify.app) · [LinkedIn](https://www.linkedin.com/in/abdulrahman-hajjar-5430281a1/) · [Repositories](https://github.com/rahman-997?tab=repositories)
+[Portfolio](https://abdulrahman-hajar-dev.netlify.app) · [LinkedIn](https://www.linkedin.com/in/abdulrahman-hajjar-5430281a1/) · [Repositories](https://github.com/rahman-997?tab=repositories)
 
 **Computer Engineering · Nişantaşı University · Istanbul, Türkiye**
 
@@ -24,7 +24,7 @@ QUALITY               Zod · Jest · Supertest · CI/CD · Security · Observabi
 AI & INTERACTIVE      FastAPI · LLM integrations · MCP · Flutter · WebGL · Three.js
 ```
 
-My strongest work is full-stack TypeScript engineering with clear architecture, typed boundaries, secure APIs, reliable data flows, automated verification, and production deployment.
+My strongest work is full-stack TypeScript engineering with clear architecture, typed boundaries, secure APIs, reliable data flows, automated verification, and production delivery.
 
 ## Selected systems
 
@@ -39,7 +39,7 @@ Express 5 · TypeScript · PostgreSQL · Prisma · Redis · BullMQ · React/Vite
 
 Secure auth, bookings and waitlists, cache-aside reads, durable background work, metrics, readiness checks, request correlation, security gates, and CI.
 
-[Live](https://eventify-web.onrender.com) · [API](https://backend2-api.onrender.com) · [Source](https://github.com/rahman-997/eventify)
+[Live](https://eventify-web.onrender.com) · [API](https://backend2-api.onrender.com) · [Source](https://github.com/rahman-997/eventify) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/eventify/)
 
 </td>
 <td width="50%" valign="top">
@@ -51,7 +51,7 @@ Next.js · React · Express · TypeScript · MongoDB · Mongoose · Zod
 
 Catalog, auth/RBAC, cart, wishlist, reviews, checkout, orders, inventory, admin workflows, validation, tests, and deployable production structure.
 
-[Live](https://bookbookhaven-free.onrender.com) · [Source](https://github.com/rahman-997/bookbookhaven)
+[Live](https://bookbookhaven-free.onrender.com) · [Source](https://github.com/rahman-997/bookbookhaven) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/bookhaven/)
 
 </td>
 </tr>
@@ -65,7 +65,7 @@ Next.js · React · TypeScript · PWA · local-first progress
 
 Personalized planning, guided workout intervals, weekly progress, responsive UX, accessibility, offline-ready behavior, and CI validation.
 
-[Live](https://fitflow-gym-online.netlify.app) · [Source](https://github.com/rahman-997/fitflow-gym)
+[Live](https://fitflow-gym-online.netlify.app) · [Source](https://github.com/rahman-997/fitflow-gym) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/fitflow/)
 
 </td>
 <td width="50%" valign="top">
@@ -77,7 +77,7 @@ Express 5 · TypeScript · Zod 4 · UUID · JSON persistence
 
 Layered routes/controllers/services, strict body/query/param validation, centralized errors, uniqueness rules, service tests, and HTTP contract tests.
 
-[API](https://venues-api-rahman.onrender.com) · [Source](https://github.com/rahman-997/venues-api)
+[API](https://venues-api-rahman.onrender.com) · [Source](https://github.com/rahman-997/venues-api) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/venues-api/)
 
 </td>
 </tr>
@@ -107,6 +107,6 @@ I am focused on becoming stronger at end-to-end software engineering: system des
 
 ### Build the interface. Engineer the system. Ship the whole product.
 
-[Portfolio](https://abdulrahman-hajjar-dev.netlify.app) · [GitHub](https://github.com/rahman-997) · [LinkedIn](https://www.linkedin.com/in/abdulrahman-hajjar-5430281a1/)
+[Portfolio](https://abdulrahman-hajar-dev.netlify.app) · [Résumé](https://abdulrahman-hajar-dev.netlify.app/resume/) · [GitHub](https://github.com/rahman-997) · [LinkedIn](https://www.linkedin.com/in/abdulrahman-hajjar-5430281a1/)
 
 </div>
