@@ -21,7 +21,7 @@ Authentication, bookings, waitlists, durable outbox workflows, background worker
 ### BookHaven — full-stack commerce
 **Next.js 16 · React 19 · TypeScript · Express 5 · MongoDB/Mongoose · Zod 4**
 
-Production bookstore with private HttpOnly sessions, concurrency-safe cart and checkout flows, conditional inventory updates, adaptive MongoDB transactions with compensation fallback, paginated catalog/review/order operations, validated ISBNs, dynamic SEO, admin workflows, and CI-backed production verification.
+Production bookstore with private HttpOnly sessions, concurrency-safe cart and checkout flows, conditional inventory updates, adaptive MongoDB transactions with compensation fallback, paginated catalog/review/order operations, validated ISBNs, dynamic SEO, admin workflows, and CI-backed production verification. Delivery is hardened with Node 24.20.0 pinning, digest-pinned Node/Mongo container images, Compose validation, and Dependabot coverage for Actions and container ecosystems.
 
 [Live](https://bookbookhaven-free.onrender.com) · [Source](https://github.com/rahman-997/bookbookhaven) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/bookhaven/)
 
@@ -46,7 +46,7 @@ A deliberately compact service with routes → controllers → services, strict 
 - **Backend systems:** API design, validation, authentication/authorization, service boundaries, error handling, asynchronous work
 - **Data & reliability:** PostgreSQL, Prisma, MongoDB, Redis, consistency, retries, transactions, health/readiness, observability
 - **Product engineering:** React, Next.js, TypeScript, responsive UX, accessibility, PWA behavior
-- **Delivery:** testing, Docker, GitHub Actions, CI/CD, security checks, deployment, production verification
+- **Delivery:** testing, Docker, GitHub Actions, CI/CD, security checks, pinned runtimes/container supply chain, deployment, production verification
 - **Extended toolkit:** GraphQL, WebSockets, gRPC, OpenAPI, AI/LLM/MCP, FastAPI, Flutter
 
 ## Architecture philosophy
