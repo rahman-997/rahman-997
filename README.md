@@ -14,7 +14,7 @@ Computer Engineering · Nişantaşı University · Istanbul, Türkiye
 
 ---
 
-## Selected systems
+## Featured engineering work
 
 <table>
 <tr>
