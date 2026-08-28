@@ -1,6 +1,6 @@
 # Abdulrahman Hajar
 
-**Software Engineer · Full-Stack & Backend Systems**  
+**Software Engineer · Full-Stack Developer · AI & Interactive Systems**  
 Computer Engineering · Istanbul, Türkiye
 
 I build **complete production software systems** — from product interfaces and API boundaries to databases, asynchronous workflows, testing, security, reliability, and deployment. My strongest working stack is TypeScript across React/Next.js and Node.js/Express, with PostgreSQL, MongoDB, Redis, and production-oriented delivery practices.
@@ -25,19 +25,19 @@ Production bookstore with private HttpOnly sessions, concurrency-safe cart and c
 
 [Live](https://bookbookhaven-free.onrender.com) · [Source](https://github.com/rahman-997/bookbookhaven) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/bookhaven/)
 
-### Venues API — backend REST service
-**Node.js · Express 5 · TypeScript · Zod 4 · REST**
-
-A deliberately compact service with routes → controllers → services, strict edge validation, centralized error handling, UUID resources, persistence, and HTTP contract tests.
-
-[API health](https://venues-api-rahman.onrender.com/health) · [Source](https://github.com/rahman-997/venues-api) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/venues-api/)
-
 ### FitFlow — installable fitness PWA
 **Next.js · React · TypeScript · PWA · Web APIs**
 
 Personalized plans, guided intervals, weekly progress, device-local persistence, accessibility, responsive interaction, installability, and offline-ready behavior.
 
 [Live](https://fitflow-gym-online.netlify.app) · [Source](https://github.com/rahman-997/fitflow-gym) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/fitflow/)
+
+### Venues API — backend REST service
+**Node.js · Express 5 · TypeScript · Zod 4 · REST**
+
+A deliberately compact service with routes → controllers → services, strict edge validation, centralized error handling, UUID resources, persistence, and HTTP contract tests.
+
+[API health](https://venues-api-rahman.onrender.com/health) · [Source](https://github.com/rahman-997/venues-api) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/venues-api/)
 
 ---
 
