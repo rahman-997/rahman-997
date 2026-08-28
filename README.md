@@ -19,9 +19,9 @@ Authentication, bookings, waitlists, durable outbox workflows, background worker
 [Live](https://eventify-web.onrender.com) · [Source](https://github.com/rahman-997/eventify) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/eventify/)
 
 ### BookHaven — full-stack commerce
-**Next.js · React · TypeScript · Express 5 · MongoDB · Zod**
+**Next.js 16 · React 19 · TypeScript · Express 5 · MongoDB/Mongoose · Zod 4**
 
-Customer and admin workflows spanning authentication/RBAC, catalog, cart, wishlist, reviews, checkout, orders, inventory, validation, tests, and deployment.
+Production bookstore with private HttpOnly sessions, concurrency-safe cart and checkout flows, conditional inventory updates, adaptive MongoDB transactions with compensation fallback, paginated catalog/review/order operations, validated ISBNs, dynamic SEO, admin workflows, and CI-backed production verification.
 
 [Live](https://bookbookhaven-free.onrender.com) · [Source](https://github.com/rahman-997/bookbookhaven) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/bookhaven/)
 
@@ -44,7 +44,7 @@ Personalized plans, guided intervals, weekly progress, device-local persistence,
 ## Engineering focus
 
 - **Backend systems:** API design, validation, authentication/authorization, service boundaries, error handling, asynchronous work
-- **Data & reliability:** PostgreSQL, Prisma, MongoDB, Redis, consistency, retries, health/readiness, observability
+- **Data & reliability:** PostgreSQL, Prisma, MongoDB, Redis, consistency, retries, transactions, health/readiness, observability
 - **Product engineering:** React, Next.js, TypeScript, responsive UX, accessibility, PWA behavior
 - **Delivery:** testing, Docker, GitHub Actions, CI/CD, security checks, deployment, production verification
 - **Extended toolkit:** GraphQL, WebSockets, gRPC, OpenAPI, AI/LLM/MCP, FastAPI, Flutter
