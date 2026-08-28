@@ -5,7 +5,7 @@ Computer Engineering · Istanbul, Türkiye
 
 I build **complete production software systems** — from product interfaces and API boundaries to databases, asynchronous workflows, testing, security, reliability, and deployment. My strongest working stack is TypeScript across React/Next.js and Node.js/Express, with PostgreSQL, MongoDB, Redis, and production-oriented delivery practices.
 
-[Portfolio](https://abdulrahman-hajar-dev.netlify.app) · [Résumé](https://abdulrahman-hajar-dev.netlify.app/resume/) · [LinkedIn](https://www.linkedin.com/in/abdulrahman-hajjar-5430281a1/) · [Repositories](https://github.com/rahman-997?tab=repositories)
+[Portfolio](https://abdulrahman-hajar-portfolio.onrender.com) · [Résumé](https://abdulrahman-hajar-portfolio.onrender.com/resume/) · [LinkedIn](https://www.linkedin.com/in/abdulrahman-hajjar-5430281a1/) · [Repositories](https://github.com/rahman-997?tab=repositories)
 
 ---
 
@@ -16,28 +16,28 @@ I build **complete production software systems** — from product interfaces and
 
 Authentication, bookings, waitlists, durable outbox workflows, background workers, health/readiness probes, metrics, structured operational behavior, and security-focused CI.
 
-[Live](https://eventify-web.onrender.com) · [Source](https://github.com/rahman-997/eventify) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/eventify/)
+[Live](https://eventify-web.onrender.com) · [Source](https://github.com/rahman-997/eventify) · [Case study](https://abdulrahman-hajar-portfolio.onrender.com/work/eventify/)
 
 ### BookHaven — full-stack commerce
 **Next.js 16 · React 19 · TypeScript · Express 5 · MongoDB/Mongoose · Zod 4**
 
 Production bookstore with private HttpOnly sessions, concurrency-safe cart and checkout flows, conditional inventory updates, adaptive MongoDB transactions with compensation fallback, paginated catalog/review/order operations, validated ISBNs, dynamic SEO, admin workflows, and CI-backed production verification. Delivery is hardened with Node 24.20.0 pinning, digest-pinned Node/Mongo container images, Compose validation, and Dependabot coverage for Actions and container ecosystems.
 
-[Live](https://bookbookhaven-free.onrender.com) · [Source](https://github.com/rahman-997/bookbookhaven) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/bookhaven/)
+[Live](https://bookbookhaven-free.onrender.com) · [Source](https://github.com/rahman-997/bookbookhaven) · [Case study](https://abdulrahman-hajar-portfolio.onrender.com/work/bookhaven/)
 
 ### FitFlow — installable fitness PWA
 **Next.js · React · TypeScript · PWA · Web APIs**
 
 Personalized plans, guided intervals, weekly progress, device-local persistence, accessibility, responsive interaction, installability, and offline-ready behavior.
 
-[Live](https://fitflow-gym-online.netlify.app) · [Source](https://github.com/rahman-997/fitflow-gym) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/fitflow/)
+[Live](https://fitflow-gym-online.netlify.app) · [Source](https://github.com/rahman-997/fitflow-gym) · [Case study](https://abdulrahman-hajar-portfolio.onrender.com/work/fitflow/)
 
 ### Venues API — backend REST service
 **Node.js · Express 5 · TypeScript · Zod 4 · REST**
 
 A deliberately compact service with routes → controllers → services, strict edge validation, centralized error handling, UUID resources, persistence, and HTTP contract tests.
 
-[API health](https://venues-api-rahman.onrender.com/health) · [Source](https://github.com/rahman-997/venues-api) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/venues-api/)
+[API health](https://venues-api-rahman.onrender.com/health) · [Source](https://github.com/rahman-997/venues-api) · [Case study](https://abdulrahman-hajar-portfolio.onrender.com/work/venues-api/)
 
 ---
 
