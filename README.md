@@ -1,44 +1,58 @@
-<div align="center">
-
 # Abdulrahman Hajar
 
-**Software Engineer · Full-Stack Developer**  
-AI & Interactive Systems
+**Software Engineer · Full-Stack & Backend Systems**  
+Computer Engineering · Istanbul, Türkiye
 
-Computer Engineering · Nişantaşı University · Istanbul, Türkiye
+I build **complete production software systems** — from product interfaces and API boundaries to databases, asynchronous workflows, testing, security, reliability, and deployment. My strongest working stack is TypeScript across React/Next.js and Node.js/Express, with PostgreSQL, MongoDB, Redis, and production-oriented delivery practices.
 
-[Portfolio](https://abdulrahman-hajar-dev.netlify.app) · [Résumé](https://abdulrahman-hajar-dev.netlify.app/resume/) · [LinkedIn](https://www.linkedin.com/in/abdulrahman-hajjar-5430281a1/)
-
-</div>
+[Portfolio](https://abdulrahman-hajar-dev.netlify.app) · [Résumé](https://abdulrahman-hajar-dev.netlify.app/resume/) · [LinkedIn](https://www.linkedin.com/in/abdulrahman-hajjar-5430281a1/) · [Repositories](https://github.com/rahman-997?tab=repositories)
 
 ---
 
-## Selected work
+## Selected systems
 
-### 01 · Eventify
-Distributed event platform with **TypeScript, Express, PostgreSQL/Prisma, Redis and BullMQ** — authentication, bookings, waitlists, background work, health/readiness, metrics and production-oriented CI.
+### Eventify — distributed event platform
+**TypeScript · Express 5 · PostgreSQL/Prisma · Redis · BullMQ**
+
+Authentication, bookings, waitlists, durable outbox workflows, background workers, health/readiness probes, metrics, structured operational behavior, and security-focused CI.
 
 [Live](https://eventify-web.onrender.com) · [Source](https://github.com/rahman-997/eventify) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/eventify/)
 
-### 02 · BookHaven
-Full-stack commerce application built with **Next.js, React, TypeScript, Express and MongoDB** — authentication, RBAC, catalog, cart, wishlist, reviews, checkout, orders, inventory and administration.
+### BookHaven — full-stack commerce
+**Next.js · React · TypeScript · Express 5 · MongoDB · Zod**
+
+Customer and admin workflows spanning authentication/RBAC, catalog, cart, wishlist, reviews, checkout, orders, inventory, validation, tests, and deployment.
 
 [Live](https://bookbookhaven-free.onrender.com) · [Source](https://github.com/rahman-997/bookbookhaven) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/bookhaven/)
 
-### 03 · FitFlow
-Installable fitness **PWA** with personalized planning, guided intervals, progress tracking, local-first behavior, accessibility, responsive UX and offline readiness.
+### Venues API — backend REST service
+**Node.js · Express 5 · TypeScript · Zod 4 · REST**
 
-[Live](https://fitflow-gym-online.netlify.app) · [Source](https://github.com/rahman-997/fitflow-gym) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/fitflow/)
-
-### 04 · Venues API
-Focused **Express 5 + TypeScript + Zod** REST API with layered routes/controllers/services, strict validation, centralized errors, UUID resources, persistence and tests.
+A deliberately compact service with routes → controllers → services, strict edge validation, centralized error handling, UUID resources, persistence, and HTTP contract tests.
 
 [API health](https://venues-api-rahman.onrender.com/health) · [Source](https://github.com/rahman-997/venues-api) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/venues-api/)
+
+### FitFlow — installable fitness PWA
+**Next.js · React · TypeScript · PWA · Web APIs**
+
+Personalized plans, guided intervals, weekly progress, device-local persistence, accessibility, responsive interaction, installability, and offline-ready behavior.
+
+[Live](https://fitflow-gym-online.netlify.app) · [Source](https://github.com/rahman-997/fitflow-gym) · [Case study](https://abdulrahman-hajar-dev.netlify.app/work/fitflow/)
 
 ---
 
 ## Engineering focus
 
-`TypeScript` · `React` · `Next.js` · `Node.js` · `Express` · `PostgreSQL` · `Prisma` · `MongoDB` · `Redis` · `BullMQ` · `Testing` · `CI/CD` · `Accessibility` · `PWA`
+- **Backend systems:** API design, validation, authentication/authorization, service boundaries, error handling, asynchronous work
+- **Data & reliability:** PostgreSQL, Prisma, MongoDB, Redis, consistency, retries, health/readiness, observability
+- **Product engineering:** React, Next.js, TypeScript, responsive UX, accessibility, PWA behavior
+- **Delivery:** testing, Docker, GitHub Actions, CI/CD, security checks, deployment, production verification
+- **Extended toolkit:** GraphQL, WebSockets, gRPC, OpenAPI, AI/LLM/MCP, FastAPI, Flutter
 
-I care about clear system boundaries, validated contracts, predictable failure handling, and shipping evidence alongside the implementation.
+## Architecture philosophy
+
+**Clear ownership over cleverness.** Validate at system boundaries, keep authoritative data explicit, make failure modes observable, automate repeatable verification, and prefer portable infrastructure unless a platform-specific dependency earns its cost.
+
+## Opportunities
+
+Open to software engineering opportunities where **full-stack execution and backend systems thinking** matter. The fastest way to evaluate my work is through the live systems, source repositories, and architecture case studies linked above.
