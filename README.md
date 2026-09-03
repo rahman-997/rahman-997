@@ -30,7 +30,7 @@ Production bookstore with private HttpOnly sessions, concurrency-safe cart and c
 
 Personalized plans, guided intervals, weekly progress, device-local persistence, accessibility, responsive interaction, installability, and offline-ready behavior.
 
-[Live](https://fitflow-gym-online.netlify.app) · [Source](https://github.com/rahman-997/fitflow-gym) · [Case study](https://abdulrahman-hajar-portfolio.onrender.com/work/fitflow/)
+[Live](https://fitflow-gym.onrender.com) · [Source](https://github.com/rahman-997/fitflow-gym) · [Case study](https://abdulrahman-hajar-portfolio.onrender.com/work/fitflow/)
 
 ### Venues API — backend REST service
 **Node.js · Express 5 · TypeScript · Zod 4 · REST**
