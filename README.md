@@ -28,7 +28,7 @@ Production bookstore with private HttpOnly sessions, concurrency-safe cart and c
 ### FitFlow — installable fitness PWA
 **Next.js · React · TypeScript · PWA · Web APIs**
 
-Personalized plans, guided intervals, weekly progress, device-local persistence, accessibility, responsive interaction, installability, and offline-ready behavior.
+Personalized plans, guided intervals, weekly progress, device-local persistence, accessibility, responsive interaction, installability, offline-ready behavior, and automatic Render deployment from `main`.
 
 [Live](https://fitflow-gym.onrender.com) · [Source](https://github.com/rahman-997/fitflow-gym) · [Case study](https://abdulrahman-hajar-portfolio.onrender.com/work/fitflow/)
 
