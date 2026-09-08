@@ -7,7 +7,7 @@ const targets = [
   ["BookHaven live", "https://bookbookhaven-free.onrender.com"],
   ["BookHaven source", "https://github.com/rahman-997/bookbookhaven"],
   ["BookHaven case study", "https://abdulrahman-hajar-portfolio.onrender.com/work/bookhaven/"],
-  ["FitFlow live", "https://fitflow-gym-online.netlify.app"],
+  ["FitFlow live", "https://fitflow-gym.onrender.com"],
   ["FitFlow source", "https://github.com/rahman-997/fitflow-gym"],
   ["FitFlow case study", "https://abdulrahman-hajar-portfolio.onrender.com/work/fitflow/"],
   ["Venues API health", "https://venues-api-rahman.onrender.com/health"],
