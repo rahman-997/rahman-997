@@ -13,6 +13,7 @@ const targets = [
   ["Venues API health", "https://venues-api-rahman.onrender.com/health"],
   ["Venues API source", "https://github.com/rahman-997/venues-api"],
   ["Venues API case study", "https://abdulrahman-hajar-portfolio.onrender.com/work/venues-api/"],
+  ["Mizan live", "https://mizan-finance-rahman-997.netlify.app"],
   ["Mizan source", "https://github.com/rahman-997/mizan-finance"],
 ];
 
