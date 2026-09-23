@@ -2414,7 +2414,7 @@ const products=[
     setCloudStatus(T().syncing,'warn');
     try{
       if(authMode==='register'){
-        const {data,error}=await sb.auth.signUp({email,password,options:{data:{display_name:name}}}); if(error)throw error;
+        const {data,error}=await sb.auth.signUp({email,password,options:{data:{display_name:name},emailRedirectTo:location.origin}}); if(error)throw error;
         if(data.session){await onSession(data.session);toast(T().welcome);}else{setCloudStatus(T().confirm,'ok');toast(T().confirm);}
       }else{
         const {data,error}=await sb.auth.signInWithPassword({email,password}); if(error)throw error;
