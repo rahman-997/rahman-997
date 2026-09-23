@@ -964,6 +964,13 @@ img,svg,video,canvas,iframe{max-width:100%}
           <button class="ghost" type="button" id="syncNowBtn" style="flex:1">مزامنة الآن</button>
           <button class="ghost" type="button" id="logoutBtn" style="flex:1;display:none">تسجيل الخروج</button>
         </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+          <button class="ghost" type="button" id="forgotPasswordBtn" style="flex:1">نسيت كلمة المرور؟</button>
+        </div>
+        <div id="recoveryPanel" style="display:none;margin-top:12px">
+          <div class="field"><label id="newPasswordLabel">كلمة المرور الجديدة</label><input id="newPasswordInput" type="password" minlength="6" placeholder="6 أحرف على الأقل" autocomplete="new-password" /></div>
+          <button class="btn" type="button" id="setNewPasswordBtn" style="width:100%;margin-top:10px">حفظ كلمة المرور الجديدة</button>
+        </div>
         <p class="tiny" id="accountNote">يمكنك استخدام المنصة محلياً بدون حساب، أو تسجيل حساب حقيقي لمزامنة بياناتك بين الأجهزة.</p>
       </form>
     </div>
@@ -2414,7 +2421,7 @@ const products=[
     setCloudStatus(T().syncing,'warn');
     try{
       if(authMode==='register'){
-        const {data,error}=await sb.auth.signUp({email,password,options:{data:{display_name:name},emailRedirectTo:location.origin}}); if(error)throw error;
+        const {data,error}=await sb.auth.signUp({email,password,options:{data:{display_name:name},emailRedirectTo:location.origin+'/_api/live'}}); if(error)throw error;
         if(data.session){await onSession(data.session);toast(T().welcome);}else{setCloudStatus(T().confirm,'ok');toast(T().confirm);}
       }else{
         const {data,error}=await sb.auth.signInWithPassword({email,password}); if(error)throw error;
@@ -2811,5 +2818,111 @@ const products=[
 })();
 </script>
 
+
+<script>
+// GYMIVOX v12.3 — Password Recovery
+(()=>{
+  const q=s=>document.querySelector(s);
+  const text={
+    ar:{forgot:'نسيت كلمة المرور؟',send:'تم إرسال رابط استعادة كلمة المرور إلى بريدك ✓',needEmail:'اكتب بريدك الإلكتروني أولاً.',newPass:'كلمة المرور الجديدة',save:'حفظ كلمة المرور الجديدة',updated:'تم تغيير كلمة المرور ✓ يمكنك المتابعة بحسابك.',invalid:'بيانات الدخول غير صحيحة. استخدم «نسيت كلمة المرور؟» إذا لزم.',recovering:'وضع استعادة كلمة المرور',failed:'تعذر إرسال رابط الاستعادة.'},
+    tr:{forgot:'Şifremi unuttum',send:'Şifre sıfırlama bağlantısı e-postanıza gönderildi ✓',needEmail:'Önce e-posta adresinizi yazın.',newPass:'Yeni şifre',save:'Yeni şifreyi kaydet',updated:'Şifreniz değiştirildi ✓ Hesabınızı kullanmaya devam edebilirsiniz.',invalid:'Giriş bilgileri yanlış. Gerekirse “Şifremi unuttum” seçeneğini kullanın.',recovering:'Şifre kurtarma modu',failed:'Sıfırlama bağlantısı gönderilemedi.'},
+    en:{forgot:'Forgot password?',send:'Password reset link sent to your email ✓',needEmail:'Enter your email first.',newPass:'New password',save:'Save new password',updated:'Password changed ✓ You can continue with your account.',invalid:'Invalid login credentials. Use “Forgot password?” if needed.',recovering:'Password recovery mode',failed:'Could not send reset link.'}
+  };
+  const T=()=>text[state?.lang]||text.en;
+  let recoveryMode=false;
+
+  function syncRecoveryCopy(){
+    const t=T();
+    if(q('#forgotPasswordBtn'))q('#forgotPasswordBtn').textContent=t.forgot;
+    if(q('#newPasswordLabel'))q('#newPasswordLabel').textContent=t.newPass;
+    if(q('#newPasswordInput'))q('#newPasswordInput').placeholder=(state?.lang==='ar'?'6 أحرف على الأقل':state?.lang==='tr'?'En az 6 karakter':'At least 6 characters');
+    if(q('#setNewPasswordBtn'))q('#setNewPasswordBtn').textContent=t.save;
+  }
+
+  function openRecoveryMode(){
+    recoveryMode=true;
+    q('#accountModal')?.classList.add('show');
+    q('#recoveryPanel')?.style.setProperty('display','block');
+    q('#accountForm')?.classList.add('recovery-mode');
+    if(q('#cloudStatus')){
+      q('#cloudStatus').className='notice cloud-ok';
+      q('#cloudStatus').textContent=T().recovering;
+    }
+    q('#passwordInput')?.closest('.field')?.style.setProperty('display','none');
+    q('#accountSaveBtn')?.style.setProperty('display','none');
+    q('#loginTab')?.style.setProperty('display','none');
+    q('#registerTab')?.style.setProperty('display','none');
+    q('#forgotPasswordBtn')?.style.setProperty('display','none');
+  }
+
+  function closeRecoveryMode(){
+    recoveryMode=false;
+    q('#recoveryPanel')?.style.setProperty('display','none');
+    q('#passwordInput')?.closest('.field')?.style.removeProperty('display');
+    q('#accountSaveBtn')?.style.removeProperty('display');
+    q('#loginTab')?.style.removeProperty('display');
+    q('#registerTab')?.style.removeProperty('display');
+    q('#forgotPasswordBtn')?.style.removeProperty('display');
+  }
+
+  async function sendReset(){
+    const email=q('#emailInput')?.value?.trim();
+    if(!email)return toast(T().needEmail);
+    const sb=window.GYMIVOXCloud?.client;
+    if(!sb)return toast(T().failed);
+    const redirectTo=location.origin+'/_api/live?recovery=1';
+    const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo});
+    if(error){console.warn('resetPasswordForEmail',error);return toast(error.message||T().failed);}
+    if(q('#cloudStatus')){
+      q('#cloudStatus').className='notice cloud-ok';
+      q('#cloudStatus').textContent=T().send;
+    }
+    toast(T().send);
+  }
+
+  async function setNewPassword(){
+    const value=q('#newPasswordInput')?.value||'';
+    if(value.length<6)return toast(state?.lang==='ar'?'كلمة المرور لازم تكون 6 أحرف على الأقل':state?.lang==='tr'?'Şifre en az 6 karakter olmalı':'Password must be at least 6 characters');
+    const sb=window.GYMIVOXCloud?.client;
+    if(!sb)return;
+    const {error}=await sb.auth.updateUser({password:value});
+    if(error)return toast(error.message||T().failed);
+    toast(T().updated);
+    closeRecoveryMode();
+    q('#accountModal')?.classList.remove('show');
+    try{history.replaceState({},document.title,location.pathname);}catch(_){}
+    window.GYMIVOXV122?.refresh?.();
+  }
+
+  q('#forgotPasswordBtn')?.addEventListener('click',sendReset);
+  q('#setNewPasswordBtn')?.addEventListener('click',setNewPassword);
+  q('#langSelect')?.addEventListener('change',()=>setTimeout(syncRecoveryCopy,80));
+
+  const boot=()=>{
+    syncRecoveryCopy();
+    const sb=window.GYMIVOXCloud?.client;
+    if(!sb)return setTimeout(boot,250);
+    sb.auth.onAuthStateChange((event,session)=>{
+      if(event==='PASSWORD_RECOVERY')setTimeout(openRecoveryMode,0);
+      if(event==='SIGNED_IN'&&!recoveryMode)window.GYMIVOXV122?.refresh?.();
+    });
+    if(new URLSearchParams(location.search).get('recovery')==='1')setTimeout(()=>{ 
+      // Supabase will emit PASSWORD_RECOVERY after processing the recovery session.
+      if(location.hash.includes('type=recovery'))openRecoveryMode();
+    },700);
+  };
+  setTimeout(boot,400);
+
+  // Replace low-level invalid credential errors with a useful localized message.
+  const originalSet=window.setCloudStatus;
+  if(typeof originalSet==='function'){
+    window.setCloudStatus=(msg,type)=>{
+      const m=String(msg||'');
+      if(/invalid login credentials/i.test(m))return originalSet(T().invalid,'error');
+      return originalSet(msg,type);
+    };
+  }
+})();
+</script>
 </body>
 </html>
