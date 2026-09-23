@@ -570,7 +570,7 @@ img,svg,video,canvas,iframe{max-width:100%}
           <div class="kicker" id="partnerKicker">للنوادي الرياضية</div>
           <h2 id="partnerTitle">نخلي النادي شريك، مو مجرد عنوان</h2>
           <p class="muted" id="partnerText">النادي يقدر يثبت صفحته، يرسل السعر الحالي، ينشر عرض خاص، ويعطينا كود خصم للمستخدمين. هيك الدليل بصير مفيد للمستخدم ومفيد للنادي بنفس الوقت.</p>
-          <div class="hero-actions"><button class="btn" id="partnerBtn">طلب شراكة Demo</button></div>
+          <div class="hero-actions"><button class="btn" id="partnerBtn">طلب ملكية / شراكة نادي</button></div>
         </div>
         <div class="partner-points">
           <div class="feature"><b>✓</b><span id="partnerP1">صفحة موثقة للنادي</span></div>
@@ -756,9 +756,9 @@ img,svg,video,canvas,iframe{max-width:100%}
         <div class="v10-pane" data-v10-pane="community">
           <div class="split">
             <div class="panel">
-              <div class="pill" id="reviewsDemoBadge">DEMO محلي</div>
-              <h3 id="reviewsTitle">تقييمات النوادي التجريبية</h3>
-              <p class="muted" id="reviewsText">هذه التقييمات تُحفظ على جهازك فقط ولا تمثل تقييمات عامة أو موثقة.</p>
+              <div class="pill" id="reviewsDemoBadge">GYMIVOX Community</div>
+              <h3 id="reviewsTitle">تقييمات النوادي</h3>
+              <p class="muted" id="reviewsText">التقييمات العامة تظهر بعد المراجعة، وتقييمك يبقى محفوظاً أثناء انتظار المراجعة.</p>
               <div class="field"><label id="reviewGymLabel">النادي</label><select id="reviewGym"></select></div>
               <div class="field" style="margin-top:10px"><label id="reviewRatingLabel">التقييم</label><select id="reviewRating"><option value="5">5 ★</option><option value="4">4 ★</option><option value="3">3 ★</option><option value="2">2 ★</option><option value="1">1 ★</option></select></div>
               <div class="field" style="margin-top:10px"><label id="reviewTextLabel">ملاحظتك</label><input id="reviewText" placeholder="النظافة، المعدات، الازدحام..." /></div>
@@ -783,7 +783,7 @@ img,svg,video,canvas,iframe{max-width:100%}
 
     <section id="businessTools" class="section alt">
       <div class="wrap">
-        <div class="head"><div><div class="kicker" id="businessKicker">BUSINESS CONSOLE</div><h2 id="businessTitle">لوحة نادي + إدارة تجريبية</h2></div><span class="muted" id="businessSub">كل التعديلات هنا محلية Demo فقط.</span></div>
+        <div class="head"><div><div class="kicker" id="businessKicker">BUSINESS CONSOLE</div><h2 id="businessTitle">لوحة النوادي والإدارة</h2></div><span class="muted" id="businessSub">إدارة سحابية لطلبات الملكية والتحديثات والمراجعة.</span></div>
         <div class="split">
           <div class="panel">
             <h3 id="ownerTitle">لوحة صاحب النادي</h3>
@@ -932,7 +932,7 @@ img,svg,video,canvas,iframe{max-width:100%}
 
   <div class="modal" id="gymProfileModal"><div class="modal-card v9-gym-profile"><div class="modal-head"><h2 id="gymProfileTitle">النادي</h2><button class="iconbtn" id="closeGymProfile">✕</button></div><div id="gymProfileContent"></div></div></div>
 
-  <div class="modal" id="priceAlertModal"><div class="modal-card"><div class="modal-head"><h2 id="priceAlertTitle">تنبيه سعر تجريبي</h2><button class="iconbtn" id="closePriceAlert">✕</button></div><p class="muted" id="priceAlertText">احفظ المنتج وسنجهز مكان التنبيه. المراقبة الفعلية تحتاج Backend لاحقاً.</p><div id="priceAlertProduct"></div><button class="btn" id="savePriceAlert" style="width:100%;margin-top:14px">حفظ التنبيه محلياً</button></div></div>
+  <div class="modal" id="priceAlertModal"><div class="modal-card"><div class="modal-head"><h2 id="priceAlertTitle">تنبيه سعر</h2><button class="iconbtn" id="closePriceAlert">✕</button></div><p class="muted" id="priceAlertText">احفظ سعرك المستهدف؛ المنتجات المدعومة تُفحص تلقائياً ويظهر سجل التحقق.</p><div id="priceAlertProduct"></div><button class="btn" id="savePriceAlert" style="width:100%;margin-top:14px">حفظ التنبيه محلياً</button></div></div>
 
   <div class="drawer-backdrop" id="backdrop"></div>
   <aside class="drawer" id="drawer">
@@ -968,8 +968,10 @@ img,svg,video,canvas,iframe{max-width:100%}
           <button class="ghost" type="button" id="forgotPasswordBtn" style="flex:1">نسيت كلمة المرور؟</button>
         </div>
         <div id="recoveryPanel" style="display:none;margin-top:12px">
-          <div class="field"><label id="newPasswordLabel">كلمة المرور الجديدة</label><input id="newPasswordInput" type="password" minlength="6" placeholder="6 أحرف على الأقل" autocomplete="new-password" /></div>
-          <button class="btn" type="button" id="setNewPasswordBtn" style="width:100%;margin-top:10px">حفظ كلمة المرور الجديدة</button>
+          <div class="field"><label id="recoveryCodeLabel">كود الاستعادة</label><input id="recoveryCodeInput" type="text" maxlength="20" placeholder="XXXX-XXXX-XXXX" autocomplete="one-time-code" /></div>
+          <div class="field" style="margin-top:10px"><label id="newPasswordLabel">كلمة المرور الجديدة</label><input id="newPasswordInput" type="password" minlength="8" placeholder="8 أحرف على الأقل" autocomplete="new-password" /></div>
+          <button class="btn" type="button" id="setNewPasswordBtn" style="width:100%;margin-top:10px">تغيير كلمة المرور</button>
+          <button class="ghost" type="button" id="cancelRecoveryBtn" style="width:100%;margin-top:8px">رجوع لتسجيل الدخول</button>
         </div>
         <p class="tiny" id="accountNote">يمكنك استخدام المنصة محلياً بدون حساب، أو تسجيل حساب حقيقي لمزامنة بياناتك بين الأجهزة.</p>
       </form>
@@ -987,12 +989,12 @@ img,svg,video,canvas,iframe{max-width:100%}
 
   <div class="modal" id="partnerModal">
     <div class="modal-card">
-      <div class="modal-head"><h2 id="partnerModalTitle">طلب شراكة تجريبي</h2><button class="iconbtn" id="closePartner">✕</button></div>
-      <p class="muted" id="partnerModalText">هذا النموذج محلي حالياً. لاحقاً نربطه بإيميل أو لوحة النوادي بدون ما ندفع من البداية.</p>
+      <div class="modal-head"><h2 id="partnerModalTitle">طلب ملكية / شراكة نادي</h2><button class="iconbtn" id="closePartner">✕</button></div>
+      <p class="muted" id="partnerModalText">إذا كنت ممثل النادي، أرسل بيانات التواصل. الطلب يُحفظ في السحابة عند تسجيل الدخول ويخضع للمراجعة.</p>
       <form id="partnerForm">
         <div class="field"><label id="gymNameLabel">اسم النادي</label><input id="gymNameInput" required placeholder="Gym name" /></div>
         <div class="field" style="margin-top:10px"><label id="gymContactLabel">وسيلة التواصل</label><input id="gymContactInput" required placeholder="Email / Phone / WhatsApp" /></div>
-        <button class="btn" style="width:100%;margin-top:16px" type="submit" id="partnerSubmit">حفظ الطلب Demo</button>
+        <button class="btn" style="width:100%;margin-top:16px" type="submit" id="partnerSubmit">إرسال الطلب</button>
       </form>
     </div>
   </div>
@@ -1339,9 +1341,9 @@ const products=[
     gyms.forEach(g=>{if(!g.chain)g.chain=g.name.startsWith('MAC/One')?'macone':g.name.startsWith('MACFit')?'macfit':'other';});
 
     const uiText={
-      ar:{dir:'rtl',navCatalog:'البرامج والكورسات',navGyms:'النوادي',navDashboard:'المتابعة',navFaq:'الأسئلة',install:'تثبيت',account:'الحساب',heroBadge:'نسخة مجانية قابلة للنشر',heroTitle:'منصة فتنس ذكية<br><span>للبرامج والكورسات والنوادي</span>',heroText:'برامج جيم، كورسات فتنس، مكتبة متدرب، ودليل نوادي في تركيا مع العناوين وطرق الوصول وحالة الأسعار — وكل هذا بدون أي خدمة مدفوعة حالياً.',heroBrowse:'ابدأ التصفح',heroGyms:'اكتشف النوادي',catalogTitle:'البرامج والكورسات',catalogSubtitle:'ابحث، فلتر، أضف للسلة أو للمفضلة',search:'ابحث عن برنامج أو كورس...',filters:{all:'الكل',program:'برامج',course:'كورسات',beginner:'مبتدئ',advanced:'متقدم'},gymsTitle:'دليل النوادي',gymsSubtitle:'نبدأ بإسطنبول، وبعدها نوسع مدينة مدينة',gymPriceNote:'أسعار النوادي تتغير حسب الفرع، نوع العضوية والعروض. لذلك ما رح نعرض أي سعر كـ “حالي” إلا إذا كان معه مصدر وتاريخ تحقق.',gymSourceNote:'الدليل توسّع إلى عشرات النوادي في إسطنبول. بعض الفروع موثقة بعنوان وساعات مباشرة، وبعضها مؤكد في الدليل الرسمي للسلسلة ويحتاج فتح صفحة الفرع للتحقق من العنوان والساعات قبل الذهاب.',address:'العنوان',hours:'الدوام',price:'الاشتراك',verified:'آخر تحقق',directions:'طريقة الوصول',official:'المصدر الرسمي',call:'اتصال',partnerTitle:'نخلي النادي شريك، مو مجرد عنوان',partnerText:'النادي يقدر يثبت صفحته، يرسل السعر الحالي، ينشر عرض خاص، ويعطينا كود خصم للمستخدمين. هيك الدليل بصير مفيد للمستخدم ومفيد للنادي بنفس الوقت.',partnerBtn:'طلب شراكة Demo',partnerP:['صفحة موثقة للنادي','سعر وعرض بتاريخ آخر تحديث','زر اتصال + طريق الوصول','كوبونات وإحالات مستقبلاً'],typeProgram:'برنامج',typeCourse:'كورس',details:'عرض الخطة',add:'أضف للسلة',gymSearch:'ابحث باسم النادي أو المنطقة...',gymFilters:{all:'الكل',europe:'أوروبا',anatolian:'الأناضول',premium:'مميز',macgroup:'MACFit / MAC/One',other:'نوادٍ أخرى'},compare:'مقارنة',compareHint:'اختر ناديين للمقارنة',features:'المزايا'},
-      tr:{dir:'ltr',navCatalog:'Programlar & Kurslar',navGyms:'Spor Salonları',navDashboard:'Takip',navFaq:'SSS',install:'Yükle',account:'Hesap',heroBadge:'Ücretsiz yayın sürümü',heroTitle:'Akıllı fitness platformu<br><span>programlar, kurslar ve salonlar</span>',heroText:'Antrenman programları, fitness kursları, üye kütüphanesi ve Türkiye’de adres, ulaşım ve fiyat durumu içeren spor salonu rehberi — şu anda ücretli servis olmadan.',heroBrowse:'Programları keşfet',heroGyms:'Salonları bul',catalogTitle:'Programlar & Kurslar',catalogSubtitle:'Ara, filtrele, sepete veya favorilere ekle',search:'Program veya kurs ara...',filters:{all:'Tümü',program:'Programlar',course:'Kurslar',beginner:'Başlangıç',advanced:'İleri'},gymsTitle:'Spor Salonu Rehberi',gymsSubtitle:'İstanbul ile başlıyoruz, sonra şehir şehir büyütüyoruz',gymPriceNote:'Salon fiyatları şubeye, üyelik türüne ve kampanyaya göre değişir. Kaynak ve doğrulama tarihi olmayan hiçbir fiyatı “güncel” olarak göstermiyoruz.',gymSourceNote:'Rehber İstanbul genelinde onlarca salona genişletildi. Bazı şubeler doğrudan adres ve saat bilgisiyle doğrulandı; bazıları resmi zincir dizininde onaylıdır ve gitmeden önce şube sayfasından kesin adres/saat kontrolü gerekir.',address:'Adres',hours:'Çalışma saatleri',price:'Üyelik',verified:'Son doğrulama',directions:'Yol tarifi',official:'Resmi kaynak',call:'Ara',partnerTitle:'Salonu sadece listelemeyelim, ortak yapalım',partnerText:'Salon kendi sayfasını doğrulayabilir, güncel fiyatını ve kampanyasını gönderebilir, kullanıcılara özel indirim kodu sunabilir. Böylece rehber hem kullanıcı hem salon için değer üretir.',partnerBtn:'Demo ortaklık başvurusu',partnerP:['Doğrulanmış salon sayfası','Güncelleme tarihli fiyat ve kampanya','Arama + yol tarifi','Gelecekte kupon ve yönlendirme'],typeProgram:'Program',typeCourse:'Kurs',details:'Planı gör',add:'Sepete ekle',gymSearch:'Salon veya bölge ara...',gymFilters:{all:'Tümü',europe:'Avrupa Yakası',anatolian:'Anadolu Yakası',premium:'Premium',macgroup:'MACFit / MAC/One',other:'Diğer salonlar'},compare:'Karşılaştır',compareHint:'Karşılaştırmak için iki salon seçin',features:'İmkanlar'},
-      en:{dir:'ltr',navCatalog:'Programs & Courses',navGyms:'Gyms',navDashboard:'Progress',navFaq:'FAQ',install:'Install',account:'Account',heroBadge:'Free launch version',heroTitle:'A smart fitness platform<br><span>for programs, courses and gyms</span>',heroText:'Workout programs, fitness courses, a trainee library, and a Turkey gym directory with addresses, directions and price status — with no paid services required right now.',heroBrowse:'Browse programs',heroGyms:'Find gyms',catalogTitle:'Programs & Courses',catalogSubtitle:'Search, filter, add to cart or favorites',search:'Search for a program or course...',filters:{all:'All',program:'Programs',course:'Courses',beginner:'Beginner',advanced:'Advanced'},gymsTitle:'Gym Directory',gymsSubtitle:'Starting with Istanbul, then expanding city by city',gymPriceNote:'Gym prices vary by branch, membership type and campaign. We will not label a price as “current” unless it includes a source and verification date.',gymSourceNote:'The directory now covers dozens of Istanbul gyms. Some branches are fully verified with direct address and hours; others are confirmed in the official chain directory and require a final branch-page check before travel.',address:'Address',hours:'Hours',price:'Membership',verified:'Last verified',directions:'Directions',official:'Official source',call:'Call',partnerTitle:'Make gyms partners, not just pins on a map',partnerText:'A gym can verify its page, submit the current price, publish a special offer and provide a discount code. The directory then creates value for both users and gyms.',partnerBtn:'Demo partnership request',partnerP:['Verified gym page','Price & offer with update date','Call + directions','Coupons & referrals later'],typeProgram:'Program',typeCourse:'Course',details:'View plan',add:'Add to cart',gymSearch:'Search by gym or area...',gymFilters:{all:'All',europe:'European Side',anatolian:'Anatolian Side',premium:'Premium',macgroup:'MACFit / MAC/One',other:'Other gyms'},compare:'Compare',compareHint:'Select two gyms to compare',features:'Features'}
+      ar:{dir:'rtl',navCatalog:'البرامج والكورسات',navGyms:'النوادي',navDashboard:'المتابعة',navFaq:'الأسئلة',install:'تثبيت',account:'الحساب',heroBadge:'نسخة مجانية قابلة للنشر',heroTitle:'منصة فتنس ذكية<br><span>للبرامج والكورسات والنوادي</span>',heroText:'برامج جيم، كورسات فتنس، مكتبة متدرب، ودليل نوادي في تركيا مع العناوين وطرق الوصول وحالة الأسعار — وكل هذا بدون أي خدمة مدفوعة حالياً.',heroBrowse:'ابدأ التصفح',heroGyms:'اكتشف النوادي',catalogTitle:'البرامج والكورسات',catalogSubtitle:'ابحث، فلتر، أضف للسلة أو للمفضلة',search:'ابحث عن برنامج أو كورس...',filters:{all:'الكل',program:'برامج',course:'كورسات',beginner:'مبتدئ',advanced:'متقدم'},gymsTitle:'دليل النوادي',gymsSubtitle:'نبدأ بإسطنبول، وبعدها نوسع مدينة مدينة',gymPriceNote:'أسعار النوادي تتغير حسب الفرع، نوع العضوية والعروض. لذلك ما رح نعرض أي سعر كـ “حالي” إلا إذا كان معه مصدر وتاريخ تحقق.',gymSourceNote:'الدليل توسّع إلى عشرات النوادي في إسطنبول. بعض الفروع موثقة بعنوان وساعات مباشرة، وبعضها مؤكد في الدليل الرسمي للسلسلة ويحتاج فتح صفحة الفرع للتحقق من العنوان والساعات قبل الذهاب.',address:'العنوان',hours:'الدوام',price:'الاشتراك',verified:'آخر تحقق',directions:'طريقة الوصول',official:'المصدر الرسمي',call:'اتصال',partnerTitle:'نخلي النادي شريك، مو مجرد عنوان',partnerText:'النادي يقدر يثبت صفحته، يرسل السعر الحالي، ينشر عرض خاص، ويعطينا كود خصم للمستخدمين. هيك الدليل بصير مفيد للمستخدم ومفيد للنادي بنفس الوقت.',partnerBtn:'طلب ملكية / شراكة نادي',partnerP:['صفحة موثقة للنادي','سعر وعرض بتاريخ آخر تحديث','زر اتصال + طريق الوصول','كوبونات وإحالات مستقبلاً'],typeProgram:'برنامج',typeCourse:'كورس',details:'عرض الخطة',add:'أضف للسلة',gymSearch:'ابحث باسم النادي أو المنطقة...',gymFilters:{all:'الكل',europe:'أوروبا',anatolian:'الأناضول',premium:'مميز',macgroup:'MACFit / MAC/One',other:'نوادٍ أخرى'},compare:'مقارنة',compareHint:'اختر ناديين للمقارنة',features:'المزايا'},
+      tr:{dir:'ltr',navCatalog:'Programlar & Kurslar',navGyms:'Spor Salonları',navDashboard:'Takip',navFaq:'SSS',install:'Yükle',account:'Hesap',heroBadge:'Ücretsiz yayın sürümü',heroTitle:'Akıllı fitness platformu<br><span>programlar, kurslar ve salonlar</span>',heroText:'Antrenman programları, fitness kursları, üye kütüphanesi ve Türkiye’de adres, ulaşım ve fiyat durumu içeren spor salonu rehberi — şu anda ücretli servis olmadan.',heroBrowse:'Programları keşfet',heroGyms:'Salonları bul',catalogTitle:'Programlar & Kurslar',catalogSubtitle:'Ara, filtrele, sepete veya favorilere ekle',search:'Program veya kurs ara...',filters:{all:'Tümü',program:'Programlar',course:'Kurslar',beginner:'Başlangıç',advanced:'İleri'},gymsTitle:'Spor Salonu Rehberi',gymsSubtitle:'İstanbul ile başlıyoruz, sonra şehir şehir büyütüyoruz',gymPriceNote:'Salon fiyatları şubeye, üyelik türüne ve kampanyaya göre değişir. Kaynak ve doğrulama tarihi olmayan hiçbir fiyatı “güncel” olarak göstermiyoruz.',gymSourceNote:'Rehber İstanbul genelinde onlarca salona genişletildi. Bazı şubeler doğrudan adres ve saat bilgisiyle doğrulandı; bazıları resmi zincir dizininde onaylıdır ve gitmeden önce şube sayfasından kesin adres/saat kontrolü gerekir.',address:'Adres',hours:'Çalışma saatleri',price:'Üyelik',verified:'Son doğrulama',directions:'Yol tarifi',official:'Resmi kaynak',call:'Ara',partnerTitle:'Salonu sadece listelemeyelim, ortak yapalım',partnerText:'Salon kendi sayfasını doğrulayabilir, güncel fiyatını ve kampanyasını gönderebilir, kullanıcılara özel indirim kodu sunabilir. Böylece rehber hem kullanıcı hem salon için değer üretir.',partnerBtn:'Salon sahiplik / ortaklık başvurusu',partnerP:['Doğrulanmış salon sayfası','Güncelleme tarihli fiyat ve kampanya','Arama + yol tarifi','Gelecekte kupon ve yönlendirme'],typeProgram:'Program',typeCourse:'Kurs',details:'Planı gör',add:'Sepete ekle',gymSearch:'Salon veya bölge ara...',gymFilters:{all:'Tümü',europe:'Avrupa Yakası',anatolian:'Anadolu Yakası',premium:'Premium',macgroup:'MACFit / MAC/One',other:'Diğer salonlar'},compare:'Karşılaştır',compareHint:'Karşılaştırmak için iki salon seçin',features:'İmkanlar'},
+      en:{dir:'ltr',navCatalog:'Programs & Courses',navGyms:'Gyms',navDashboard:'Progress',navFaq:'FAQ',install:'Install',account:'Account',heroBadge:'Free launch version',heroTitle:'A smart fitness platform<br><span>for programs, courses and gyms</span>',heroText:'Workout programs, fitness courses, a trainee library, and a Turkey gym directory with addresses, directions and price status — with no paid services required right now.',heroBrowse:'Browse programs',heroGyms:'Find gyms',catalogTitle:'Programs & Courses',catalogSubtitle:'Search, filter, add to cart or favorites',search:'Search for a program or course...',filters:{all:'All',program:'Programs',course:'Courses',beginner:'Beginner',advanced:'Advanced'},gymsTitle:'Gym Directory',gymsSubtitle:'Starting with Istanbul, then expanding city by city',gymPriceNote:'Gym prices vary by branch, membership type and campaign. We will not label a price as “current” unless it includes a source and verification date.',gymSourceNote:'The directory now covers dozens of Istanbul gyms. Some branches are fully verified with direct address and hours; others are confirmed in the official chain directory and require a final branch-page check before travel.',address:'Address',hours:'Hours',price:'Membership',verified:'Last verified',directions:'Directions',official:'Official source',call:'Call',partnerTitle:'Make gyms partners, not just pins on a map',partnerText:'A gym can verify its page, submit the current price, publish a special offer and provide a discount code. The directory then creates value for both users and gyms.',partnerBtn:'Gym ownership / partnership request',partnerP:['Verified gym page','Price & offer with update date','Call + directions','Coupons & referrals later'],typeProgram:'Program',typeCourse:'Course',details:'View plan',add:'Add to cart',gymSearch:'Search by gym or area...',gymFilters:{all:'All',europe:'European Side',anatolian:'Anatolian Side',premium:'Premium',macgroup:'MACFit / MAC/One',other:'Other gyms'},compare:'Compare',compareHint:'Select two gyms to compare',features:'Features'}
     };
 
     const pageCopy={
@@ -1674,7 +1676,7 @@ const products=[
         title:'GYMIVOX | فتنس، نوادٍ، كورسات ومنتجات رياضية',description:'GYMIVOX — منصة فتنس عربية للبرامج والكورسات والنوادي والمنتجات الرياضية في تركيا.',
         navFree:'المجاني',navTools:'الأدوات',navPricing:'الخطة',
         country:'تركيا',emptyProducts:'لا توجد منتجات مطابقة.',openStore:'فتح المتجر',viewProducts:'عرض المنتجات',
-        partnerModalTitle:'طلب شراكة تجريبي',partnerModalText:'هذا النموذج تجريبي ومحفوظ محلياً حالياً. لاحقاً يمكن ربطه بالبريد أو بلوحة خاصة بالنوادي.',gymName:'اسم النادي',gymNamePh:'اسم النادي',gymContact:'وسيلة التواصل',gymContactPh:'البريد / الهاتف / واتساب',partnerSubmit:'حفظ الطلب التجريبي',
+        partnerModalTitle:'طلب ملكية / شراكة نادي',partnerModalText:'يُحفظ الطلب سحابياً للمستخدم المسجل ويخضع للمراجعة. يتوفر حفظ محلي احتياطي عند انقطاع الاتصال.',gymName:'اسم النادي',gymNamePh:'اسم النادي',gymContact:'وسيلة التواصل',gymContactPh:'البريد / الهاتف / واتساب',partnerSubmit:'إرسال الطلب',
         bmiInvalid:'أدخل الطول والوزن بشكل صحيح.',bmiClass:'التصنيف',bmiCats:['نحافة','طبيعي','زيادة وزن','سمنة'],installHint:'يصبح التثبيت متاحاً بعد رفع الموقع على استضافة آمنة وفتحه من متصفح يدعم تطبيقات الويب.',
         pricing:[
           {badge:'الآن',title:'الإطلاق المجاني',big:'0 دولار',desc:'نسخة مجانية كاملة كبداية.',items:['موقع ثابت','برامج وكورسات','سلة محلية','مفضلة','تطبيق ويب قابل للتثبيت']},
@@ -1693,7 +1695,7 @@ const products=[
         title:'GYMIVOX | Fitness, Spor Salonları, Kurslar ve Spor Ürünleri',description:'GYMIVOX — Türkiye’de antrenman programları, kurslar, spor salonları ve spor ürünleri için çok dilli fitness platformu.',
         navFree:'Ücretsiz',navTools:'Araçlar',navPricing:'Plan',
         country:'Türkiye',emptyProducts:'Eşleşen ürün bulunamadı.',openStore:'Mağazayı Aç',viewProducts:'Ürünleri Gör',
-        partnerModalTitle:'Demo Ortaklık Başvurusu',partnerModalText:'Bu form şu anda cihazda yerel olarak kaydedilen bir demodur. Daha sonra e-posta veya salon paneline bağlanabilir.',gymName:'Spor salonu adı',gymNamePh:'Spor salonu adı',gymContact:'İletişim',gymContactPh:'E-posta / Telefon / WhatsApp',partnerSubmit:'Demo Başvuruyu Kaydet',
+        partnerModalTitle:'Salon Sahiplik / Ortaklık Başvurusu',partnerModalText:'Giriş yapan kullanıcıların talepleri buluta kaydedilir ve incelemeye alınır. Bağlantı yoksa yerel yedek kullanılır.',gymName:'Spor salonu adı',gymNamePh:'Spor salonu adı',gymContact:'İletişim',gymContactPh:'E-posta / Telefon / WhatsApp',partnerSubmit:'Başvuruyu gönder',
         bmiInvalid:'Boy ve kiloyu doğru girin.',bmiClass:'Sınıf',bmiCats:['Düşük kilo','Normal','Fazla kilo','Obezite'],installHint:'Kurulum, site güvenli bir barındırmada yayınlandıktan ve desteklenen bir tarayıcıda açıldıktan sonra kullanılabilir.',
         pricing:[
           {badge:'Şimdi',title:'Ücretsiz Başlangıç',big:'0 USD',desc:'Başlangıç için tamamen ücretsiz sürüm.',items:['Statik site','Programlar ve kurslar','Yerel sepet','Favoriler','Yüklenebilir web uygulaması']},
@@ -1712,7 +1714,7 @@ const products=[
         title:'GYMIVOX | Fitness, Gyms, Courses & Sports Products',description:'GYMIVOX — a fitness platform for workout programs, courses, gyms and sports products in Türkiye.',
         navFree:'Free',navTools:'Tools',navPricing:'Plan',
         country:'Türkiye',emptyProducts:'No matching products.',openStore:'Open Store',viewProducts:'View Products',
-        partnerModalTitle:'Demo Partnership Request',partnerModalText:'This is currently a local demo form. It can later be connected to email or a dedicated gym dashboard.',gymName:'Gym name',gymNamePh:'Gym name',gymContact:'Contact',gymContactPh:'Email / Phone / WhatsApp',partnerSubmit:'Save Demo Request',
+        partnerModalTitle:'Gym Ownership / Partnership Request',partnerModalText:'Signed-in requests are stored in the cloud for review, with a local fallback if connectivity is unavailable.',gymName:'Gym name',gymNamePh:'Gym name',gymContact:'Contact',gymContactPh:'Email / Phone / WhatsApp',partnerSubmit:'Submit request',
         bmiInvalid:'Enter a valid height and weight.',bmiClass:'Category',bmiCats:['Underweight','Normal','Overweight','Obesity'],installHint:'Installation becomes available after the site is published on secure hosting and opened in a supported browser.',
         pricing:[
           {badge:'Now',title:'Free Launch',big:'0 USD',desc:'A complete free version to start with.',items:['Static website','Programs and courses','Local cart','Favorites','Installable web app']},
@@ -2333,9 +2335,9 @@ const products=[
   const SUPABASE_KEY='sb_publishable_VZPO71QqgHo86Y9p_KK5ag_W_LY1r9z';
   let sb=null, cloudSession=null, authMode='login', cloudReady=false, syncTimer=null, syncing=false;
   const langText={
-    ar:{password:'كلمة المرور',passPh:'6 أحرف على الأقل',login:'دخول',register:'إنشاء حساب',sync:'مزامنة الآن',logout:'تسجيل الخروج',local:'الوضع المحلي متاح. يمكنك تسجيل حساب لمزامنة بياناتك.',ready:'السحابة جاهزة',signed:'متصل ومزامن',syncing:'جارٍ المزامنة…',synced:'تمت المزامنة ✓',confirm:'تم إنشاء الحساب. افتح رسالة التأكيد، وبعد نجاح التأكيد ارجع إلى GYMIVOX وسجّل الدخول. إذا ظهرت صفحة localhost بعد الضغط، فالتأكيد يكون قد تم.',bad:'تعذر الاتصال بالسحابة — التطبيق مستمر محلياً.',need:'سجّل الدخول أولاً للمزامنة.',welcome:'تم تسجيل الدخول ✓',bye:'تم تسجيل الخروج'},
-    tr:{password:'Şifre',passPh:'En az 6 karakter',login:'Giriş yap',register:'Hesap oluştur',sync:'Şimdi eşitle',logout:'Çıkış yap',local:'Yerel mod kullanılabilir. Cihazlar arası eşitleme için hesap açabilirsiniz.',ready:'Bulut hazır',signed:'Bağlı ve eşitlenmiş',syncing:'Eşitleniyor…',synced:'Eşitlendi ✓',confirm:'Hesap oluşturuldu. E-posta onayından sonra GYMIVOX’a dönüp giriş yapın. Bağlantı localhost sayfasına gitse bile onay tamamlanmış olabilir.',bad:'Buluta bağlanılamadı — uygulama yerel olarak çalışmaya devam ediyor.',need:'Eşitlemek için önce giriş yapın.',welcome:'Giriş yapıldı ✓',bye:'Çıkış yapıldı'},
-    en:{password:'Password',passPh:'At least 6 characters',login:'Sign in',register:'Create account',sync:'Sync now',logout:'Sign out',local:'Local mode is available. Sign in to sync across devices.',ready:'Cloud ready',signed:'Connected and synced',syncing:'Syncing…',synced:'Synced ✓',confirm:'Account created. Confirm the email, then return to GYMIVOX and sign in. If the confirmation link ends on localhost, the email may still have been confirmed successfully.',bad:'Cloud unavailable — the app continues in local mode.',need:'Sign in first to sync.',welcome:'Signed in ✓',bye:'Signed out'}
+    ar:{password:'كلمة المرور',passPh:'6 أحرف على الأقل',login:'دخول',register:'إنشاء حساب',sync:'مزامنة الآن',logout:'تسجيل الخروج',local:'الوضع المحلي متاح. يمكنك تسجيل حساب لمزامنة بياناتك.',ready:'السحابة جاهزة',signed:'متصل ومزامن',syncing:'جارٍ المزامنة…',synced:'تمت المزامنة ✓',confirm:'تم إنشاء الحساب. بعد تأكيد البريد ارجع إلى GYMIVOX وسجّل الدخول.',bad:'تعذر الاتصال بالسحابة — التطبيق مستمر محلياً.',need:'سجّل الدخول أولاً للمزامنة.',welcome:'تم تسجيل الدخول ✓',bye:'تم تسجيل الخروج'},
+    tr:{password:'Şifre',passPh:'En az 6 karakter',login:'Giriş yap',register:'Hesap oluştur',sync:'Şimdi eşitle',logout:'Çıkış yap',local:'Yerel mod kullanılabilir. Cihazlar arası eşitleme için hesap açabilirsiniz.',ready:'Bulut hazır',signed:'Bağlı ve eşitlenmiş',syncing:'Eşitleniyor…',synced:'Eşitlendi ✓',confirm:'Hesap oluşturuldu. E-posta onayından sonra GYMIVOX’a dönüp giriş yapın.',bad:'Buluta bağlanılamadı — uygulama yerel olarak çalışmaya devam ediyor.',need:'Eşitlemek için önce giriş yapın.',welcome:'Giriş yapıldı ✓',bye:'Çıkış yapıldı'},
+    en:{password:'Password',passPh:'At least 6 characters',login:'Sign in',register:'Create account',sync:'Sync now',logout:'Sign out',local:'Local mode is available. Sign in to sync across devices.',ready:'Cloud ready',signed:'Connected and synced',syncing:'Syncing…',synced:'Synced ✓',confirm:'Account created. Confirm the email, then return to GYMIVOX and sign in.',bad:'Cloud unavailable — the app continues in local mode.',need:'Sign in first to sync.',welcome:'Signed in ✓',bye:'Signed out'}
   };
   const T=()=>langText[state?.lang]||langText.en;
   function setCloudStatus(msg,type='warn'){
@@ -2820,108 +2822,82 @@ const products=[
 
 
 <script>
-// GYMIVOX v12.3 — Password Recovery
+// GYMIVOX v12.4 — Direct Recovery Code (no redirect dependency)
 (()=>{
   const q=s=>document.querySelector(s);
   const text={
-    ar:{forgot:'نسيت كلمة المرور؟',send:'تم إرسال رابط استعادة كلمة المرور إلى بريدك ✓',needEmail:'اكتب بريدك الإلكتروني أولاً.',newPass:'كلمة المرور الجديدة',save:'حفظ كلمة المرور الجديدة',updated:'تم تغيير كلمة المرور ✓ يمكنك المتابعة بحسابك.',invalid:'بيانات الدخول غير صحيحة. استخدم «نسيت كلمة المرور؟» إذا لزم.',recovering:'وضع استعادة كلمة المرور',failed:'تعذر إرسال رابط الاستعادة.'},
-    tr:{forgot:'Şifremi unuttum',send:'Şifre sıfırlama bağlantısı e-postanıza gönderildi ✓',needEmail:'Önce e-posta adresinizi yazın.',newPass:'Yeni şifre',save:'Yeni şifreyi kaydet',updated:'Şifreniz değiştirildi ✓ Hesabınızı kullanmaya devam edebilirsiniz.',invalid:'Giriş bilgileri yanlış. Gerekirse “Şifremi unuttum” seçeneğini kullanın.',recovering:'Şifre kurtarma modu',failed:'Sıfırlama bağlantısı gönderilemedi.'},
-    en:{forgot:'Forgot password?',send:'Password reset link sent to your email ✓',needEmail:'Enter your email first.',newPass:'New password',save:'Save new password',updated:'Password changed ✓ You can continue with your account.',invalid:'Invalid login credentials. Use “Forgot password?” if needed.',recovering:'Password recovery mode',failed:'Could not send reset link.'}
+    ar:{forgot:'استعادة كلمة المرور',code:'كود الاستعادة',newPass:'كلمة المرور الجديدة',save:'تغيير كلمة المرور',cancel:'رجوع لتسجيل الدخول',need:'اكتب البريد والكود وكلمة المرور الجديدة.',updated:'تم تغيير كلمة المرور ✓ سجّل الدخول الآن.',invalid:'الكود غير صحيح أو انتهت صلاحيته.',failed:'تعذر تغيير كلمة المرور.',ready:'أدخل كود الاستعادة المرسل إلى بريدك.'},
+    tr:{forgot:'Şifreyi kurtar',code:'Kurtarma kodu',newPass:'Yeni şifre',save:'Şifreyi değiştir',cancel:'Girişe dön',need:'E-posta, kurtarma kodu ve yeni şifreyi girin.',updated:'Şifre değiştirildi ✓ Şimdi giriş yapın.',invalid:'Kod geçersiz veya süresi dolmuş.',failed:'Şifre değiştirilemedi.',ready:'E-postanıza gönderilen kurtarma kodunu girin.'},
+    en:{forgot:'Recover password',code:'Recovery code',newPass:'New password',save:'Change password',cancel:'Back to sign in',need:'Enter email, recovery code and a new password.',updated:'Password changed ✓ Sign in now.',invalid:'The code is invalid or expired.',failed:'Could not change the password.',ready:'Enter the recovery code sent to your email.'}
   };
   const T=()=>text[state?.lang]||text.en;
   let recoveryMode=false;
 
-  function syncRecoveryCopy(){
+  function syncCopy(){
     const t=T();
     if(q('#forgotPasswordBtn'))q('#forgotPasswordBtn').textContent=t.forgot;
+    if(q('#recoveryCodeLabel'))q('#recoveryCodeLabel').textContent=t.code;
     if(q('#newPasswordLabel'))q('#newPasswordLabel').textContent=t.newPass;
-    if(q('#newPasswordInput'))q('#newPasswordInput').placeholder=(state?.lang==='ar'?'6 أحرف على الأقل':state?.lang==='tr'?'En az 6 karakter':'At least 6 characters');
     if(q('#setNewPasswordBtn'))q('#setNewPasswordBtn').textContent=t.save;
+    if(q('#cancelRecoveryBtn'))q('#cancelRecoveryBtn').textContent=t.cancel;
+    if(q('#newPasswordInput'))q('#newPasswordInput').placeholder=state?.lang==='ar'?'8 أحرف على الأقل':state?.lang==='tr'?'En az 8 karakter':'At least 8 characters';
   }
-
-  function openRecoveryMode(){
+  function setStatus(msg,type='ok'){
+    const el=q('#cloudStatus');if(!el)return;
+    el.className='notice '+(type==='ok'?'cloud-ok':'cloud-error');
+    el.textContent=msg;
+  }
+  function openRecovery(){
     recoveryMode=true;
     q('#accountModal')?.classList.add('show');
     q('#recoveryPanel')?.style.setProperty('display','block');
-    q('#accountForm')?.classList.add('recovery-mode');
-    if(q('#cloudStatus')){
-      q('#cloudStatus').className='notice cloud-ok';
-      q('#cloudStatus').textContent=T().recovering;
-    }
     q('#passwordInput')?.closest('.field')?.style.setProperty('display','none');
     q('#accountSaveBtn')?.style.setProperty('display','none');
     q('#loginTab')?.style.setProperty('display','none');
     q('#registerTab')?.style.setProperty('display','none');
+    q('#syncNowBtn')?.style.setProperty('display','none');
     q('#forgotPasswordBtn')?.style.setProperty('display','none');
+    setStatus(T().ready,'ok');
   }
-
-  function closeRecoveryMode(){
+  function closeRecovery(){
     recoveryMode=false;
     q('#recoveryPanel')?.style.setProperty('display','none');
     q('#passwordInput')?.closest('.field')?.style.removeProperty('display');
     q('#accountSaveBtn')?.style.removeProperty('display');
     q('#loginTab')?.style.removeProperty('display');
     q('#registerTab')?.style.removeProperty('display');
+    q('#syncNowBtn')?.style.removeProperty('display');
     q('#forgotPasswordBtn')?.style.removeProperty('display');
-  }
-
-  async function sendReset(){
-    const email=q('#emailInput')?.value?.trim();
-    if(!email)return toast(T().needEmail);
-    const sb=window.GYMIVOXCloud?.client;
-    if(!sb)return toast(T().failed);
-    const redirectTo=location.origin+'/_api/live?recovery=1';
-    const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo});
-    if(error){console.warn('resetPasswordForEmail',error);return toast(error.message||T().failed);}
-    if(q('#cloudStatus')){
-      q('#cloudStatus').className='notice cloud-ok';
-      q('#cloudStatus').textContent=T().send;
-    }
-    toast(T().send);
-  }
-
-  async function setNewPassword(){
-    const value=q('#newPasswordInput')?.value||'';
-    if(value.length<6)return toast(state?.lang==='ar'?'كلمة المرور لازم تكون 6 أحرف على الأقل':state?.lang==='tr'?'Şifre en az 6 karakter olmalı':'Password must be at least 6 characters');
-    const sb=window.GYMIVOXCloud?.client;
-    if(!sb)return;
-    const {error}=await sb.auth.updateUser({password:value});
-    if(error)return toast(error.message||T().failed);
-    toast(T().updated);
-    closeRecoveryMode();
-    q('#accountModal')?.classList.remove('show');
-    try{history.replaceState({},document.title,location.pathname);}catch(_){}
     window.GYMIVOXV122?.refresh?.();
   }
-
-  q('#forgotPasswordBtn')?.addEventListener('click',sendReset);
-  q('#setNewPasswordBtn')?.addEventListener('click',setNewPassword);
-  q('#langSelect')?.addEventListener('change',()=>setTimeout(syncRecoveryCopy,80));
-
-  const boot=()=>{
-    syncRecoveryCopy();
-    const sb=window.GYMIVOXCloud?.client;
-    if(!sb)return setTimeout(boot,250);
-    sb.auth.onAuthStateChange((event,session)=>{
-      if(event==='PASSWORD_RECOVERY')setTimeout(openRecoveryMode,0);
-      if(event==='SIGNED_IN'&&!recoveryMode)window.GYMIVOXV122?.refresh?.();
-    });
-    if(new URLSearchParams(location.search).get('recovery')==='1')setTimeout(()=>{ 
-      // Supabase will emit PASSWORD_RECOVERY after processing the recovery session.
-      if(location.hash.includes('type=recovery'))openRecoveryMode();
-    },700);
-  };
-  setTimeout(boot,400);
-
-  // Replace low-level invalid credential errors with a useful localized message.
-  const originalSet=window.setCloudStatus;
-  if(typeof originalSet==='function'){
-    window.setCloudStatus=(msg,type)=>{
-      const m=String(msg||'');
-      if(/invalid login credentials/i.test(m))return originalSet(T().invalid,'error');
-      return originalSet(msg,type);
-    };
+  async function submitRecovery(){
+    const email=q('#emailInput')?.value?.trim()||'';
+    const code=q('#recoveryCodeInput')?.value?.trim()||'';
+    const newPassword=q('#newPasswordInput')?.value||'';
+    if(!email||!code||newPassword.length<8)return setStatus(T().need,'error');
+    try{
+      const res=await fetch('https://kyevejcvcgzizkxqmpnm.supabase.co/functions/v1/account-recovery',{
+        method:'POST',
+        headers:{'content-type':'application/json'},
+        body:JSON.stringify({email,code,newPassword})
+      });
+      const data=await res.json().catch(()=>({}));
+      if(!res.ok){
+        return setStatus(data.error==='invalid_code'?T().invalid:T().failed,'error');
+      }
+      setStatus(T().updated,'ok');
+      q('#passwordInput').value=newPassword;
+      q('#newPasswordInput').value='';
+      q('#recoveryCodeInput').value='';
+      setTimeout(closeRecovery,650);
+    }catch(_){setStatus(T().failed,'error');}
   }
+
+  q('#forgotPasswordBtn')?.addEventListener('click',openRecovery);
+  q('#setNewPasswordBtn')?.addEventListener('click',submitRecovery);
+  q('#cancelRecoveryBtn')?.addEventListener('click',closeRecovery);
+  q('#langSelect')?.addEventListener('change',()=>setTimeout(syncCopy,80));
+  syncCopy();
 })();
 </script>
 </body>
