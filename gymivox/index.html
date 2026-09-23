@@ -2427,7 +2427,7 @@ const products=[
         const {data,error}=await sb.auth.signInWithPassword({email,password}); if(error)throw error;
         await onSession(data.session);toast(T().welcome);document.querySelector('#accountModal')?.classList.remove('show');
       }
-    }catch(err){setCloudStatus(err.message||T().bad,'error');}
+    }catch(err){const m=String(err?.message||'');setCloudStatus(/invalid login credentials/i.test(m)?(state.lang==='ar'?'بيانات الدخول غير صحيحة. استخدم «نسيت كلمة المرور؟»':state.lang==='tr'?'Giriş bilgileri yanlış. «Şifremi unuttum» seçeneğini kullanın.':'Invalid login credentials. Use “Forgot password?”.'):m||T().bad,'error');}
   };
   document.querySelector('#syncNowBtn')?.addEventListener('click',()=>cloudSession?pushState():toast(T().need));
   document.querySelector('#logoutBtn')?.addEventListener('click',async()=>{if(sb)await sb.auth.signOut();cloudSession=null;state.user=null;safeStorage.setItem('gymivoxStateV74',JSON.stringify(state));renderAll();updateCloudUi();toast(T().bye);});
