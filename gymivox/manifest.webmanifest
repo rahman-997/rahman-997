@@ -1,0 +1,20 @@
+{
+  "name": "GYMIVOX",
+  "short_name": "GYMIVOX",
+  "description": "Fitness programs, courses, gym discovery and sports products in Türkiye.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#070b17",
+  "theme_color": "#7c5cff",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
