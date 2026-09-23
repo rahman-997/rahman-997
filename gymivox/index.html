@@ -2457,5 +2457,169 @@ const products=[
 })();
 </script>
 
+
+<script>
+// GYMIVOX v12.1 — Cloud Community + real cloud alerts
+(()=>{
+  const q=s=>document.querySelector(s);
+  const qa=s=>[...document.querySelectorAll(s)];
+  const copy={
+    ar:{account:'حساب GYMIVOX',reviewBadge:'مجتمع GYMIVOX',reviews:'تقييمات النوادي',reviewsText:'التقييمات العامة تظهر بعد المراجعة. تقييمك يبقى ظاهراً لك أثناء انتظار المراجعة.',saveReview:'إرسال التقييم',pending:'قيد المراجعة',published:'منشور',local:'محلي',reviewSaved:'تم إرسال التقييم للمراجعة ✓',reviewLocal:'تعذر الاتصال، تم حفظ التقييم محلياً ✓',loginReview:'سجّل الدخول لنشر التقييم؛ سيُحفظ محلياً الآن.',alertTitle:'تنبيه سعر',alertText:'احفظ هدف سعرك في حسابك. المراقبة التلقائية والإشعارات ستُفعّل لاحقاً.',target:'السعر المستهدف (ليرة)',saveAlert:'حفظ التنبيه',alertSaved:'تم حفظ تنبيه السعر في حسابك ✓',alertLocal:'تم حفظ التنبيه محلياً ✓',loginAlert:'سجّل الدخول لمزامنة تنبيه السعر بين أجهزتك.',syncHint:'يُحفظ محلياً، ويتزامن بين أجهزتك عند تسجيل الدخول.',cloudAlerts:'تنبيهاتك السحابية',noAlerts:'لا توجد تنبيهات سعر بعد.',loading:'جارٍ التحميل…'},
+    tr:{account:'GYMIVOX Hesabı',reviewBadge:'GYMIVOX Topluluğu',reviews:'Salon değerlendirmeleri',reviewsText:'Herkese açık yorumlar moderasyondan sonra görünür. Kendi yorumunu beklerken görebilirsin.',saveReview:'Değerlendirmeyi gönder',pending:'İncelemede',published:'Yayında',local:'Yerel',reviewSaved:'Değerlendirme incelemeye gönderildi ✓',reviewLocal:'Bağlantı kurulamadı; değerlendirme yerel kaydedildi ✓',loginReview:'Yayınlamak için giriş yap; şimdilik yerel kaydedilecek.',alertTitle:'Fiyat uyarısı',alertText:'Hedef fiyatını hesabında sakla. Otomatik izleme ve bildirimler daha sonra etkinleştirilecek.',target:'Hedef fiyat (TL)',saveAlert:'Uyarıyı kaydet',alertSaved:'Fiyat uyarısı hesabına kaydedildi ✓',alertLocal:'Fiyat uyarısı yerel kaydedildi ✓',loginAlert:'Cihazlar arası eşitleme için giriş yap.',syncHint:'Yerel saklanır; giriş yaptığında cihazların arasında eşitlenir.',cloudAlerts:'Bulut fiyat uyarıları',noAlerts:'Henüz fiyat uyarısı yok.',loading:'Yükleniyor…'},
+    en:{account:'GYMIVOX Account',reviewBadge:'GYMIVOX Community',reviews:'Gym reviews',reviewsText:'Public reviews appear after moderation. Your own review stays visible to you while pending.',saveReview:'Submit review',pending:'Pending review',published:'Published',local:'Local',reviewSaved:'Review submitted for moderation ✓',reviewLocal:'Connection failed; review saved locally ✓',loginReview:'Sign in to publish; it will be saved locally for now.',alertTitle:'Price alert',alertText:'Save your target price to your account. Automatic monitoring and notifications will be enabled later.',target:'Target price (TRY)',saveAlert:'Save alert',alertSaved:'Price alert saved to your account ✓',alertLocal:'Price alert saved locally ✓',loginAlert:'Sign in to sync this alert across devices.',syncHint:'Saved locally and synced across devices when you sign in.',cloudAlerts:'Your cloud price alerts',noAlerts:'No price alerts yet.',loading:'Loading…'}
+  };
+  const C=()=>copy[state?.lang]||copy.en;
+  const esc=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  const client=()=>window.GYMIVOXCloud?.client||null;
+  const session=()=>window.GYMIVOXCloud?.session||null;
+  function persist(){
+    try{safeStorage.setItem('gymivoxStateV74',JSON.stringify(state));}catch(_){}
+    window.GYMIVOXCloud?.schedule?.();
+  }
+  function ensureAlertUi(){
+    const btn=q('#savePriceAlert'); if(!btn)return;
+    if(!q('#priceAlertTargetWrap')){
+      const wrap=document.createElement('div'); wrap.className='field'; wrap.id='priceAlertTargetWrap'; wrap.style.marginTop='12px';
+      const lab=document.createElement('label'); lab.id='priceAlertTargetLabel';
+      const inp=document.createElement('input'); inp.id='priceAlertTarget'; inp.type='number'; inp.min='0'; inp.step='1'; inp.inputMode='decimal'; inp.placeholder='3000';
+      wrap.append(lab,inp); btn.before(wrap);
+      const status=document.createElement('div'); status.id='priceAlertCloudStatus'; status.className='tiny'; status.style.marginTop='8px'; btn.after(status);
+    }
+    if(!q('#cloudAlertList')){
+      const recent=q('#savedHubRecent'); if(recent){
+        const title=document.createElement('h4'); title.id='cloudAlertHeading'; title.style.margin='18px 0 8px';
+        const list=document.createElement('div'); list.id='cloudAlertList'; list.className='feature-list';
+        recent.after(title,list);
+      }
+    }
+  }
+  function applyCloudCopy(){
+    const c=C();
+    const set=(id,val)=>{const el=q('#'+id);if(el)el.textContent=val;};
+    set('accountModalTitle',c.account);
+    set('reviewsDemoBadge',c.reviewBadge);
+    set('reviewsTitle',c.reviews);
+    set('reviewsText',c.reviewsText);
+    set('saveReviewBtn',c.saveReview);
+    set('priceAlertTitle',c.alertTitle);
+    set('priceAlertText',c.alertText);
+    set('savePriceAlert',c.saveAlert);
+    set('priceAlertTargetLabel',c.target);
+    set('cloudAlertHeading',c.cloudAlerts);
+    const ob=q('#obPrivacy'); if(ob)ob.textContent=c.syncHint;
+    const wh=q('#weightChartHint'); if(wh)wh.textContent=c.syncHint;
+    const wdesc=q('#workoutSub'); if(wdesc && state?.lang==='ar')wdesc.textContent='الأوزان والتكرارات والأرقام الشخصية تُحفظ محلياً وتتزامن عند تسجيل الدخول.';
+    if(wdesc && state?.lang==='tr')wdesc.textContent='Ağırlıklar, tekrarlar ve kişisel rekorlar yerel saklanır; giriş yaptığında eşitlenir.';
+    if(wdesc && state?.lang==='en')wdesc.textContent='Weights, reps and personal records are stored locally and synced when you sign in.';
+  }
+  function localReviewsFor(gymId){
+    return (state.localReviews||[]).filter(r=>r.gym===gymId).map(r=>({
+      rating:Number(r.rating)||0, review_text:r.text||'', approved:false, created_at:r.date||new Date().toISOString(), local:true
+    }));
+  }
+  async function loadCloudReviews(){
+    const list=q('#localReviewList'), gym=q('#reviewGym'); if(!list||!gym)return;
+    const c=C(), gymId=gym.value; if(!gymId)return;
+    list.innerHTML='<div class="tiny">'+esc(c.loading)+'</div>';
+    let rows=[], cloudOk=false;
+    const sb=client();
+    if(sb){
+      try{
+        const res=await sb.from('gym_reviews').select('rating,review_text,approved,created_at').eq('gym_id',gymId).order('created_at',{ascending:false}).limit(20);
+        if(!res.error){rows=res.data||[];cloudOk=true;}
+      }catch(_){}
+    }
+    const locals=localReviewsFor(gymId);
+    const merged=cloudOk?[...rows,...locals]:locals;
+    if(!merged.length){list.innerHTML='<div class="tiny">'+esc(c.noAlerts.replace(/تنبيهات سعر|fiyat uyarısı|price alerts/gi,c.reviews.toLowerCase()))+'</div>';return;}
+    list.innerHTML=merged.slice(0,20).map(r=>{
+      const status=r.local?c.local:(r.approved?c.published:c.pending);
+      const stars='★'.repeat(Math.max(0,Math.min(5,Number(r.rating)||0)))+'☆'.repeat(Math.max(0,5-(Number(r.rating)||0)));
+      return '<div class="v10-review"><div style="display:flex;justify-content:space-between;gap:10px"><b>'+esc(status)+'</b><span class="v10-review-stars">'+stars+'</span></div><p>'+esc(r.review_text||'—')+'</p><div class="tiny"><bdi dir="ltr">'+esc(new Date(r.created_at).toLocaleDateString())+'</bdi></div></div>';
+    }).join('');
+  }
+  async function saveReview(){
+    const gymId=q('#reviewGym')?.value, rating=Number(q('#reviewRating')?.value||0), text=(q('#reviewText')?.value||'').trim();
+    if(!gymId||!rating)return;
+    const sb=client(), sess=session(), c=C();
+    if(sb&&sess){
+      try{
+        const res=await sb.from('gym_reviews').upsert({user_id:sess.user.id,gym_id:gymId,rating,review_text:text,approved:false,updated_at:new Date().toISOString()},{onConflict:'user_id,gym_id'});
+        if(!res.error){
+          q('#reviewText').value=''; toast(c.reviewSaved); await loadCloudReviews(); return;
+        }
+      }catch(_){}
+      state.localReviews=state.localReviews||[];
+      state.localReviews.push({gym:gymId,rating,text,date:new Date().toISOString()}); persist(); q('#reviewText').value=''; toast(c.reviewLocal); await loadCloudReviews(); return;
+    }
+    state.localReviews=state.localReviews||[];
+    state.localReviews.push({gym:gymId,rating,text,date:new Date().toISOString()}); persist(); q('#reviewText').value=''; toast(c.loginReview); await loadCloudReviews();
+  }
+  async function loadCloudAlerts(){
+    ensureAlertUi();
+    const list=q('#cloudAlertList'); if(!list)return;
+    const c=C(), sb=client(), sess=session();
+    if(!sb||!sess){list.innerHTML='<div class="tiny">'+esc(c.noAlerts)+'</div>';return;}
+    try{
+      const res=await sb.from('price_alerts').select('product_id,target_price,is_active,created_at').eq('is_active',true).order('created_at',{ascending:false}).limit(20);
+      if(res.error)throw res.error;
+      const rows=res.data||[];
+      state.priceAlerts=rows.map(x=>x.product_id);
+      state.priceAlertTargets=state.priceAlertTargets||{};
+      rows.forEach(x=>{if(x.target_price!==null)state.priceAlertTargets[x.product_id]=Number(x.target_price);});
+      persist();
+      list.innerHTML=rows.length?rows.map(x=>{
+        const p=products.find(y=>y.id===x.product_id);
+        const title=p?productText(p.title):x.product_id;
+        const price=x.target_price!==null?'<bdi dir="ltr">'+esc(x.target_price)+' TL</bdi>':'—';
+        return '<div class="feature"><b>'+esc(title)+'</b><div class="tiny">'+price+'</div></div>';
+      }).join(''):'<div class="tiny">'+esc(c.noAlerts)+'</div>';
+      if(typeof renderSavedHub==='function')renderSavedHub();
+    }catch(_){list.innerHTML='<div class="tiny">'+esc(c.noAlerts)+'</div>';}
+  }
+  function prepareAlertModal(){
+    ensureAlertUi();
+    const id=q('#priceAlertModal')?.dataset.product; if(!id)return;
+    const inp=q('#priceAlertTarget'); if(inp)inp.value=state.priceAlertTargets?.[id]||'';
+    const st=q('#priceAlertCloudStatus'); if(st)st.textContent=session()?C().syncHint:C().loginAlert;
+  }
+  async function saveAlert(){
+    const modal=q('#priceAlertModal'), id=modal?.dataset.product; if(!id)return;
+    const targetRaw=q('#priceAlertTarget')?.value, target=targetRaw?Number(targetRaw):null;
+    const c=C(), sb=client(), sess=session();
+    state.priceAlerts=state.priceAlerts||[];
+    if(!state.priceAlerts.includes(id))state.priceAlerts.push(id);
+    state.priceAlertTargets=state.priceAlertTargets||{};
+    if(target!==null&&Number.isFinite(target))state.priceAlertTargets[id]=target;
+    persist();
+    if(sb&&sess){
+      try{
+        const res=await sb.from('price_alerts').upsert({user_id:sess.user.id,product_id:id,target_price:(target!==null&&Number.isFinite(target))?target:null,is_active:true},{onConflict:'user_id,product_id'});
+        if(!res.error){modal.classList.remove('show');toast(c.alertSaved);await loadCloudAlerts();return;}
+      }catch(_){}
+    }
+    modal.classList.remove('show'); toast(sess?c.alertLocal:c.loginAlert); await loadCloudAlerts();
+  }
+  function bindUnifiedHandlers(){
+    ensureAlertUi();
+    const review=q('#saveReviewBtn');
+    if(review&&!review.dataset.cloudUnified){
+      const clone=review.cloneNode(true); clone.dataset.cloudUnified='1'; review.replaceWith(clone); clone.onclick=saveReview;
+    }
+    const alert=q('#savePriceAlert');
+    if(alert&&!alert.dataset.cloudUnified){
+      const clone=alert.cloneNode(true); clone.dataset.cloudUnified='1'; alert.replaceWith(clone); clone.onclick=saveAlert;
+    }
+    const gym=q('#reviewGym');
+    if(gym&&!gym.dataset.cloudReviewBound){gym.dataset.cloudReviewBound='1';gym.addEventListener('change',loadCloudReviews);}
+  }
+  document.addEventListener('click',e=>{if(e.target.closest('.v9-price-alert'))setTimeout(prepareAlertModal,0);});
+  const lang=q('#langSelect'); if(lang)lang.addEventListener('change',()=>setTimeout(()=>{applyCloudCopy();bindUnifiedHandlers();loadCloudReviews();loadCloudAlerts();},80));
+  setInterval(()=>{bindUnifiedHandlers();applyCloudCopy();},2500);
+  setTimeout(async()=>{bindUnifiedHandlers();applyCloudCopy();await loadCloudReviews();await loadCloudAlerts();},700);
+  window.GYMIVOXCommunity={reloadReviews:loadCloudReviews,reloadAlerts:loadCloudAlerts};
+})();
+</script>
+
 </body>
 </html>
