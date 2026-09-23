@@ -2621,5 +2621,195 @@ const products=[
 })();
 </script>
 
+
+<style>
+.v122-monitor{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:800;margin-top:8px;border:1px solid var(--line)}
+.v122-monitor.ok{color:var(--ok);background:rgba(115,242,183,.08)}
+.v122-monitor.blocked,.v122-monitor.parse_error,.v122-monitor.http_error,.v122-monitor.timeout{color:#ffc46b;background:rgba(255,196,107,.08)}
+.v122-cloud-panel{margin-top:16px;padding:16px;border:1px solid var(--line);border-radius:18px;background:rgba(10,16,35,.45)}
+.v122-cloud-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.v122-list{display:grid;gap:10px;margin-top:12px}
+.v122-row{padding:12px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025)}
+.v122-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.v122-bell{position:relative}
+.v122-badge{position:absolute;top:-5px;right:-5px;min-width:18px;height:18px;border-radius:999px;display:none;place-items:center;background:var(--danger);color:white;font-size:10px;font-weight:900;padding:0 4px}
+.v122-badge.show{display:grid}
+.v122-note-unread{border-color:rgba(124,92,255,.55);box-shadow:0 0 0 1px rgba(124,92,255,.12) inset}
+.v122-owner-badge{display:inline-flex;margin-top:7px;padding:4px 8px;border-radius:999px;background:rgba(50,215,255,.09);color:var(--accent2);font-size:10px;font-weight:900;border:1px solid rgba(50,215,255,.18)}
+.v122-history-line{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+@media(max-width:700px){.v122-cloud-grid{grid-template-columns:1fr}.v122-history-line{grid-template-columns:1fr auto}}
+</style>
+
+<script>
+// GYMIVOX v12.2 — Monitoring + Notifications + Owner/Admin
+(()=>{
+  const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
+  const copy={
+    ar:{bell:'الإشعارات',empty:'لا يوجد شيء بعد.',signin:'سجّل الدخول لاستخدام الميزات السحابية.',monitorOk:'مراقبة تلقائية',monitorBlocked:'تحقق يدوي — المتجر يمنع القراءة الآلية',monitorError:'تعذر التحقق آلياً',last:'آخر فحص',history:'سجل السعر',historyTitle:'سجل السعر',notifications:'الإشعارات',mark:'تحديد الكل كمقروء',browser:'تفعيل إشعارات المتصفح',ownerTitle:'لوحة مالك النادي — Cloud',ownerNone:'ما عندك نادي مُعتمد بعد. قدّم طلب ملكية وسيصل للمراجعة.',claimGym:'النادي',contact:'وسيلة التواصل',claim:'إرسال طلب الملكية',claimSent:'تم إرسال طلب الملكية ✓',owned:'نواديك المعتمدة',price:'السعر / العرض',trial:'تجربة مجانية',hours:'ساعات العمل',sendUpdate:'إرسال تحديث للمراجعة',updateSent:'تم إرسال التحديث للمراجعة ✓',pending:'قيد المراجعة',approved:'مقبول',rejected:'مرفوض',adminTitle:'لوحة Moderation — Cloud',notAdmin:'الحساب الحالي ليس مشرفاً بعد. لوحة الإدارة مقفلة بأمان.',adminHint:'بعد إنشاء حسابك، يمكن تعيينه كمشرف من قاعدة البيانات بدون أي مفتاح Admin داخل الموقع.',reviews:'تقييمات تنتظر المراجعة',claims:'طلبات ملكية النوادي',updates:'تحديثات أصحاب النوادي',approve:'قبول',reject:'رفض',none:'لا يوجد شيء بانتظار المراجعة.',ownerVerified:'محدّث من مالك النادي',cloudBusiness:'لوحة الشركاء والإدارة السحابية',notifPrice:'وصل السعر المستهدف',permissionDenied:'إذن إشعارات المتصفح غير مفعّل.',loading:'جارٍ التحميل…'},
+    tr:{bell:'Bildirimler',empty:'Henüz veri yok.',signin:'Bulut özellikleri için giriş yapın.',monitorOk:'Otomatik izleme',monitorBlocked:'Manuel kontrol — mağaza otomasyonu engelliyor',monitorError:'Otomatik kontrol başarısız',last:'Son kontrol',history:'Fiyat geçmişi',historyTitle:'Fiyat geçmişi',notifications:'Bildirimler',mark:'Tümünü okundu işaretle',browser:'Tarayıcı bildirimlerini aç',ownerTitle:'Salon Sahibi Paneli — Cloud',ownerNone:'Henüz onaylı salonunuz yok. Sahiplik talebi gönderin.',claimGym:'Salon',contact:'İletişim',claim:'Sahiplik talebi gönder',claimSent:'Sahiplik talebi gönderildi ✓',owned:'Onaylı salonlarınız',price:'Fiyat / kampanya',trial:'Ücretsiz deneme',hours:'Çalışma saatleri',sendUpdate:'Güncellemeyi incelemeye gönder',updateSent:'Güncelleme incelemeye gönderildi ✓',pending:'İncelemede',approved:'Onaylandı',rejected:'Reddedildi',adminTitle:'Moderasyon Paneli — Cloud',notAdmin:'Bu hesap henüz yönetici değil. Yönetim paneli güvenli biçimde kilitli.',adminHint:'Hesabınız oluşturulduktan sonra veritabanından yönetici atanabilir; sitede admin anahtarı tutulmaz.',reviews:'Bekleyen değerlendirmeler',claims:'Salon sahiplik talepleri',updates:'Salon sahibi güncellemeleri',approve:'Onayla',reject:'Reddet',none:'Bekleyen kayıt yok.',ownerVerified:'Salon sahibi güncellemesi',cloudBusiness:'Bulut ortaklık ve yönetim paneli',notifPrice:'Hedef fiyata ulaşıldı',permissionDenied:'Tarayıcı bildirim izni etkin değil.',loading:'Yükleniyor…'},
+    en:{bell:'Notifications',empty:'Nothing here yet.',signin:'Sign in to use cloud features.',monitorOk:'Auto monitored',monitorBlocked:'Manual check — retailer blocks automation',monitorError:'Automatic check failed',last:'Last checked',history:'Price history',historyTitle:'Price history',notifications:'Notifications',mark:'Mark all read',browser:'Enable browser notifications',ownerTitle:'Gym Owner Console — Cloud',ownerNone:'You do not have an approved gym yet. Submit an ownership claim for review.',claimGym:'Gym',contact:'Contact',claim:'Submit ownership claim',claimSent:'Ownership claim submitted ✓',owned:'Your approved gyms',price:'Price / offer',trial:'Free trial',hours:'Opening hours',sendUpdate:'Submit update for review',updateSent:'Update submitted for review ✓',pending:'Pending',approved:'Approved',rejected:'Rejected',adminTitle:'Moderation Console — Cloud',notAdmin:'This account is not an admin yet. The moderation console is securely locked.',adminHint:'After your account exists, it can be assigned as admin in the database; no admin key is stored in the website.',reviews:'Pending reviews',claims:'Gym ownership claims',updates:'Gym owner updates',approve:'Approve',reject:'Reject',none:'Nothing pending moderation.',ownerVerified:'Gym-owner updated',cloudBusiness:'Cloud partners & moderation console',notifPrice:'Price target reached',permissionDenied:'Browser notification permission is not enabled.',loading:'Loading…'}
+  };
+  const C=()=>copy[state?.lang]||copy.en;
+  const esc=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  const client=()=>window.GYMIVOXCloud?.client||null;
+  const session=()=>window.GYMIVOXCloud?.session||null;
+  let lastUser=null, monitorMap=new Map(), overrideMap=new Map();
+
+  function ensureShells(){
+    if(!q('#notifBtn')){
+      const b=document.createElement('button');b.id='notifBtn';b.className='iconbtn v122-bell';b.title=C().bell;b.innerHTML='🔔<span class="v122-badge" id="notifBadge">0</span>';
+      (q('#accountBtn')||q('#installBtn'))?.after(b);
+      b.onclick=()=>{q('#notificationModal')?.classList.add('show');loadNotifications();};
+    }
+    if(!q('#notificationModal')){
+      const m=document.createElement('div');m.className='modal';m.id='notificationModal';
+      m.innerHTML='<div class="modal-card"><div class="modal-head"><h2 id="notifTitle"></h2><button class="iconbtn" id="closeNotif">✕</button></div><div class="v122-actions"><button class="ghost" id="markNotifRead"></button><button class="ghost" id="enableBrowserNotif"></button></div><div id="notificationList" class="v122-list"></div></div>';
+      document.body.append(m);q('#closeNotif').onclick=()=>m.classList.remove('show');q('#markNotifRead').onclick=markAllRead;q('#enableBrowserNotif').onclick=enableBrowserNotifications;
+    }
+    if(!q('#priceHistoryModal')){
+      const m=document.createElement('div');m.className='modal';m.id='priceHistoryModal';
+      m.innerHTML='<div class="modal-card"><div class="modal-head"><h2 id="priceHistoryTitle"></h2><button class="iconbtn" id="closePriceHistory">✕</button></div><div id="priceHistoryContent"></div></div>';
+      document.body.append(m);q('#closePriceHistory').onclick=()=>m.classList.remove('show');
+    }
+    if(!q('#ownerCloudPanel')){
+      const p=document.createElement('div');p.id='ownerCloudPanel';p.className='v122-cloud-panel';q('#ownerUpdates')?.after(p);
+    }
+    if(!q('#adminCloudPanel')){
+      const p=document.createElement('div');p.id='adminCloudPanel';p.className='v122-cloud-panel';q('#adminNotes')?.after(p);
+    }
+  }
+
+  function applyText(){
+    ensureShells();const c=C();
+    if(q('#notifTitle'))q('#notifTitle').textContent=c.notifications;
+    if(q('#markNotifRead'))q('#markNotifRead').textContent=c.mark;
+    if(q('#enableBrowserNotif'))q('#enableBrowserNotif').textContent=c.browser;
+    if(q('#priceHistoryTitle'))q('#priceHistoryTitle').textContent=c.historyTitle;
+    const bt=q('#businessTitle');if(bt)bt.textContent=c.cloudBusiness;
+    const bs=q('#businessSub');if(bs)bs.textContent=session()?'Cloud + local fallback':'Cloud ready • sign in to manage';
+    const b=q('#notifBtn');if(b)b.title=c.bell;
+  }
+
+  async function loadMonitorStatus(){
+    const sb=client();if(!sb)return;
+    try{
+      const {data,error}=await sb.from('product_watch_sources').select('product_id,current_price,last_status,last_checked_at,last_http_status,parser_confidence');
+      if(error)throw error;monitorMap=new Map((data||[]).map(x=>[x.product_id,x]));annotateProducts();
+    }catch(e){console.warn('monitor status',e);}
+  }
+  function moneyTry(n){try{return new Intl.NumberFormat('tr-TR',{style:'currency',currency:'TRY',maximumFractionDigits:2}).format(Number(n));}catch{return '₺'+Number(n).toFixed(2);}}
+  function annotateProducts(){
+    const c=C();
+    qa('.product-card').forEach(card=>{
+      const a=card.querySelector('.outbound-product');if(!a)return;
+      const id=a.dataset.product,row=monitorMap.get(id);if(!row)return;
+      let badge=card.querySelector('.v122-monitor');
+      if(!badge){badge=document.createElement('span');badge.className='v122-monitor';card.querySelector('.product-body')?.append(badge);}
+      badge.className='v122-monitor '+row.last_status;
+      badge.textContent=row.last_status==='ok'?'● '+c.monitorOk:row.last_status==='blocked'?'● '+c.monitorBlocked:'● '+c.monitorError;
+      badge.title=(row.last_checked_at?c.last+': '+new Date(row.last_checked_at).toLocaleString():'')+(row.last_http_status?' • HTTP '+row.last_http_status:'');
+      if(row.last_status==='ok'&&row.current_price!=null){const p=card.querySelector('.verified-price strong');if(p)p.textContent=moneyTry(row.current_price);}
+      let h=card.querySelector('.v122-history-btn');
+      if(!h){h=document.createElement('button');h.className='ghost v122-history-btn';h.onclick=()=>openPriceHistory(id);card.querySelector('.product-actions')?.append(h);}
+      h.textContent='↗ '+c.history;
+    });
+  }
+  async function openPriceHistory(id){
+    const sb=client(),c=C();if(!sb)return;
+    q('#priceHistoryModal')?.classList.add('show');q('#priceHistoryContent').innerHTML='<div class="tiny">'+c.loading+'</div>';
+    const {data}=await sb.from('product_price_history').select('price,status,checked_at,http_status,confidence').eq('product_id',id).order('checked_at',{ascending:false}).limit(20);
+    const rows=data||[];q('#priceHistoryContent').innerHTML=rows.length?rows.map(x=>'<div class="v122-history-line"><div><b>'+esc(x.status==='ok'&&x.price!=null?moneyTry(x.price):x.status)+'</b><div class="tiny">'+esc(x.confidence||'')+'</div></div><div class="tiny">HTTP '+esc(x.http_status??'—')+'</div><div class="tiny"><bdi dir="ltr">'+esc(new Date(x.checked_at).toLocaleString())+'</bdi></div></div>').join(''):'<div class="tiny">'+c.empty+'</div>';
+  }
+
+  async function loadNotifications(){
+    const sb=client(),sess=session(),c=C(),list=q('#notificationList');if(!list)return;
+    if(!sb||!sess){list.innerHTML='<div class="notice">'+c.signin+'</div>';setBadge(0);return;}
+    const {data,error}=await sb.from('notifications').select('id,kind,title,body,data,read_at,created_at').order('created_at',{ascending:false}).limit(50);
+    if(error){list.innerHTML='<div class="tiny">'+c.empty+'</div>';return;}
+    const rows=data||[],unread=rows.filter(x=>!x.read_at);setBadge(unread.length);
+    list.innerHTML=rows.length?rows.map(n=>{
+      const d=n.data||{},price=d.price!=null?moneyTry(d.price):'',target=d.target_price!=null?moneyTry(d.target_price):'';
+      const title=n.kind==='price_drop'?c.notifPrice:n.title;
+      const body=n.kind==='price_drop'?(esc(d.title||'')+' • '+esc(price)+(target?' ≤ '+esc(target):'')):esc(n.body);
+      return '<div class="v122-row '+(!n.read_at?'v122-note-unread':'')+'"><b>'+esc(title)+'</b><p class="muted">'+body+'</p><div class="tiny"><bdi dir="ltr">'+esc(new Date(n.created_at).toLocaleString())+'</bdi></div>'+(d.url?'<a class="ghost" target="_blank" rel="noopener nofollow" href="'+esc(d.url)+'">↗ '+esc(d.store||'Store')+'</a>':'')+'</div>';
+    }).join(''):'<div class="tiny">'+c.empty+'</div>';
+    maybeBrowserNotify(unread);
+  }
+  function setBadge(n){const b=q('#notifBadge');if(!b)return;b.textContent=String(n);b.classList.toggle('show',n>0);}
+  async function markAllRead(){const sb=client(),sess=session();if(!sb||!sess)return;await sb.from('notifications').update({read_at:new Date().toISOString()}).is('read_at',null);loadNotifications();}
+  async function enableBrowserNotifications(){const c=C();if(!('Notification'in window))return toast(c.permissionDenied);const p=await Notification.requestPermission();toast(p==='granted'?c.browser:c.permissionDenied);}
+  function maybeBrowserNotify(rows){
+    if(!('Notification'in window)||Notification.permission!=='granted'||!rows.length)return;
+    const key='gymivoxLastBrowserNotif';const last=Number(localStorage.getItem(key)||0);let max=last;
+    rows.forEach(n=>{const t=new Date(n.created_at).getTime();if(t>last){const d=n.data||{};new Notification(C().notifPrice,{body:(d.title||n.title)+' • '+(d.price!=null?moneyTry(d.price):'')});max=Math.max(max,t);}});
+    if(max>last)localStorage.setItem(key,String(max));
+  }
+
+  async function applyGymOverrides(){
+    const sb=client();if(!sb)return;
+    const {data,error}=await sb.from('gym_live_overrides').select('gym_id,data,updated_at');if(error)return;
+    overrideMap=new Map((data||[]).map(x=>[x.gym_id,x]));
+    (data||[]).forEach(x=>{
+      const g=gyms.find(y=>y.id===x.gym_id);if(!g)return;const d=x.data||{};
+      if(d.priceOffer)g.priceStatus={ar:d.priceOffer,tr:d.priceOffer,en:d.priceOffer};
+      if(d.hours)g.hours=d.hours;
+      g.ownerCloudUpdatedAt=x.updated_at;
+    });
+    try{renderGyms();}catch{}
+    setTimeout(markOwnerBadges,50);
+  }
+  function markOwnerBadges(){
+    const c=C();qa('.gym-card').forEach(card=>{const name=card.querySelector('h3')?.textContent?.trim();const g=gyms.find(x=>x.name===name);if(!g||!overrideMap.has(g.id)||card.querySelector('.v122-owner-badge'))return;const b=document.createElement('span');b.className='v122-owner-badge';b.textContent='✓ '+c.ownerVerified;card.querySelector('.gym-top')?.append(b);});
+  }
+
+  async function loadOwnerConsole(){
+    ensureShells();const box=q('#ownerCloudPanel'),sb=client(),sess=session(),c=C();if(!box)return;
+    if(!sb||!sess){box.innerHTML='<h3>'+c.ownerTitle+'</h3><div class="notice">'+c.signin+'</div>';return;}
+    const [{data:owners},{data:claims},{data:updates}]=await Promise.all([
+      sb.from('gym_owners').select('gym_id,approved_at').order('approved_at',{ascending:false}),
+      sb.from('gym_claims').select('id,gym_id,gym_name,status,created_at').order('created_at',{ascending:false}).limit(20),
+      sb.from('gym_owner_updates').select('id,gym_id,data,status,created_at').order('created_at',{ascending:false}).limit(20)
+    ]);
+    const owned=owners||[];
+    let html='<h3>'+c.ownerTitle+'</h3>';
+    if(!owned.length){
+      html+='<p class="muted">'+c.ownerNone+'</p><div class="v122-cloud-grid"><div class="field"><label>'+c.claimGym+'</label><select id="cloudClaimGym">'+gyms.map(g=>'<option value="'+esc(g.id)+'">'+esc(g.name)+' — '+esc(g.district)+'</option>').join('')+'</select></div><div class="field"><label>'+c.contact+'</label><input id="cloudClaimContact" placeholder="email / phone / WhatsApp"></div></div><button class="btn" id="submitCloudClaim" style="margin-top:12px">'+c.claim+'</button>';
+    }else{
+      html+='<p class="muted">'+c.owned+': '+owned.length+'</p><div class="v122-cloud-grid"><div class="field"><label>'+c.claimGym+'</label><select id="ownerCloudGym">'+owned.map(o=>{const g=gyms.find(x=>x.id===o.gym_id);return '<option value="'+esc(o.gym_id)+'">'+esc(g?.name||o.gym_id)+'</option>'}).join('')+'</select></div><div class="field"><label>'+c.price+'</label><input id="ownerCloudPrice" placeholder="999 TL / month"></div><div class="field"><label>'+c.trial+'</label><select id="ownerCloudTrial"><option value="yes">Yes</option><option value="no">No</option></select></div><div class="field"><label>'+c.hours+'</label><input id="ownerCloudHours" placeholder="06:00–23:00"></div></div><button class="btn" id="submitOwnerCloudUpdate" style="margin-top:12px">'+c.sendUpdate+'</button>';
+    }
+    const activity=[...(claims||[]).map(x=>({type:'claim',status:x.status,label:x.gym_name||x.gym_id,date:x.created_at})),...(updates||[]).map(x=>({type:'update',status:x.status,label:gyms.find(g=>g.id===x.gym_id)?.name||x.gym_id,date:x.created_at}))].sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,10);
+    html+='<div class="v122-list">'+activity.map(x=>'<div class="v122-row"><b>'+esc(x.label)+'</b><div class="tiny">'+esc(x.type)+' • '+esc(c[x.status]||x.status)+' • <bdi dir="ltr">'+esc(new Date(x.date).toLocaleString())+'</bdi></div></div>').join('')+'</div>';
+    box.innerHTML=html;
+    q('#submitCloudClaim')?.addEventListener('click',async()=>{const id=q('#cloudClaimGym').value,g=gyms.find(x=>x.id===id),contact=q('#cloudClaimContact').value.trim();if(!contact)return;const {error}=await sb.from('gym_claims').insert({user_id:sess.user.id,gym_id:id,gym_name:g?.name||id,contact});if(error)return toast(error.message);toast(c.claimSent);loadOwnerConsole();});
+    q('#submitOwnerCloudUpdate')?.addEventListener('click',async()=>{const gym_id=q('#ownerCloudGym').value;const data={priceOffer:q('#ownerCloudPrice').value.trim(),freeTrial:q('#ownerCloudTrial').value,hours:q('#ownerCloudHours').value.trim()};const {error}=await sb.from('gym_owner_updates').insert({user_id:sess.user.id,gym_id,data});if(error)return toast(error.message);toast(c.updateSent);loadOwnerConsole();});
+  }
+
+  async function loadAdminConsole(){
+    ensureShells();const box=q('#adminCloudPanel'),sb=client(),sess=session(),c=C();if(!box)return;
+    if(!sb||!sess){box.innerHTML='<h3>'+c.adminTitle+'</h3><div class="notice">'+c.signin+'</div>';return;}
+    const {data:isAdmin,error}=await sb.rpc('am_i_admin');if(error||!isAdmin){box.innerHTML='<h3>'+c.adminTitle+'</h3><div class="notice">'+c.notAdmin+'</div><p class="tiny">'+c.adminHint+'</p>';return;}
+    const [{data:reviews},{data:claims},{data:updates}]=await Promise.all([
+      sb.from('gym_reviews').select('id,gym_id,rating,review_text,created_at').eq('approved',false).order('created_at').limit(50),
+      sb.from('gym_claims').select('id,gym_id,gym_name,contact,created_at').eq('status','pending').order('created_at').limit(50),
+      sb.from('gym_owner_updates').select('id,gym_id,data,created_at').eq('status','pending').order('created_at').limit(50)
+    ]);
+    const group=(title,items,type)=>'<h4 style="margin:18px 0 8px">'+title+' <span class="tag">'+items.length+'</span></h4>'+(items.length?items.map(x=>{const gym=gyms.find(g=>g.id===x.gym_id)?.name||x.gym_name||x.gym_id;const desc=type==='review'?('★'.repeat(x.rating)+' • '+(x.review_text||'')):type==='claim'?(x.contact||''):JSON.stringify(x.data||{});return '<div class="v122-row"><b>'+esc(gym)+'</b><p class="muted">'+esc(desc)+'</p><div class="v122-actions"><button class="btn" data-mod="'+type+'" data-id="'+x.id+'" data-ok="1">'+c.approve+'</button><button class="ghost" data-mod="'+type+'" data-id="'+x.id+'" data-ok="0">'+c.reject+'</button></div></div>'}).join(''):'<div class="tiny">'+c.none+'</div>');
+    box.innerHTML='<h3>'+c.adminTitle+'</h3>'+group(c.reviews,reviews||[],'review')+group(c.claims,claims||[],'claim')+group(c.updates,updates||[],'update');
+    qa('[data-mod]').forEach(b=>b.onclick=async()=>{const ok=b.dataset.ok==='1',type=b.dataset.mod,id=b.dataset.id;let res;if(type==='review')res=await sb.rpc('admin_review_gym_review',{p_review_id:id,p_approve:ok});else if(type==='claim')res=await sb.rpc('admin_review_claim',{p_claim_id:id,p_approve:ok,p_note:null});else res=await sb.rpc('admin_review_owner_update',{p_update_id:id,p_approve:ok});if(res.error)return toast(res.error.message);toast(c.approved);loadAdminConsole();applyGymOverrides();});
+  }
+
+  async function refreshCloudLayer(){
+    applyText();await Promise.allSettled([loadMonitorStatus(),loadNotifications(),applyGymOverrides(),loadOwnerConsole(),loadAdminConsole()]);
+  }
+
+  q('#langSelect')?.addEventListener('change',()=>setTimeout(refreshCloudLayer,120));
+  setInterval(()=>{const uid=session()?.user?.id||null;if(uid!==lastUser){lastUser=uid;refreshCloudLayer();}},1400);
+  setInterval(()=>{annotateProducts();markOwnerBadges();},2500);
+  setInterval(()=>{if(session())loadNotifications();},60000);
+  setTimeout(refreshCloudLayer,1000);
+  window.GYMIVOXV122={refresh:refreshCloudLayer,history:openPriceHistory};
+})();
+</script>
+
 </body>
 </html>
