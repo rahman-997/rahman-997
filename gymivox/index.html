@@ -957,23 +957,18 @@ img,svg,video,canvas,iframe{max-width:100%}
       <form id="accountForm">
         <div class="field"><label id="nameLabel">الاسم</label><input id="nameInput" placeholder="اسمك" /></div>
         <div class="field" style="margin-top:10px"><label id="emailLabel">البريد الإلكتروني</label><input id="emailInput" type="email" required placeholder="you@example.com" autocomplete="email" /></div>
-        <div class="field" style="margin-top:10px"><label id="passwordLabel">كلمة المرور</label><input id="passwordInput" type="password" minlength="6" required placeholder="6 أحرف على الأقل" autocomplete="current-password" /></div>
+        <div class="field" style="margin-top:10px"><label id="passwordLabel">كلمة المرور</label><input id="passwordInput" type="password" minlength="8" required placeholder="8 أحرف على الأقل" autocomplete="current-password" /></div>
+        <div class="field" id="confirmPasswordField" style="margin-top:10px;display:none"><label id="confirmPasswordLabel">تأكيد كلمة المرور</label><input id="confirmPasswordInput" type="password" minlength="8" placeholder="أعد كتابة كلمة المرور" autocomplete="new-password" /></div>
+        <div class="field" id="ownerCodeField" style="margin-top:10px;display:none"><label id="ownerCodeLabel">كود المالك</label><input id="ownerCodeInput" type="text" maxlength="32" placeholder="Owner code" autocomplete="one-time-code" /></div>
+        <label id="termsWrap" style="display:none;gap:8px;align-items:flex-start;margin-top:12px;font-size:13px;color:var(--soft)"><input id="termsCheck" type="checkbox" style="margin-top:3px"> <span id="termsText">أوافق على الشروط وسياسة الخصوصية</span></label>
         <div id="cloudStatus" class="notice" style="margin-top:12px">وضع محلي — جارٍ فحص الاتصال السحابي…</div>
         <button class="btn" style="width:100%;margin-top:16px" type="submit" id="accountSaveBtn">دخول</button>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
           <button class="ghost" type="button" id="syncNowBtn" style="flex:1">مزامنة الآن</button>
           <button class="ghost" type="button" id="logoutBtn" style="flex:1;display:none">تسجيل الخروج</button>
         </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
-          <button class="ghost" type="button" id="forgotPasswordBtn" style="flex:1">نسيت كلمة المرور؟</button>
-        </div>
-        <div id="recoveryPanel" style="display:none;margin-top:12px">
-          <div class="field"><label id="recoveryCodeLabel">كود الاستعادة</label><input id="recoveryCodeInput" type="text" maxlength="20" placeholder="XXXX-XXXX-XXXX" autocomplete="one-time-code" /></div>
-          <div class="field" style="margin-top:10px"><label id="newPasswordLabel">كلمة المرور الجديدة</label><input id="newPasswordInput" type="password" minlength="8" placeholder="8 أحرف على الأقل" autocomplete="new-password" /></div>
-          <button class="btn" type="button" id="setNewPasswordBtn" style="width:100%;margin-top:10px">تغيير كلمة المرور</button>
-          <button class="ghost" type="button" id="cancelRecoveryBtn" style="width:100%;margin-top:8px">رجوع لتسجيل الدخول</button>
-        </div>
-        <p class="tiny" id="accountNote">يمكنك استخدام المنصة محلياً بدون حساب، أو تسجيل حساب حقيقي لمزامنة بياناتك بين الأجهزة.</p>
+
+        <p class="tiny" id="accountNote">التسجيل الجديد يتم مباشرة وآمناً بدون روابط تأكيد أو تحويلات خارجية.</p>
       </form>
     </div>
   </div>
@@ -2329,31 +2324,72 @@ const products=[
 </script>
 
 <script>
-// GYMIVOX v12 — Supabase Auth + cross-device state sync (local-first fallback)
+// GYMIVOX v13 — clean registration reset
 (()=>{
   const SUPABASE_URL='https://kyevejcvcgzizkxqmpnm.supabase.co';
   const SUPABASE_KEY='sb_publishable_VZPO71QqgHo86Y9p_KK5ag_W_LY1r9z';
+  const REGISTER_URL=SUPABASE_URL+'/functions/v1/register-user';
+  const OWNER_EMAIL='abdulrahmanhajjar77@gmail.com';
   let sb=null, cloudSession=null, authMode='login', cloudReady=false, syncTimer=null, syncing=false;
-  const langText={
-    ar:{password:'كلمة المرور',passPh:'6 أحرف على الأقل',login:'دخول',register:'إنشاء حساب',sync:'مزامنة الآن',logout:'تسجيل الخروج',local:'الوضع المحلي متاح. يمكنك تسجيل حساب لمزامنة بياناتك.',ready:'السحابة جاهزة',signed:'متصل ومزامن',syncing:'جارٍ المزامنة…',synced:'تمت المزامنة ✓',confirm:'تم إنشاء الحساب. بعد تأكيد البريد ارجع إلى GYMIVOX وسجّل الدخول.',bad:'تعذر الاتصال بالسحابة — التطبيق مستمر محلياً.',need:'سجّل الدخول أولاً للمزامنة.',welcome:'تم تسجيل الدخول ✓',bye:'تم تسجيل الخروج'},
-    tr:{password:'Şifre',passPh:'En az 6 karakter',login:'Giriş yap',register:'Hesap oluştur',sync:'Şimdi eşitle',logout:'Çıkış yap',local:'Yerel mod kullanılabilir. Cihazlar arası eşitleme için hesap açabilirsiniz.',ready:'Bulut hazır',signed:'Bağlı ve eşitlenmiş',syncing:'Eşitleniyor…',synced:'Eşitlendi ✓',confirm:'Hesap oluşturuldu. E-posta onayından sonra GYMIVOX’a dönüp giriş yapın.',bad:'Buluta bağlanılamadı — uygulama yerel olarak çalışmaya devam ediyor.',need:'Eşitlemek için önce giriş yapın.',welcome:'Giriş yapıldı ✓',bye:'Çıkış yapıldı'},
-    en:{password:'Password',passPh:'At least 6 characters',login:'Sign in',register:'Create account',sync:'Sync now',logout:'Sign out',local:'Local mode is available. Sign in to sync across devices.',ready:'Cloud ready',signed:'Connected and synced',syncing:'Syncing…',synced:'Synced ✓',confirm:'Account created. Confirm the email, then return to GYMIVOX and sign in.',bad:'Cloud unavailable — the app continues in local mode.',need:'Sign in first to sync.',welcome:'Signed in ✓',bye:'Signed out'}
+
+  const copy={
+    ar:{title:'حساب GYMIVOX',login:'دخول',register:'إنشاء حساب',name:'الاسم',email:'البريد الإلكتروني',password:'كلمة المرور',confirm:'تأكيد كلمة المرور',owner:'كود المالك',terms:'أوافق على الشروط وسياسة الخصوصية',passPh:'8 أحرف على الأقل',confirmPh:'أعد كتابة كلمة المرور',sync:'مزامنة الآن',logout:'تسجيل الخروج',local:'الوضع المحلي متاح. سجّل الدخول للمزامنة بين أجهزتك.',ready:'السحابة جاهزة',signed:'متصل ومزامن',syncing:'جارٍ التنفيذ…',synced:'تمت المزامنة ✓',need:'سجّل الدخول أولاً للمزامنة.',welcome:'تم تسجيل الدخول ✓',created:'تم إنشاء الحساب وتسجيل الدخول ✓',bye:'تم تسجيل الخروج',mismatch:'كلمتا المرور غير متطابقتين.',accept:'وافق على الشروط أولاً.',invalid:'بيانات الدخول غير صحيحة.',exists:'هذا البريد مسجل مسبقاً.',ownerBad:'كود المالك غير صحيح.',ownerNeed:'هذا البريد يحتاج كود المالك.',rate:'محاولات كثيرة. جرّب لاحقاً.',weak:'استخدم كلمة مرور من 8 أحرف على الأقل.',failed:'تعذر إنشاء الحساب. جرّب مرة ثانية.'},
+    tr:{title:'GYMIVOX Hesabı',login:'Giriş yap',register:'Hesap oluştur',name:'Ad',email:'E-posta',password:'Şifre',confirm:'Şifreyi doğrula',owner:'Sahip kodu',terms:'Koşulları ve gizlilik politikasını kabul ediyorum',passPh:'En az 8 karakter',confirmPh:'Şifreyi tekrar yaz',sync:'Şimdi eşitle',logout:'Çıkış yap',local:'Yerel mod kullanılabilir. Cihazlar arası eşitleme için giriş yapın.',ready:'Bulut hazır',signed:'Bağlı ve eşitlenmiş',syncing:'İşleniyor…',synced:'Eşitlendi ✓',need:'Önce giriş yapın.',welcome:'Giriş yapıldı ✓',created:'Hesap oluşturuldu ve giriş yapıldı ✓',bye:'Çıkış yapıldı',mismatch:'Şifreler eşleşmiyor.',accept:'Önce koşulları kabul edin.',invalid:'Giriş bilgileri yanlış.',exists:'Bu e-posta zaten kayıtlı.',ownerBad:'Sahip kodu yanlış.',ownerNeed:'Bu e-posta sahip kodu gerektiriyor.',rate:'Çok fazla deneme. Daha sonra tekrar deneyin.',weak:'En az 8 karakterli bir şifre kullanın.',failed:'Hesap oluşturulamadı. Tekrar deneyin.'},
+    en:{title:'GYMIVOX Account',login:'Sign in',register:'Create account',name:'Name',email:'Email',password:'Password',confirm:'Confirm password',owner:'Owner code',terms:'I agree to the Terms and Privacy Policy',passPh:'At least 8 characters',confirmPh:'Re-enter password',sync:'Sync now',logout:'Sign out',local:'Local mode is available. Sign in to sync across devices.',ready:'Cloud ready',signed:'Connected and synced',syncing:'Working…',synced:'Synced ✓',need:'Sign in first.',welcome:'Signed in ✓',created:'Account created and signed in ✓',bye:'Signed out',mismatch:'Passwords do not match.',accept:'Accept the terms first.',invalid:'Invalid login credentials.',exists:'This email is already registered.',ownerBad:'The owner code is incorrect.',ownerNeed:'This email requires the owner code.',rate:'Too many attempts. Try again later.',weak:'Use a password with at least 8 characters.',failed:'Could not create the account. Try again.'}
   };
-  const T=()=>langText[state?.lang]||langText.en;
+  const T=()=>copy[state?.lang]||copy.en;
+  const q=s=>document.querySelector(s);
+
   function setCloudStatus(msg,type='warn'){
-    const el=document.querySelector('#cloudStatus'); if(!el)return;
+    const el=q('#cloudStatus'); if(!el)return;
     el.className='notice '+(type==='ok'?'cloud-ok':type==='error'?'cloud-error':'cloud-warn');
-    el.innerHTML=(type==='ok'?'<span class="cloud-sync-dot"></span>':'')+msg;
+    el.textContent=msg;
   }
-  function updateCloudUi(){
+
+  function setMode(mode){
+    authMode=mode;
+    q('#loginTab')?.classList.toggle('active',mode==='login');
+    q('#registerTab')?.classList.toggle('active',mode==='register');
+    const isRegister=mode==='register';
+    q('#nameInput')?.closest('.field')?.style.setProperty('display',isRegister?'block':'none');
+    q('#confirmPasswordField')?.style.setProperty('display',isRegister?'block':'none');
+    q('#termsWrap')?.style.setProperty('display',isRegister?'flex':'none');
+    if(q('#confirmPasswordInput'))q('#confirmPasswordInput').required=isRegister;
+    if(q('#termsCheck'))q('#termsCheck').required=isRegister;
+    refreshOwnerField();
+    updateUi();
+  }
+
+  function refreshOwnerField(){
+    const email=(q('#emailInput')?.value||'').trim().toLowerCase();
+    const show=authMode==='register'&&email===OWNER_EMAIL;
+    q('#ownerCodeField')?.style.setProperty('display',show?'block':'none');
+    if(q('#ownerCodeInput'))q('#ownerCodeInput').required=show;
+  }
+
+  function updateUi(){
     const t=T();
-    const pl=document.querySelector('#passwordLabel'), pi=document.querySelector('#passwordInput');
-    if(pl)pl.textContent=t.password;if(pi)pi.placeholder=t.passPh;
-    const saveBtn=document.querySelector('#accountSaveBtn'); if(saveBtn) saveBtn.textContent=authMode==='register'?t.register:t.login;
-    const syncBtn=document.querySelector('#syncNowBtn'); if(syncBtn)syncBtn.textContent=t.sync;
-    const logout=document.querySelector('#logoutBtn'); if(logout){logout.textContent=t.logout;logout.style.display=cloudSession?'inline-flex':'none';}
-    if(cloudSession)setCloudStatus(t.signed,'ok');else setCloudStatus(cloudReady?t.ready+' — '+t.local:t.local,'warn');
+    if(q('#accountModalTitle'))q('#accountModalTitle').textContent=t.title;
+    if(q('#loginTab'))q('#loginTab').textContent=t.login;
+    if(q('#registerTab'))q('#registerTab').textContent=t.register;
+    if(q('#nameLabel'))q('#nameLabel').textContent=t.name;
+    if(q('#emailLabel'))q('#emailLabel').textContent=t.email;
+    if(q('#passwordLabel'))q('#passwordLabel').textContent=t.password;
+    if(q('#confirmPasswordLabel'))q('#confirmPasswordLabel').textContent=t.confirm;
+    if(q('#ownerCodeLabel'))q('#ownerCodeLabel').textContent=t.owner;
+    if(q('#termsText'))q('#termsText').textContent=t.terms;
+    if(q('#passwordInput'))q('#passwordInput').placeholder=t.passPh;
+    if(q('#confirmPasswordInput'))q('#confirmPasswordInput').placeholder=t.confirmPh;
+    if(q('#accountSaveBtn'))q('#accountSaveBtn').textContent=authMode==='register'?t.register:t.login;
+    if(q('#syncNowBtn'))q('#syncNowBtn').textContent=t.sync;
+    if(q('#logoutBtn')){
+      q('#logoutBtn').textContent=t.logout;
+      q('#logoutBtn').style.display=cloudSession?'inline-flex':'none';
+    }
+    if(cloudSession)setCloudStatus(t.signed,'ok');
+    else setCloudStatus(cloudReady?t.ready+' — '+t.local:t.local,'warn');
   }
+
   async function pushState(){
     if(!sb||!cloudSession||syncing)return false;
     syncing=true; setCloudStatus(T().syncing,'warn');
@@ -2362,8 +2398,12 @@ const products=[
       const {error}=await sb.from('user_state').upsert({user_id:cloudSession.user.id,state:payload,updated_at:new Date().toISOString()},{onConflict:'user_id'});
       if(error)throw error;
       setCloudStatus(T().synced,'ok'); return true;
-    }catch(e){console.warn('GYMIVOX cloud sync failed',e);setCloudStatus(T().bad,'error');return false;}finally{syncing=false;}
+    }catch(e){
+      console.warn('GYMIVOX cloud sync failed',e);
+      setCloudStatus(T().local,'error'); return false;
+    }finally{syncing=false;}
   }
+
   async function pullState(){
     if(!sb||!cloudSession)return false;
     try{
@@ -2379,14 +2419,16 @@ const products=[
       return true;
     }catch(e){console.warn('GYMIVOX cloud pull failed',e);return false;}
   }
+
   function scheduleCloudSync(){
     if(!cloudSession)return;
-    clearTimeout(syncTimer); syncTimer=setTimeout(()=>pushState(),900);
+    clearTimeout(syncTimer);
+    syncTimer=setTimeout(()=>pushState(),900);
   }
+
   const originalSave=window.save||save;
   window.save=function(){originalSave();scheduleCloudSync();};
-  // Keep lexical references working where handlers call save directly.
-  try{save=window.save;}catch(_){ }
+  try{save=window.save;}catch(_){}
 
   async function onSession(session){
     cloudSession=session||null;
@@ -2394,73 +2436,137 @@ const products=[
       const name=cloudSession.user.user_metadata?.display_name||cloudSession.user.email?.split('@')[0]||'GYMIVOX';
       state.user={name,email:cloudSession.user.email,cloud:true};
       safeStorage.setItem('gymivoxStateV74',JSON.stringify(state));
-      try{await sb.from('profiles').upsert({user_id:cloudSession.user.id,display_name:name,preferred_language:state.lang||'ar',city:state.profile?.city||null},{onConflict:'user_id'});}catch(_){ }
+      try{
+        await sb.from('profiles').upsert({
+          user_id:cloudSession.user.id,
+          display_name:name,
+          preferred_language:state.lang||'ar',
+          city:state.profile?.city||null
+        },{onConflict:'user_id'});
+      }catch(_){}
       await pullState();
-      renderAccount();
+      try{renderAccount();}catch(_){}
+    }else{
+      if(state.user?.cloud){state.user=null;safeStorage.setItem('gymivoxStateV74',JSON.stringify(state));}
     }
-    updateCloudUi();
+    updateUi();
+    window.GYMIVOXV122?.refresh?.();
   }
+
   async function initCloud(){
     try{
       if(!window.supabase?.createClient)throw new Error('Supabase SDK unavailable');
-      sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+      sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}});
       cloudReady=true;
       const {data}=await sb.auth.getSession();
       await onSession(data.session);
-      sb.auth.onAuthStateChange((_event,session)=>{setTimeout(()=>onSession(session),0);});
-    }catch(e){console.warn('GYMIVOX cloud init failed',e);cloudReady=false;setCloudStatus(T().bad,'error');}
+      sb.auth.onAuthStateChange((_event,session)=>setTimeout(()=>onSession(session),0));
+    }catch(e){
+      console.warn('GYMIVOX cloud init failed',e);
+      cloudReady=false; setCloudStatus(T().local,'error');
+    }
   }
-  const loginTab=document.querySelector('#loginTab'),registerTab=document.querySelector('#registerTab');
-  if(loginTab)loginTab.onclick=()=>{authMode='login';loginTab.classList.add('active');registerTab?.classList.remove('active');updateCloudUi();};
-  if(registerTab)registerTab.onclick=()=>{authMode='register';registerTab.classList.add('active');loginTab?.classList.remove('active');updateCloudUi();};
-  const form=document.querySelector('#accountForm');
+
+  function registrationError(code){
+    const t=T();
+    return ({
+      account_exists:t.exists,
+      invalid_owner_code:t.ownerBad,
+      owner_code_unavailable:t.ownerNeed,
+      rate_limited:t.rate,
+      weak_password:t.weak,
+      invalid_email:t.failed,
+      invalid_name:t.failed,
+      registration_failed:t.failed
+    })[code]||t.failed;
+  }
+
+  q('#loginTab')?.addEventListener('click',()=>setMode('login'));
+  q('#registerTab')?.addEventListener('click',()=>setMode('register'));
+  q('#emailInput')?.addEventListener('input',refreshOwnerField);
+
+  const form=q('#accountForm');
   if(form)form.onsubmit=async e=>{
     e.preventDefault();
-    if(!sb){setCloudStatus(T().bad,'error');return;}
-    const email=document.querySelector('#emailInput').value.trim();
-    const password=document.querySelector('#passwordInput').value;
-    const name=document.querySelector('#nameInput').value.trim()||email.split('@')[0];
+    if(!sb)return setCloudStatus(T().local,'error');
+
+    const email=(q('#emailInput')?.value||'').trim().toLowerCase();
+    const password=q('#passwordInput')?.value||'';
+    const name=(q('#nameInput')?.value||'').trim()||email.split('@')[0];
+
     setCloudStatus(T().syncing,'warn');
+
     try{
       if(authMode==='register'){
-        const {data,error}=await sb.auth.signUp({email,password,options:{data:{display_name:name},emailRedirectTo:location.origin+'/_api/live'}}); if(error)throw error;
-        if(data.session){await onSession(data.session);toast(T().welcome);}else{setCloudStatus(T().confirm,'ok');toast(T().confirm);}
-      }else{
-        const {data,error}=await sb.auth.signInWithPassword({email,password}); if(error)throw error;
-        await onSession(data.session);toast(T().welcome);document.querySelector('#accountModal')?.classList.remove('show');
-      }
-    }catch(err){const m=String(err?.message||'');setCloudStatus(/invalid login credentials/i.test(m)?(state.lang==='ar'?'بيانات الدخول غير صحيحة. استخدم «نسيت كلمة المرور؟»':state.lang==='tr'?'Giriş bilgileri yanlış. «Şifremi unuttum» seçeneğini kullanın.':'Invalid login credentials. Use “Forgot password?”.'):m||T().bad,'error');}
-  };
-  document.querySelector('#syncNowBtn')?.addEventListener('click',()=>cloudSession?pushState():toast(T().need));
-  document.querySelector('#logoutBtn')?.addEventListener('click',async()=>{if(sb)await sb.auth.signOut();cloudSession=null;state.user=null;safeStorage.setItem('gymivoxStateV74',JSON.stringify(state));renderAll();updateCloudUi();toast(T().bye);});
-  document.querySelector('#langSelect')?.addEventListener('change',()=>setTimeout(updateCloudUi,60));
+        const confirm=q('#confirmPasswordInput')?.value||'';
+        if(password.length<8)return setCloudStatus(T().weak,'error');
+        if(password!==confirm)return setCloudStatus(T().mismatch,'error');
+        if(!q('#termsCheck')?.checked)return setCloudStatus(T().accept,'error');
 
-  // Upgrade gym partnership requests to cloud when authenticated, local fallback otherwise.
-  const partnerForm=document.querySelector('#partnerForm');
+        const res=await fetch(REGISTER_URL,{
+          method:'POST',
+          headers:{'content-type':'application/json'},
+          body:JSON.stringify({
+            name,email,password,
+            ownerCode:(q('#ownerCodeInput')?.value||'').trim(),
+            language:state.lang||'ar'
+          })
+        });
+        const result=await res.json().catch(()=>({}));
+        if(!res.ok)return setCloudStatus(registrationError(result.error),'error');
+
+        const {data,error}=await sb.auth.signInWithPassword({email,password});
+        if(error)throw error;
+        await onSession(data.session);
+        setCloudStatus(T().created,'ok');
+        toast(T().created);
+        q('#accountModal')?.classList.remove('show');
+        if(q('#confirmPasswordInput'))q('#confirmPasswordInput').value='';
+        if(q('#ownerCodeInput'))q('#ownerCodeInput').value='';
+        if(q('#termsCheck'))q('#termsCheck').checked=false;
+      }else{
+        const {data,error}=await sb.auth.signInWithPassword({email,password});
+        if(error)throw error;
+        await onSession(data.session);
+        toast(T().welcome);
+        q('#accountModal')?.classList.remove('show');
+      }
+    }catch(err){
+      const m=String(err?.message||'');
+      setCloudStatus(/invalid login credentials/i.test(m)?T().invalid:(m||T().failed),'error');
+    }
+  };
+
+  q('#syncNowBtn')?.addEventListener('click',()=>cloudSession?pushState():toast(T().need));
+  q('#logoutBtn')?.addEventListener('click',async()=>{
+    if(sb)await sb.auth.signOut();
+    cloudSession=null;
+    state.user=null;
+    safeStorage.setItem('gymivoxStateV74',JSON.stringify(state));
+    renderAll(); updateUi(); toast(T().bye);
+  });
+  q('#langSelect')?.addEventListener('change',()=>setTimeout(updateUi,60));
+
+  const partnerForm=q('#partnerForm');
   if(partnerForm)partnerForm.onsubmit=async e=>{
     e.preventDefault();
-    const req={gym:document.querySelector('#gymNameInput').value.trim(),contact:document.querySelector('#gymContactInput').value.trim(),createdAt:new Date().toISOString()};
+    const req={gym:q('#gymNameInput').value.trim(),contact:q('#gymContactInput').value.trim(),createdAt:new Date().toISOString()};
     if(sb&&cloudSession){
       const {error}=await sb.from('gym_claims').insert({user_id:cloudSession.user.id,gym_name:req.gym,contact:req.contact});
-      if(!error){document.querySelector('#partnerModal').classList.remove('show');toast(state.lang==='ar'?'تم إرسال الطلب ✓':state.lang==='tr'?'Başvuru gönderildi ✓':'Request sent ✓');return;}
+      if(!error){
+        q('#partnerModal').classList.remove('show');
+        toast(state.lang==='ar'?'تم إرسال الطلب ✓':state.lang==='tr'?'Başvuru gönderildi ✓':'Request sent ✓');
+        return;
+      }
     }
-    const arr=safeJSONParse(safeStorage.getItem('gymivoxPartnerRequests'),[]);arr.push(req);safeStorage.setItem('gymivoxPartnerRequests',JSON.stringify(arr));document.querySelector('#partnerModal').classList.remove('show');toast(state.lang==='ar'?'تم حفظ الطلب محلياً ✓':state.lang==='tr'?'Başvuru yerel kaydedildi ✓':'Request saved locally ✓');
+    const arr=safeJSONParse(safeStorage.getItem('gymivoxPartnerRequests'),[]);
+    arr.push(req);
+    safeStorage.setItem('gymivoxPartnerRequests',JSON.stringify(arr));
+    q('#partnerModal').classList.remove('show');
+    toast(state.lang==='ar'?'تم حفظ الطلب محلياً ✓':state.lang==='tr'?'Başvuru yerel kaydedildi ✓':'Request saved locally ✓');
   };
 
-
-  document.querySelector('#saveReviewBtn')?.addEventListener('click',async()=>{
-    if(!sb||!cloudSession)return;
-    const gymId=document.querySelector('#reviewGym')?.value;
-    const rating=Number(document.querySelector('#reviewRating')?.value||0);
-    const reviewText=(state.localReviews?.at(-1)?.text)||'';
-    if(gymId&&rating){const {error}=await sb.from('gym_reviews').insert({user_id:cloudSession.user.id,gym_id:gymId,rating,review_text:reviewText});if(error)console.warn('cloud review save failed',error);}
-  });
-  document.querySelector('#savePriceAlert')?.addEventListener('click',async()=>{
-    if(!sb||!cloudSession)return;
-    const productId=document.querySelector('#priceAlertModal')?.dataset.product;
-    if(productId){const {error}=await sb.from('price_alerts').upsert({user_id:cloudSession.user.id,product_id:productId,is_active:true},{onConflict:'user_id,product_id'});if(error)console.warn('cloud price alert save failed',error);}
-  });
-
+  setMode('login');
   initCloud();
   window.GYMIVOXCloud={sync:pushState,schedule:scheduleCloudSync,get session(){return cloudSession},get client(){return sb}};
 })();
@@ -2821,84 +2927,6 @@ const products=[
 </script>
 
 
-<script>
-// GYMIVOX v12.4 — Direct Recovery Code (no redirect dependency)
-(()=>{
-  const q=s=>document.querySelector(s);
-  const text={
-    ar:{forgot:'استعادة كلمة المرور',code:'كود الاستعادة',newPass:'كلمة المرور الجديدة',save:'تغيير كلمة المرور',cancel:'رجوع لتسجيل الدخول',need:'اكتب البريد والكود وكلمة المرور الجديدة.',updated:'تم تغيير كلمة المرور ✓ سجّل الدخول الآن.',invalid:'الكود غير صحيح أو انتهت صلاحيته.',failed:'تعذر تغيير كلمة المرور.',ready:'أدخل كود الاستعادة المرسل إلى بريدك.'},
-    tr:{forgot:'Şifreyi kurtar',code:'Kurtarma kodu',newPass:'Yeni şifre',save:'Şifreyi değiştir',cancel:'Girişe dön',need:'E-posta, kurtarma kodu ve yeni şifreyi girin.',updated:'Şifre değiştirildi ✓ Şimdi giriş yapın.',invalid:'Kod geçersiz veya süresi dolmuş.',failed:'Şifre değiştirilemedi.',ready:'E-postanıza gönderilen kurtarma kodunu girin.'},
-    en:{forgot:'Recover password',code:'Recovery code',newPass:'New password',save:'Change password',cancel:'Back to sign in',need:'Enter email, recovery code and a new password.',updated:'Password changed ✓ Sign in now.',invalid:'The code is invalid or expired.',failed:'Could not change the password.',ready:'Enter the recovery code sent to your email.'}
-  };
-  const T=()=>text[state?.lang]||text.en;
-  let recoveryMode=false;
 
-  function syncCopy(){
-    const t=T();
-    if(q('#forgotPasswordBtn'))q('#forgotPasswordBtn').textContent=t.forgot;
-    if(q('#recoveryCodeLabel'))q('#recoveryCodeLabel').textContent=t.code;
-    if(q('#newPasswordLabel'))q('#newPasswordLabel').textContent=t.newPass;
-    if(q('#setNewPasswordBtn'))q('#setNewPasswordBtn').textContent=t.save;
-    if(q('#cancelRecoveryBtn'))q('#cancelRecoveryBtn').textContent=t.cancel;
-    if(q('#newPasswordInput'))q('#newPasswordInput').placeholder=state?.lang==='ar'?'8 أحرف على الأقل':state?.lang==='tr'?'En az 8 karakter':'At least 8 characters';
-  }
-  function setStatus(msg,type='ok'){
-    const el=q('#cloudStatus');if(!el)return;
-    el.className='notice '+(type==='ok'?'cloud-ok':'cloud-error');
-    el.textContent=msg;
-  }
-  function openRecovery(){
-    recoveryMode=true;
-    q('#accountModal')?.classList.add('show');
-    q('#recoveryPanel')?.style.setProperty('display','block');
-    q('#passwordInput')?.closest('.field')?.style.setProperty('display','none');
-    q('#accountSaveBtn')?.style.setProperty('display','none');
-    q('#loginTab')?.style.setProperty('display','none');
-    q('#registerTab')?.style.setProperty('display','none');
-    q('#syncNowBtn')?.style.setProperty('display','none');
-    q('#forgotPasswordBtn')?.style.setProperty('display','none');
-    setStatus(T().ready,'ok');
-  }
-  function closeRecovery(){
-    recoveryMode=false;
-    q('#recoveryPanel')?.style.setProperty('display','none');
-    q('#passwordInput')?.closest('.field')?.style.removeProperty('display');
-    q('#accountSaveBtn')?.style.removeProperty('display');
-    q('#loginTab')?.style.removeProperty('display');
-    q('#registerTab')?.style.removeProperty('display');
-    q('#syncNowBtn')?.style.removeProperty('display');
-    q('#forgotPasswordBtn')?.style.removeProperty('display');
-    window.GYMIVOXV122?.refresh?.();
-  }
-  async function submitRecovery(){
-    const email=q('#emailInput')?.value?.trim()||'';
-    const code=q('#recoveryCodeInput')?.value?.trim()||'';
-    const newPassword=q('#newPasswordInput')?.value||'';
-    if(!email||!code||newPassword.length<8)return setStatus(T().need,'error');
-    try{
-      const res=await fetch('https://kyevejcvcgzizkxqmpnm.supabase.co/functions/v1/account-recovery',{
-        method:'POST',
-        headers:{'content-type':'application/json'},
-        body:JSON.stringify({email,code,newPassword})
-      });
-      const data=await res.json().catch(()=>({}));
-      if(!res.ok){
-        return setStatus(data.error==='invalid_code'?T().invalid:T().failed,'error');
-      }
-      setStatus(T().updated,'ok');
-      q('#passwordInput').value=newPassword;
-      q('#newPasswordInput').value='';
-      q('#recoveryCodeInput').value='';
-      setTimeout(closeRecovery,650);
-    }catch(_){setStatus(T().failed,'error');}
-  }
-
-  q('#forgotPasswordBtn')?.addEventListener('click',openRecovery);
-  q('#setNewPasswordBtn')?.addEventListener('click',submitRecovery);
-  q('#cancelRecoveryBtn')?.addEventListener('click',closeRecovery);
-  q('#langSelect')?.addEventListener('change',()=>setTimeout(syncCopy,80));
-  syncCopy();
-})();
-</script>
 </body>
 </html>
