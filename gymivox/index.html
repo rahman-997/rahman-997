@@ -958,8 +958,8 @@ img,svg,video,canvas,iframe{max-width:100%}
         <div class="field"><label id="nameLabel">الاسم</label><input id="nameInput" placeholder="اسمك" /></div>
         <div class="field" style="margin-top:10px"><label id="emailLabel">البريد الإلكتروني</label><input id="emailInput" type="email" required placeholder="you@example.com" autocomplete="email" /></div>
         <div class="field" style="margin-top:10px"><label id="passwordLabel">كلمة المرور</label><input id="passwordInput" type="password" minlength="8" required placeholder="8 أحرف على الأقل" autocomplete="current-password" /></div>
-        <div class="field" id="confirmPasswordField" style="margin-top:10px;display:none"><label id="confirmPasswordLabel">تأكيد كلمة المرور</label><input id="confirmPasswordInput" type="password" minlength="8" placeholder="أعد كتابة كلمة المرور" autocomplete="new-password" /></div>
-        <div class="field" id="ownerCodeField" style="margin-top:10px;display:none"><label id="ownerCodeLabel">كود المالك</label><input id="ownerCodeInput" type="text" maxlength="32" placeholder="Owner code" autocomplete="one-time-code" /></div>
+        <div class="field" id="confirmPasswordField" style="margin-top:10px;display:none;width:100%"><label id="confirmPasswordLabel">تأكيد كلمة المرور</label><input id="confirmPasswordInput" type="password" minlength="8" placeholder="أعد كتابة كلمة المرور" autocomplete="new-password" /></div>
+        <div class="field" id="ownerCodeField" style="margin-top:10px;display:none;width:100%"><label id="ownerCodeLabel">كود المالك</label><input id="ownerCodeInput" type="text" maxlength="32" placeholder="Owner code" autocomplete="one-time-code" /></div>
         <label id="termsWrap" style="display:none;gap:8px;align-items:flex-start;margin-top:12px;font-size:13px;color:var(--soft)"><input id="termsCheck" type="checkbox" style="margin-top:3px"> <span id="termsText">أوافق على الشروط وسياسة الخصوصية</span></label>
         <div id="cloudStatus" class="notice" style="margin-top:12px">وضع محلي — جارٍ فحص الاتصال السحابي…</div>
         <button class="btn" style="width:100%;margin-top:16px" type="submit" id="accountSaveBtn">دخول</button>
@@ -2370,6 +2370,7 @@ const products=[
   function updateUi(){
     const t=T();
     if(q('#accountModalTitle'))q('#accountModalTitle').textContent=t.title;
+    if(q('#accountNote'))q('#accountNote').textContent=t.local;
     if(q('#loginTab'))q('#loginTab').textContent=t.login;
     if(q('#registerTab'))q('#registerTab').textContent=t.register;
     if(q('#nameLabel'))q('#nameLabel').textContent=t.name;
@@ -2381,7 +2382,7 @@ const products=[
     if(q('#passwordInput'))q('#passwordInput').placeholder=t.passPh;
     if(q('#confirmPasswordInput'))q('#confirmPasswordInput').placeholder=t.confirmPh;
     if(q('#accountSaveBtn'))q('#accountSaveBtn').textContent=authMode==='register'?t.register:t.login;
-    if(q('#syncNowBtn'))q('#syncNowBtn').textContent=t.sync;
+    if(q('#syncNowBtn')){q('#syncNowBtn').textContent=t.sync;q('#syncNowBtn').style.display=cloudSession?'inline-flex':'none';}
     if(q('#logoutBtn')){
       q('#logoutBtn').textContent=t.logout;
       q('#logoutBtn').style.display=cloudSession?'inline-flex':'none';
