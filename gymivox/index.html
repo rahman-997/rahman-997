@@ -2533,7 +2533,8 @@ const products=[
       }
     }catch(err){
       const m=String(err?.message||'');
-      setCloudStatus(/invalid login credentials/i.test(m)?T().invalid:(m||T().failed),'error');
+      const networkMsg=state.lang==='ar'?'تعذر الاتصال بالخادم. تحقق من الإنترنت وحاول مرة ثانية.':state.lang==='tr'?'Sunucuya bağlanılamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.':'Could not reach the server. Check your internet connection and try again.';
+      setCloudStatus(/invalid login credentials/i.test(m)?T().invalid:/failed to fetch|networkerror|network request failed/i.test(m)?networkMsg:(m||T().failed),'error');
     }
   };
 
