@@ -989,7 +989,7 @@ img,svg,video,canvas,iframe{max-width:100%}
         <div class="field" id="confirmPasswordField" style="margin-top:10px;display:none;width:100%"><label id="confirmPasswordLabel">تأكيد كلمة المرور</label><input id="confirmPasswordInput" type="password" minlength="8" placeholder="أعد كتابة كلمة المرور" autocomplete="new-password" /></div>
         <div class="field" id="ownerCodeField" style="margin-top:10px;display:none;width:100%"><label id="ownerCodeLabel">كود المالك</label><input id="ownerCodeInput" type="text" maxlength="32" placeholder="Owner code" autocomplete="one-time-code" /></div>
         <label id="termsWrap" style="display:none;gap:8px;align-items:flex-start;margin-top:12px;font-size:13px;color:var(--soft)"><input id="termsCheck" type="checkbox" style="margin-top:3px"> <span id="termsText">أوافق على الشروط وسياسة الخصوصية</span></label>
-        <div id="cloudStatus" class="notice" style="margin-top:12px">وضع محلي — جارٍ فحص الاتصال السحابي…</div>
+        <div id="cloudStatus" class="notice" role="status" aria-live="polite" style="margin-top:12px">وضع محلي — جارٍ فحص الاتصال السحابي…</div>
         <button class="btn" style="width:100%;margin-top:16px" type="submit" id="accountSaveBtn">دخول</button>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
           <button class="ghost" type="button" id="syncNowBtn" style="flex:1">مزامنة الآن</button>
@@ -2361,9 +2361,9 @@ const products=[
   let sb=null, cloudSession=null, authMode='login', cloudReady=false, syncTimer=null, syncing=false, sessionIsAdmin=false;
 
   const copy={
-    ar:{title:'حساب GYMIVOX',login:'دخول',register:'إنشاء حساب',account:'حسابك',member:'عضو',admin:'مدير النظام',cloud:'مزامنة سحابية',lastLogin:'آخر تسجيل دخول',profilePage:'الملف الشخصي',ownerPage:'لوحة النادي',adminPage:'لوحة الإدارة',name:'الاسم',email:'البريد الإلكتروني',password:'كلمة المرور',confirm:'تأكيد كلمة المرور',owner:'كود المالك',terms:'أوافق على الشروط وسياسة الخصوصية',passPh:'8 أحرف على الأقل',confirmPh:'أعد كتابة كلمة المرور',sync:'مزامنة الآن',logout:'تسجيل الخروج',local:'الوضع المحلي متاح. سجّل الدخول للمزامنة بين أجهزتك.',ready:'السحابة جاهزة',signed:'متصل ومزامن',syncing:'جارٍ التنفيذ…',synced:'تمت المزامنة ✓',need:'سجّل الدخول أولاً للمزامنة.',welcome:'تم تسجيل الدخول ✓',created:'تم إنشاء الحساب وتسجيل الدخول ✓',bye:'تم تسجيل الخروج',mismatch:'كلمتا المرور غير متطابقتين.',accept:'وافق على الشروط أولاً.',invalid:'بيانات الدخول غير صحيحة.',exists:'هذا البريد مسجل مسبقاً.',ownerBad:'كود المالك غير صحيح.',ownerNeed:'هذا البريد يحتاج كود المالك.',rate:'محاولات كثيرة. جرّب لاحقاً.',weak:'استخدم كلمة مرور من 8 أحرف على الأقل.',failed:'تعذر إنشاء الحساب. جرّب مرة ثانية.'},
-    tr:{title:'GYMIVOX Hesabı',login:'Giriş yap',register:'Hesap oluştur',account:'Hesabınız',member:'Üye',admin:'Yönetici',cloud:'Bulut eşitleme',lastLogin:'Son giriş',profilePage:'Profil',ownerPage:'Salon Sahibi',adminPage:'Yönetim',name:'Ad',email:'E-posta',password:'Şifre',confirm:'Şifreyi doğrula',owner:'Sahip kodu',terms:'Koşulları ve gizlilik politikasını kabul ediyorum',passPh:'En az 8 karakter',confirmPh:'Şifreyi tekrar yaz',sync:'Şimdi eşitle',logout:'Çıkış yap',local:'Yerel mod kullanılabilir. Cihazlar arası eşitleme için giriş yapın.',ready:'Bulut hazır',signed:'Bağlı ve eşitlenmiş',syncing:'İşleniyor…',synced:'Eşitlendi ✓',need:'Önce giriş yapın.',welcome:'Giriş yapıldı ✓',created:'Hesap oluşturuldu ve giriş yapıldı ✓',bye:'Çıkış yapıldı',mismatch:'Şifreler eşleşmiyor.',accept:'Önce koşulları kabul edin.',invalid:'Giriş bilgileri yanlış.',exists:'Bu e-posta zaten kayıtlı.',ownerBad:'Sahip kodu yanlış.',ownerNeed:'Bu e-posta sahip kodu gerektiriyor.',rate:'Çok fazla deneme. Daha sonra tekrar deneyin.',weak:'En az 8 karakterli bir şifre kullanın.',failed:'Hesap oluşturulamadı. Tekrar deneyin.'},
-    en:{title:'GYMIVOX Account',login:'Sign in',register:'Create account',account:'Your account',member:'Member',admin:'Administrator',cloud:'Cloud sync',lastLogin:'Last sign-in',profilePage:'Profile',ownerPage:'Gym Owner',adminPage:'Admin',name:'Name',email:'Email',password:'Password',confirm:'Confirm password',owner:'Owner code',terms:'I agree to the Terms and Privacy Policy',passPh:'At least 8 characters',confirmPh:'Re-enter password',sync:'Sync now',logout:'Sign out',local:'Local mode is available. Sign in to sync across devices.',ready:'Cloud ready',signed:'Connected and synced',syncing:'Working…',synced:'Synced ✓',need:'Sign in first.',welcome:'Signed in ✓',created:'Account created and signed in ✓',bye:'Signed out',mismatch:'Passwords do not match.',accept:'Accept the terms first.',invalid:'Invalid login credentials.',exists:'This email is already registered.',ownerBad:'The owner code is incorrect.',ownerNeed:'This email requires the owner code.',rate:'Too many attempts. Try again later.',weak:'Use a password with at least 8 characters.',failed:'Could not create the account. Try again.'}
+    ar:{ownerExisting:'حساب المالك موجود بالفعل. ادخل باستخدام كلمة المرور.',title:'حساب GYMIVOX',login:'دخول',register:'إنشاء حساب',account:'حسابك',member:'عضو',admin:'مدير النظام',cloud:'مزامنة سحابية',lastLogin:'آخر تسجيل دخول',profilePage:'الملف الشخصي',ownerPage:'لوحة النادي',adminPage:'لوحة الإدارة',name:'الاسم',email:'البريد الإلكتروني',password:'كلمة المرور',confirm:'تأكيد كلمة المرور',owner:'كود المالك',terms:'أوافق على الشروط وسياسة الخصوصية',passPh:'8 أحرف على الأقل',confirmPh:'أعد كتابة كلمة المرور',sync:'مزامنة الآن',logout:'تسجيل الخروج',local:'الوضع المحلي متاح. سجّل الدخول للمزامنة بين أجهزتك.',ready:'السحابة جاهزة',signed:'متصل ومزامن',syncing:'جارٍ التنفيذ…',synced:'تمت المزامنة ✓',need:'سجّل الدخول أولاً للمزامنة.',welcome:'تم تسجيل الدخول ✓',created:'تم إنشاء الحساب وتسجيل الدخول ✓',bye:'تم تسجيل الخروج',mismatch:'كلمتا المرور غير متطابقتين.',accept:'وافق على الشروط أولاً.',invalid:'بيانات الدخول غير صحيحة.',exists:'هذا البريد مسجل مسبقاً.',ownerBad:'كود المالك غير صحيح.',ownerNeed:'هذا البريد يحتاج كود المالك.',rate:'محاولات كثيرة. جرّب لاحقاً.',weak:'استخدم كلمة مرور من 8 أحرف على الأقل.',failed:'تعذر إنشاء الحساب. جرّب مرة ثانية.'},
+    tr:{ownerExisting:'Sahip hesabı zaten mevcut. Şifrenizle giriş yapın.',title:'GYMIVOX Hesabı',login:'Giriş yap',register:'Hesap oluştur',account:'Hesabınız',member:'Üye',admin:'Yönetici',cloud:'Bulut eşitleme',lastLogin:'Son giriş',profilePage:'Profil',ownerPage:'Salon Sahibi',adminPage:'Yönetim',name:'Ad',email:'E-posta',password:'Şifre',confirm:'Şifreyi doğrula',owner:'Sahip kodu',terms:'Koşulları ve gizlilik politikasını kabul ediyorum',passPh:'En az 8 karakter',confirmPh:'Şifreyi tekrar yaz',sync:'Şimdi eşitle',logout:'Çıkış yap',local:'Yerel mod kullanılabilir. Cihazlar arası eşitleme için giriş yapın.',ready:'Bulut hazır',signed:'Bağlı ve eşitlenmiş',syncing:'İşleniyor…',synced:'Eşitlendi ✓',need:'Önce giriş yapın.',welcome:'Giriş yapıldı ✓',created:'Hesap oluşturuldu ve giriş yapıldı ✓',bye:'Çıkış yapıldı',mismatch:'Şifreler eşleşmiyor.',accept:'Önce koşulları kabul edin.',invalid:'Giriş bilgileri yanlış.',exists:'Bu e-posta zaten kayıtlı.',ownerBad:'Sahip kodu yanlış.',ownerNeed:'Bu e-posta sahip kodu gerektiriyor.',rate:'Çok fazla deneme. Daha sonra tekrar deneyin.',weak:'En az 8 karakterli bir şifre kullanın.',failed:'Hesap oluşturulamadı. Tekrar deneyin.'},
+    en:{ownerExisting:'The owner account already exists. Sign in with your password.',title:'GYMIVOX Account',login:'Sign in',register:'Create account',account:'Your account',member:'Member',admin:'Administrator',cloud:'Cloud sync',lastLogin:'Last sign-in',profilePage:'Profile',ownerPage:'Gym Owner',adminPage:'Admin',name:'Name',email:'Email',password:'Password',confirm:'Confirm password',owner:'Owner code',terms:'I agree to the Terms and Privacy Policy',passPh:'At least 8 characters',confirmPh:'Re-enter password',sync:'Sync now',logout:'Sign out',local:'Local mode is available. Sign in to sync across devices.',ready:'Cloud ready',signed:'Connected and synced',syncing:'Working…',synced:'Synced ✓',need:'Sign in first.',welcome:'Signed in ✓',created:'Account created and signed in ✓',bye:'Signed out',mismatch:'Passwords do not match.',accept:'Accept the terms first.',invalid:'Invalid login credentials.',exists:'This email is already registered.',ownerBad:'The owner code is incorrect.',ownerNeed:'This email requires the owner code.',rate:'Too many attempts. Try again later.',weak:'Use a password with at least 8 characters.',failed:'Could not create the account. Try again.'}
   };
   const T=()=>copy[state?.lang]||copy.en;
   const q=s=>document.querySelector(s);
@@ -2421,6 +2421,7 @@ const products=[
     authFields.forEach(sel=>q(sel)?.closest('.field')?.style.setProperty('display',signed?'none':(sel==='#nameInput'&&authMode!=='register'?'none':'block')));
     q('#confirmPasswordField')?.style.setProperty('display',signed?'none':(authMode==='register'?'block':'none'));
     q('#ownerCodeField')?.style.setProperty('display',signed?'none':(authMode==='register'&&(q('#emailInput')?.value||'').trim().toLowerCase()===OWNER_EMAIL?'block':'none'));
+    if(q('#ownerCodeInput'))q('#ownerCodeInput').required=!signed&&authMode==='register'&&(q('#emailInput')?.value||'').trim().toLowerCase()===OWNER_EMAIL;
     q('#termsWrap')?.style.setProperty('display',signed?'none':(authMode==='register'?'flex':'none'));
     q('#accountSaveBtn')?.style.setProperty('display',signed?'none':'block');
 
@@ -2502,7 +2503,7 @@ const products=[
           display_name:name,
           preferred_language:state.lang||'ar',
           city:state.profile?.city||null
-        },{onConflict:'user_id'});
+        },{onConflict:'user_id',ignoreDuplicates:true});
       }catch(_){}
       await pullState();
       try{renderAccount();}catch(_){}
@@ -2532,7 +2533,7 @@ const products=[
     return ({
       account_exists:t.exists,
       invalid_owner_code:t.ownerBad,
-      owner_code_unavailable:t.ownerNeed,
+      owner_code_unavailable:t.ownerExisting,
       rate_limited:t.rate,
       weak_password:t.weak,
       invalid_email:t.failed,
@@ -2542,8 +2543,18 @@ const products=[
   }
 
   q('#loginTab')?.addEventListener('click',()=>setMode('login'));
-  q('#registerTab')?.addEventListener('click',()=>setMode('register'));
-  q('#emailInput')?.addEventListener('input',refreshOwnerField);
+  q('#registerTab')?.addEventListener('click',()=>{
+    if((q('#emailInput')?.value||'').trim().toLowerCase()===OWNER_EMAIL){
+      setMode('login');setCloudStatus(T().ownerExisting,'warn');return;
+    }
+    setMode('register');
+  });
+  q('#emailInput')?.addEventListener('input',()=>{
+    if(authMode==='register'&&(q('#emailInput')?.value||'').trim().toLowerCase()===OWNER_EMAIL){
+      setMode('login');setCloudStatus(T().ownerExisting,'warn');return;
+    }
+    refreshOwnerField();
+  });
 
   const form=q('#accountForm');
   if(form)form.onsubmit=async e=>{
@@ -2553,6 +2564,9 @@ const products=[
     const email=(q('#emailInput')?.value||'').trim().toLowerCase();
     const password=q('#passwordInput')?.value||'';
     const name=(q('#nameInput')?.value||'').trim()||email.split('@')[0];
+    if(authMode==='register'&&email===OWNER_EMAIL){
+      setMode('login');return setCloudStatus(T().ownerExisting,'warn');
+    }
 
     setCloudStatus(T().syncing,'warn');
 
@@ -2565,7 +2579,7 @@ const products=[
 
         const res=await fetch(REGISTER_URL,{
           method:'POST',
-          headers:{'content-type':'application/json'},
+          headers:{'content-type':'application/json',apikey:SUPABASE_KEY},
           body:JSON.stringify({
             name,email,password,
             ownerCode:(q('#ownerCodeInput')?.value||'').trim(),
