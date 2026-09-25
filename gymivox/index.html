@@ -508,6 +508,26 @@ footer{background:#111b16;border-top:1px solid var(--line)}
 .v9-search-results{background:#1a2820;border-color:var(--line);border-radius:6px}
 .v9-global-search{position:relative}
 
+
+/* Compact tools on small screens, without removing navigation actions. */
+.lang-switch select{background:#1a2820;color:var(--text);border:1px solid var(--line);border-radius:5px}
+.v9-quick-actions .v9-action>span:first-child{display:grid;place-items:center;flex:0 0 28px;height:28px;border:1px solid var(--accent);border-radius:4px;color:var(--accent);font:700 10px 'JetBrains Mono',monospace}
+#catalogGrid .meta span+span:before{content:"/ ";color:var(--accent);margin-inline-end:3px}
+.v10-command-fab{left:18px;right:auto;bottom:18px}
+@media(max-width:720px){
+  .nav-in{display:flex;justify-content:space-between}
+  .nav-actions{max-width:min(63vw,250px);overflow-x:auto;overflow-y:hidden;flex-wrap:nowrap;scrollbar-width:none;justify-content:flex-start}
+  .nav-actions::-webkit-scrollbar{display:none}
+  .nav-actions>*{flex:0 0 auto}
+  .nav-actions #loginBtn{order:0}
+  .nav-actions .lang-switch{order:1}
+  .nav-actions #notifBtn{order:2}
+  .nav-actions #installBtn,.nav-actions #shareAppBtn{display:none}
+  .nav-actions #favoritesBtn{order:3}
+  .nav-actions #cartBtn{order:4}
+  .v10-command-fab{display:none}
+}
+
 </style>
 </head>
 <body>
@@ -606,16 +626,16 @@ footer{background:#111b16;border-top:1px solid var(--line)}
           </div>
           <div id="globalSearchResults" class="v9-search-results hidden"></div>
           <div class="v9-quick-actions">
-            <button class="v9-action" id="openOnboardingBtn"><span>✨</span><b id="qaPlan">خصص خطتي</b></button>
-            <a class="v9-action" href="#workoutLab"><span>🏋️</span><b id="qaWorkout">سجل تمرين</b></a>
-            <a class="v9-action" href="#gyms"><span>📍</span><b id="qaGym">ابحث عن نادي</b></a>
-            <a class="v9-action" href="#coursesStudio"><span>▶</span><b id="qaCourse">كمل كورسك</b></a>
+            <button class="v9-action" id="openOnboardingBtn"><span aria-hidden="true">01</span><b id="qaPlan">خصص خطتي</b></button>
+            <a class="v9-action" href="#workoutLab"><span aria-hidden="true">02</span><b id="qaWorkout">سجل تمرين</b></a>
+            <a class="v9-action" href="#gyms"><span aria-hidden="true">03</span><b id="qaGym">ابحث عن نادي</b></a>
+            <a class="v9-action" href="#coursesStudio"><span aria-hidden="true">04</span><b id="qaCourse">كمل كورسك</b></a>
           </div>
         </div>
         <div class="v9-daily-card">
           <div class="v9-avatar">GV</div>
           <div><div class="tiny" id="v9ProfileLabel">ملفك الذكي</div><h3 id="v9ProfileName">زائر GYMIVOX</h3></div>
-          <div class="v9-score"><div><span id="v9ScoreLabel">أيام التدريب المسجّلة</span><strong id="v9Score">0 / 7</strong></div><div class="v9-scorebar"><i id="v9ScoreBar" style="width:0%"></i></div></div>
+          <div class="v9-score"><div><span id="v9ScoreLabel">أيام التدريب المسجّلة</span><strong id="v9Score" dir="ltr">0 / 7</strong></div><div class="v9-scorebar"><i id="v9ScoreBar" style="width:0%"></i></div></div>
           <div class="v9-reco" id="v9Recommendation">خصص ملفك لنقترح برنامج ونادي مناسبين لك.</div>
           <button class="ghost" id="v9ContinueBtn">استمرار</button>
         </div>
@@ -1707,7 +1727,7 @@ const products=[
         <span class="pill">${y.tag}</span>
         <h3>${y.title}</h3>
         <p class="muted">${y.desc}</p>
-        <div class="meta"><span>${x.kind==='program'?'💪 '+uiText[state.lang].typeProgram:'🎬 '+uiText[state.lang].typeCourse}</span><span>⏱ ${y.duration}</span><span>📈 ${y.level}</span></div>
+        <div class="meta"><span>${x.kind==='program'?uiText[state.lang].typeProgram:uiText[state.lang].typeCourse}</span><span>${y.duration}</span><span>${y.level}</span></div>
         <div class="card-bottom"><span class="price">${money(x.price)}</span><div class="card-actions">${x.kind==='program'?`<button class="ghost" data-detail="${x.id}">${uiText[state.lang].details}</button>`:''}<button class="btn" data-add="${x.id}">${uiText[state.lang].add}</button></div></div>
       </article>`}).join(''):`<div class="panel"><b>${state.lang==='en'?'No matching results.':state.lang==='tr'?'Eşleşen sonuç yok.':'ما في نتائج مطابقة.'}</b><div class="tiny">${state.lang==='en'?'Change the filter or try another search term.':state.lang==='tr'?'Filtreyi değiştirin veya başka bir arama terimi deneyin.':'غيّر الفلتر أو جرّب كلمة بحث ثانية.'}</div></div>`;
       $$('[data-add]').forEach(b=>b.onclick=()=>{const x=findItem(b.dataset.add),y=displayItem(x);addCart({id:x.id,title:y.title,price:x.price,type:x.kind==='program'?uiText[state.lang].typeProgram:uiText[state.lang].typeCourse})});
