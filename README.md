@@ -1,6 +1,6 @@
 # Abdulrahman Hajar
 
-**Frontend Engineer · React, Next.js & TypeScript · Full-Stack Web Apps & PWAs**
+**Software Engineer · Full-Stack Developer · AI & Interactive Systems**
 Computer Engineering · Istanbul, Türkiye
 
 [![Portfolio CI](https://github.com/rahman-997/portfolio/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rahman-997/portfolio/actions/workflows/ci.yml)
