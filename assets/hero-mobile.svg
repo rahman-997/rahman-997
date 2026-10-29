@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 500" role="img" aria-labelledby="mobile-title mobile-desc">
+<title id="mobile-title">Abdulrahman Hajar, Full-Stack Engineer</title>
+<desc id="mobile-desc">Mobile-first engineering portfolio cover with a bold name, subtle grid, and mint-accented software development illustration.</desc>
+<defs>
+  <linearGradient id="mobile-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101D29"/><stop offset="1" stop-color="#0D1220"/></linearGradient>
+  <linearGradient id="mobile-mint" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#B2FFE7"/><stop offset="1" stop-color="#52D8C2"/></linearGradient>
+  <pattern id="mobile-grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0V36" fill="none" stroke="#6BB6B2" stroke-opacity=".12"/></pattern>
+</defs>
+<rect width="680" height="500" rx="22" fill="url(#mobile-bg)"/>
+<rect width="680" height="500" rx="22" fill="url(#mobile-grid)"/>
+<circle cx="649" cy="55" r="164" fill="#23544E" opacity=".3"/>
+<rect x="36" y="32" width="56" height="56" rx="15" fill="#1B403B" stroke="#56BDA7"/>
+<text x="64" y="68" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#B2FFE7">AH</text>
+<text x="112" y="55" font-family="Arial,sans-serif" font-weight="700" font-size="16" letter-spacing="2" fill="#D0E9E5">ENGINEERING / DESIGN</text>
+<text x="112" y="77" font-family="Arial,sans-serif" font-size="13" letter-spacing="1.8" fill="#A6C9CA">İSTANBUL · TÜRKİYE</text>
+<rect x="36" y="125" width="179" height="36" rx="17" fill="#194137" stroke="#48AB8B"/>
+<circle cx="57" cy="143" r="5" fill="#A7FCDD"/>
+<text x="73" y="148" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#B2FFE7" letter-spacing="1.2">OPEN TO BUILD</text>
+<text x="35" y="238" font-family="Arial,sans-serif" font-size="58" font-weight="800" letter-spacing="-2.4" fill="#F1F9FB">Abdulrahman</text>
+<text x="36" y="313" font-family="Arial,sans-serif" font-size="78" font-weight="800" letter-spacing="-3" fill="url(#mobile-mint)">Hajar<tspan fill="#ECFAF6">.</tspan></text>
+<text x="38" y="350" font-family="Arial,sans-serif" font-size="20" fill="#D8E9EC">Full-Stack Engineer · Product Systems</text>
+<rect x="36" y="380" width="608" height="77" rx="15" fill="#172B37" stroke="#3B6770"/>
+<circle cx="70" cy="417" r="16" fill="#255D50"/><path d="M62 417l6 6 11-13" fill="none" stroke="#B4FFE5" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="101" y="410" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#F0F9F8">Design · Build · Verify</text>
+<text x="101" y="436" font-family="Arial,sans-serif" font-size="14" fill="#A7CAD0">TypeScript / React / Reliable systems</text>
+<rect x="0" y="492" width="680" height="8" rx="4" fill="url(#mobile-mint)"/>
+</svg>
