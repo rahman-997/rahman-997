@@ -1,3 +1,21 @@
+# GitHub Profile V13: Engineering field guides and reviewer routes
+
+This V13 package is prepared locally for the open **Draft PR #8** (`redesign-v12` review branch); the V13 files have not yet been pushed. `main` remains untouched. It separates deeper technical content into five linked reference documents so the profile stays readable.
+
+## What's new
+
+- A **Review in 10 minutes** route before featured work, aimed at technical reviewers.
+- An **Engineering field guides** index with a source → decisions → tests → reality SVG illustration with separate mobile artwork.
+- Five focused Markdown guides covering reviewer workflow, project inspection paths, architecture trade-offs, quality/security evidence, and multilingual accessibility QA.
+- Dependency-free local document link auditing, unit tests and a CI gate to catch missing/unsafe guide paths.
+- Explicit caveats around real-site availability, the limits of CI proof and Persian QA versus shipped localization.
+
+## Review policy
+
+These additions describe public source and suggested inspection methods, not unverified production guarantees. The Draft PR must be reviewed in GitHub before merging; external demo uptime is a separate check.
+
+---
+
 # GitHub Profile V12: Proof-first reading experience
 
 This release is a **local, unpublished refresh of V11**. It does not create branches, pull requests or changes in the GitHub repository. There are no claimed new production features.

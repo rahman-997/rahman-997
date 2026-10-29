@@ -9,6 +9,7 @@ Requires Node.js 22 or later and Python 3. No npm installation or third-party de
 ```bash
 node --test tests/*.test.mjs
 node scripts/profile-audit.mjs
+node scripts/audit-guides.mjs
 python3 -m unittest discover -s tests -p "test_*.py"
 python3 scripts/verify-svg.py
 node scripts/check-profile-links.mjs --list

@@ -1,5 +1,10 @@
-# V12 review checklist before merging
+# V13 review checklist before merging
 
+- [ ] Review Draft PR #8 (`redesign-v12` → `main`); confirm `main` remains untouched until explicitly approved.
+- [ ] Follow new **Review in 10 minutes** and **Engineering field guides** links on both narrow and wide views.
+- [ ] Check all five `docs/*.md` pages for accessibility, relevant source links, scope caveats and readable tables.
+- [ ] Run `node scripts/audit-guides.mjs` and confirm it passes as a GitHub Actions quality step.
+- [ ] Inspect `assets/field-guide.svg` and `assets/field-guide-mobile.svg` against light and dark themes and confirm the responsive switch.
 - [ ] Compare all modified files with the current `main` HEAD; preserve unrelated upstream changes.
 - [ ] Verify `README.md` looks correct in GitHub's own Markdown renderer (light and dark themes).
 - [ ] Verify the `hero-mobile.svg` source is shown on a narrow display, and project cards stack vertically.

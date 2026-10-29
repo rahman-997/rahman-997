@@ -47,6 +47,8 @@ jobs:
         run: node --test tests/*.test.mjs
       - name: Audit README navigation, images and accessibility
         run: node scripts/profile-audit.mjs
+      - name: Audit technical guide navigation
+        run: node scripts/audit-guides.mjs
       - name: Validate SVG illustrations
         run: |
           python3 -m unittest discover -s tests -p "test_*.py"

@@ -24,6 +24,7 @@
 <p align="center">
   <a href="#about-my-work">About</a> &nbsp;·&nbsp;
   <a href="#find-your-starting-point">Start here</a> &nbsp;·&nbsp;
+  <a href="#review-in-10-minutes">10-min review</a> &nbsp;·&nbsp;
   <a href="#selected-work">Featured projects</a> &nbsp;·&nbsp;
   <a href="#evidence-and-verification-map">Proof map</a> &nbsp;·&nbsp;
   <a href="#lets-connect">Contact</a>
@@ -90,6 +91,12 @@ I turn complex ideas into **production-minded web products**, balancing the deta
 - **Accessible, installable UX:** [FitFlow](https://github.com/rahman-997/fitflow-gym) focuses on guided interactions, local state and PWA behavior.
 - **Privacy-conscious multilingual UI:** [Mizan Finance](https://github.com/rahman-997/mizan-finance) brings together RTL interfaces and local-first finance tracking.
 - **Clear backend contracts:** [Venues API](https://github.com/rahman-997/venues-api) demonstrates input validation, REST boundaries and endpoint testing.
+
+## Review in 10 minutes
+
+If you are reviewing my work for a role, collaboration or code review, you do not need to read every section. Begin with the [Reviewers: start here](./docs/REVIEWER_START_HERE.md) route: **choose a project → trace a feature → inspect failure handling → check tests and CI → discuss trade-offs**.
+
+[10-minute review](./docs/REVIEWER_START_HERE.md) · [Project investigation paths](./docs/PROJECT_FIELD_GUIDES.md) · [Quality evidence](./docs/QUALITY_AND_SECURITY.md)
 
 ## Selected work
 
@@ -203,6 +210,23 @@ Open to **frontend and full-stack engineering opportunities** where thoughtful p
 **Quality & operations** · Automated testing, Docker, CI/CD, security scanning, observability, release verification
 
 **Additional interests** · GraphQL, WebSockets, gRPC, OpenAPI, AI/LLM/MCP, FastAPI, Flutter
+
+## Engineering field guides
+
+<picture>
+  <source media="(max-width: 600px)" srcset="./assets/field-guide-mobile.svg" />
+  <img src="./assets/field-guide.svg" alt="Engineering review route: source, decisions, tests and deployment evidence" width="560" />
+</picture>
+
+Want **more depth without a wall of text**? These focused guides turn the broad topics below into practical review questions and repeatable checklists:
+
+- **[Project field guides](./docs/PROJECT_FIELD_GUIDES.md):** five routes through booking, inventory, privacy, REST contracts and offline UX.
+- **[Architecture decisions](./docs/ARCHITECTURE_DECISIONS.md):** trade-offs around async work, ownership, consistency and smaller services.
+- **[Quality and security](./docs/QUALITY_AND_SECURITY.md):** what CI, tests and real deployment checks can and cannot prove.
+- **[RTL and accessibility](./docs/RTL_AND_ACCESSIBILITY.md):** mixed-script typography, keyboard access, readable errors and honest QA evidence.
+- **[Reviewers: start here](./docs/REVIEWER_START_HERE.md):** a focused 10-minute path through public source.
+
+The guides are **review frameworks**, not claims that every described check has passed on every live deployment.
 
 ## Systems behind the screens
 
