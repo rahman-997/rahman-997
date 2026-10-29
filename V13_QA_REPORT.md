@@ -25,5 +25,5 @@ At the point of packaging, **77 Node.js tests**, **16 Python tests**, and **25 S
 - No claimed web browser screenshot of the full GitHub README in this V13 step.
 - No live uptime check of project demos was performed; URL inventory does not prove reachability.
 - No claims about current deployments beyond public repository documentation.
-- Draft PR #8 currently represents V12. The V13 package and patch are local review artifacts, not uploaded changes; no merge into `main` is authorized by this report.
+- V13 was submitted for review through [Pull Request #8](https://github.com/rahman-997/rahman-997/pull/8). Check GitHub for its current merge status and the latest workflow results; this report does not establish live demo availability.
 - GitHub Actions on the updated commit must be checked separately after uploading the branch.
