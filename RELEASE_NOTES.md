@@ -1,3 +1,11 @@
+# V14 · Evidence hub and review quality
+
+- Added a responsive Evidence hub with five new review guides and a project evidence index.
+- Added `data/project-catalog.json`, offline catalog validation and tests.
+- Added automatic discovery of Markdown guides in the link audit.
+- Added documentation/data CI path filters so guide updates trigger quality checks.
+- Preserved the existing project order, original profile graphics and all V13 review guides.
+
 # GitHub Profile V13: Engineering field guides and reviewer routes
 
 This V13 package is prepared locally for the open **Draft PR #8** (`redesign-v12` review branch); the V13 files have not yet been pushed. `main` remains untouched. It separates deeper technical content into five linked reference documents so the profile stays readable.

@@ -1,5 +1,5 @@
 /** Offline audit of local Markdown paths in the extended engineering field guides. */
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { dirname, resolve, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -24,7 +24,7 @@ export function guideIssues(text, { baseDir, projectRoot, exists = existsSync } 
 const invokedDirectly = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 if (invokedDirectly) {
   const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-  const guides = ['REVIEWER_START_HERE.md', 'PROJECT_FIELD_GUIDES.md', 'ARCHITECTURE_DECISIONS.md', 'QUALITY_AND_SECURITY.md', 'RTL_AND_ACCESSIBILITY.md'];
+  const guides = (await readdir(resolve(root, 'docs'))).filter(name => name.endsWith('.md')).sort();
   const errors = [];
   for (const path of guides) {
     const full = resolve(root, 'docs', path);

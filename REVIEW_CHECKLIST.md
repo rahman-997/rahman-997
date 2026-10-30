@@ -1,3 +1,12 @@
+## V14 evidence-hub review
+
+- [ ] Verify all six project records and repository links in `data/project-catalog.json`.
+- [ ] Review the five new guides for scope, clarity and no unsupported deployment claims.
+- [ ] Inspect desktop/mobile Evidence hub illustrations for readability.
+- [ ] Check `node scripts/verify-project-catalog.mjs` and `node scripts/audit-guides.mjs`.
+- [ ] Confirm workflow results for the latest review branch commit on GitHub.
+- [ ] Keep external site availability explicitly unverified until probed live.
+
 # V13 review checklist before merging
 
 - [ ] Review Draft PR #8 (`redesign-v12` → `main`); confirm `main` remains untouched until explicitly approved.

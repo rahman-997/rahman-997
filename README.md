@@ -26,6 +26,7 @@
   <a href="#find-your-starting-point">Start here</a> &nbsp;·&nbsp;
   <a href="#review-in-10-minutes">10-min review</a> &nbsp;·&nbsp;
   <a href="#selected-work">Featured projects</a> &nbsp;·&nbsp;
+  <a href="#evidence-hub">Evidence hub</a> &nbsp;·&nbsp;
   <a href="#evidence-and-verification-map">Proof map</a> &nbsp;·&nbsp;
   <a href="#lets-connect">Contact</a>
 </p>
@@ -97,6 +98,19 @@ I turn complex ideas into **production-minded web products**, balancing the deta
 If you are reviewing my work for a role, collaboration or code review, you do not need to read every section. Begin with the [Reviewers: start here](./docs/REVIEWER_START_HERE.md) route: **choose a project → trace a feature → inspect failure handling → check tests and CI → discuss trade-offs**.
 
 [10-minute review](./docs/REVIEWER_START_HERE.md) · [Project investigation paths](./docs/PROJECT_FIELD_GUIDES.md) · [Quality evidence](./docs/QUALITY_AND_SECURITY.md)
+
+## Evidence hub
+
+A short route from a project claim to something a reviewer can inspect. The guides describe **questions, source links and limitations**, not invented success metrics or guaranteed demo uptime.
+
+<picture>
+  <source media="(max-width: 600px)" srcset="./assets/evidence-compass-mobile.svg" />
+  <img src="./assets/evidence-compass.svg" width="760" alt="Evidence compass: choose a project, review source, inspect tests, and identify operational limits" />
+</picture>
+
+**Explore by intent:** [Project evidence index](./docs/PROJECT_EVIDENCE_INDEX.md) · [Demo limitations](./docs/DEMO_LIMITATIONS.md) · [Privacy & data flow](./docs/PRIVACY_AND_DATA_FLOW.md) · [Release & recovery](./docs/RELEASE_AND_RECOVERY.md) · [Collaboration & handoff](./docs/COLLABORATION_AND_HANDOFF.md)
+
+The [machine-readable project catalog](./data/project-catalog.json) is checked for duplicate records, repository links and consistency with the README. It is not a live availability feed.
 
 ## Selected work
 
