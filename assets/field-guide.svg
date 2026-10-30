@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 280" aria-label="Review map connecting source code, decisions, tests, and real deployment evidence">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101c24"/><stop offset="1" stop-color="#182d33"/></linearGradient>
+  </defs>
+  <rect width="1120" height="280" rx="22" fill="url(#g)"/>
+  <path d="M40 78H1080M40 223H1080" stroke="#44726f" stroke-width="1" opacity=".5"/>
+  <text x="50" y="40" fill="#d8f6ee" font-family="Arial, sans-serif" font-weight="bold" font-size="24">ENGINEERING FIELD GUIDE</text>
+  <text x="50" y="63" fill="#95aeb0" font-family="Arial, sans-serif" font-size="15">Follow evidence from code to behavior, not just from badges to claims</text>
+  <g font-family="Arial, sans-serif" font-size="20" text-anchor="middle">
+    <rect x="45" y="105" width="230" height="95" rx="16" fill="#20383f" stroke="#5adbbc" stroke-width="2"/>
+    <text x="160" y="143" fill="#f4fffc" font-weight="bold">SOURCE</text><text x="160" y="169" fill="#a5c6c1" font-size="14">Read the implementation</text>
+    <rect x="310" y="105" width="230" height="95" rx="16" fill="#20383f" stroke="#5adbbc" stroke-width="2"/>
+    <text x="425" y="143" fill="#f4fffc" font-weight="bold">DECISIONS</text><text x="425" y="169" fill="#a5c6c1" font-size="14">Understand trade-offs</text>
+    <rect x="575" y="105" width="230" height="95" rx="16" fill="#20383f" stroke="#5adbbc" stroke-width="2"/>
+    <text x="690" y="143" fill="#f4fffc" font-weight="bold">TESTS</text><text x="690" y="169" fill="#a5c6c1" font-size="14">Check failure paths</text>
+    <rect x="840" y="105" width="230" height="95" rx="16" fill="#20383f" stroke="#5adbbc" stroke-width="2"/>
+    <text x="955" y="143" fill="#f4fffc" font-weight="bold">REALITY</text><text x="955" y="169" fill="#a5c6c1" font-size="14">Check deployment limits</text>
+  </g>
+  <g fill="none" stroke="#71e3c8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M279 152h25m-7 -7l7 7-7 7M544 152h25m-7 -7l7 7-7 7M809 152h25m-7 -7l7 7-7 7"/>
+  </g>
+  <text x="50" y="251" fill="#89a5a5" font-family="Arial, sans-serif" font-size="13">A review model · not a production monitoring dashboard</text>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 268" role="img" aria-labelledby="dc-title dc-desc">
+  <title id="dc-title">Design systems and thoughtful interface states</title>
+  <desc id="dc-desc">A compact application mockup demonstrates navigation, content hierarchy, accessible controls and design tokens for reusable interface patterns.</desc>
+  <defs>
+    <linearGradient id="dc-background" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#183240"/><stop offset="1" stop-color="#0B1724"/></linearGradient>
+    <linearGradient id="dc-highlight" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#B6F8DC"/><stop offset="1" stop-color="#55CEC5"/></linearGradient>
+  </defs>
+  <rect width="560" height="268" rx="17" fill="url(#dc-background)"/>
+  <rect x="1" y="1" width="558" height="266" rx="16" fill="none" stroke="#43626A"/>
+  <circle cx="548" cy="-12" r="116" fill="#33A995" opacity=".1"/>
+  <g font-family="Arial,sans-serif">
+    <text x="20" y="28" font-size="11" letter-spacing="1.7" font-weight="700" fill="#A2EFD8">PRODUCT / DESIGN</text>
+    <text x="20" y="55" font-size="20" font-weight="700" fill="#F0FBF7">Make the interface explain itself.</text>
+    <rect x="19" y="73" width="334" height="173" rx="12" fill="#102431" stroke="#547581"/>
+    <rect x="30" y="84" width="312" height="24" rx="6" fill="#21404A"/>
+    <circle cx="44" cy="96" r="4" fill="#A6EDCE"/><circle cx="57" cy="96" r="4" fill="#E1B66E"/><circle cx="70" cy="96" r="4" fill="#718C9A"/>
+    <text x="88" y="100" font-size="9" fill="#C4E4E3">Workspace / Overview</text>
+    <rect x="30" y="118" width="72" height="114" rx="7" fill="#193541"/>
+    <rect x="37" y="127" width="58" height="15" rx="4" fill="#2E6661"/>
+    <g fill="#C8DCDF" font-size="8"><text x="44" y="137">Overview</text><text x="44" y="158">Projects</text><text x="44" y="178">Activity</text><text x="44" y="198">Settings</text></g>
+    <text x="115" y="134" fill="#EBF6F4" font-size="12" font-weight="700">Recent activity</text>
+    <text x="115" y="149" fill="#B0C9CE" font-size="9">Clear hierarchy, useful state</text>
+    <rect x="115" y="161" width="218" height="34" rx="6" fill="#1C3946" stroke="#3A6670"/>
+    <circle cx="129" cy="178" r="6" fill="#73DABB"/>
+    <text x="143" y="176" fill="#E5F7F1" font-size="9" font-weight="700">Action completed</text>
+    <text x="143" y="187" fill="#B9D1D3" font-size="8">Status should be legible</text>
+    <rect x="115" y="205" width="104" height="22" rx="6" fill="url(#dc-highlight)"/>
+    <text x="167" y="220" text-anchor="middle" fill="#10352E" font-size="9" font-weight="700">Primary action</text>
+    <rect x="228" y="205" width="105" height="22" rx="6" fill="#1C3946" stroke="#5A8F93"/>
+    <text x="280" y="220" text-anchor="middle" fill="#D4E5E5" font-size="9">Secondary</text>
+    <g>
+      <rect x="366" y="74" width="175" height="51" rx="9" fill="#1A3540" stroke="#486D72"/>
+      <text x="380" y="94" fill="#A8F0D4" font-size="11" font-weight="700">01  TOKENS</text>
+      <circle cx="386" cy="109" r="5" fill="#A6F0D4"/><circle cx="403" cy="109" r="5" fill="#55C9BD"/><circle cx="420" cy="109" r="5" fill="#E4B875"/><circle cx="437" cy="109" r="5" fill="#EAF9F4"/>
+      <rect x="366" y="135" width="175" height="51" rx="9" fill="#1A3540" stroke="#486D72"/>
+      <text x="380" y="155" fill="#A8F0D4" font-size="11" font-weight="700">02  COMPONENTS</text>
+      <text x="380" y="174" fill="#CCDDE0" font-size="10">Consistent patterns</text>
+      <rect x="366" y="196" width="175" height="51" rx="9" fill="#1A3540" stroke="#486D72"/>
+      <text x="380" y="216" fill="#A8F0D4" font-size="11" font-weight="700">03  STATES</text>
+      <text x="380" y="235" fill="#CCDDE0" font-size="10">Loading, empty, error</text>
+    </g>
+  </g>
+</svg>

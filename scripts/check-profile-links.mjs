@@ -1,66 +1,40 @@
-const targets = [
-  ["Portfolio", "https://abdulrahman-hajar-portfolio.onrender.com"],
-  ["Résumé", "https://abdulrahman-hajar-portfolio.onrender.com/resume/"],
-  ["Eventify live", "https://eventify-web.onrender.com"],
-  ["Eventify source", "https://github.com/rahman-997/eventify"],
-  ["Eventify case study", "https://abdulrahman-hajar-portfolio.onrender.com/work/eventify/"],
-  ["BookHaven live", "https://bookbookhaven-free.onrender.com"],
-  ["BookHaven source", "https://github.com/rahman-997/bookbookhaven"],
-  ["BookHaven case study", "https://abdulrahman-hajar-portfolio.onrender.com/work/bookhaven/"],
-  ["FitFlow live", "https://fitflow-gym.onrender.com"],
-  ["FitFlow source", "https://github.com/rahman-997/fitflow-gym"],
-  ["FitFlow case study", "https://abdulrahman-hajar-portfolio.onrender.com/work/fitflow/"],
-  ["Venues API health", "https://venues-api-rahman.onrender.com/health"],
-  ["Venues API source", "https://github.com/rahman-997/venues-api"],
-  ["Venues API case study", "https://abdulrahman-hajar-portfolio.onrender.com/work/venues-api/"],
-  ["Mizan live", "https://mizan-finance-rahman-997.netlify.app"],
-  ["Mizan source", "https://github.com/rahman-997/mizan-finance"],
-];
+#!/usr/bin/env node
+import { readFile } from 'node:fs/promises';
+import { extractExternalLinks, shouldMonitorLink, checkAll } from './profile-links.mjs';
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-const maxAttempts = 3;
-const timeoutMs = 45_000;
+const usage = `Usage: node scripts/check-profile-links.mjs [--list | --help]
 
-async function check(name, url) {
-  let lastFailure = "unknown failure";
+  --list    Show unique navigable public links without network requests.
+  --help    Show this help.
 
-  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), timeoutMs);
+The URL list comes directly from README.md (not a duplicated hardcoded list).`;
 
-    try {
-      const response = await fetch(url, {
-        redirect: "follow",
-        signal: controller.signal,
-        headers: { "user-agent": "rahman-997-profile-link-health" },
-      });
+const args = process.argv.slice(2);
+if (args.includes('--help')) {
+  console.log(usage);
+} else if (args.some((arg) => arg !== '--list')) {
+  console.error(usage);
+  process.exitCode = 2;
+} else {
+  const readme = await readFile(new URL('../README.md', import.meta.url), 'utf8');
+  const links = extractExternalLinks(readme);
 
-      if (response.status >= 200 && response.status < 400) {
-        console.log(`OK   ${name.padEnd(20)} ${response.status} ${url}`);
-        return null;
-      }
-
-      lastFailure = `HTTP ${response.status}`;
-      if (response.status < 500 && response.status !== 429) break;
-    } catch (error) {
-      lastFailure = error?.name === "AbortError" ? `timeout after ${timeoutMs}ms` : String(error);
-    } finally {
-      clearTimeout(timeout);
+  if (links.length === 0) {
+    console.error('No public navigation links found in README.md.');
+    process.exitCode = 1;
+  } else if (args.includes('--list')) {
+    console.log(`${links.length} unique external destination(s):\n${links.join('\n')}`);
+  } else {
+    console.log(`Found ${links.length} destinations. Checking eligible links with at most 4 parallel requests…\n`);
+    const monitored = links.filter(shouldMonitorLink);
+    const skipped = links.filter((url) => !shouldMonitorLink(url));
+    for (const url of skipped) console.log(`SKIP (automated checks blocked) ${url}`);
+    const results = await checkAll(monitored);
+    for (const result of results) {
+      console.log(`${result.ok ? 'OK  ' : 'FAIL'} ${String(result.status ?? result.error).padEnd(24)} ${result.url}`);
     }
-
-    if (attempt < maxAttempts) await sleep(7_500 * attempt);
+    const failures = results.filter((result) => !result.ok);
+    console.log(`\n${results.length - failures.length}/${results.length} monitored destinations are reachable. ${skipped.length} destination(s) skipped.`);
+    if (failures.length) process.exitCode = 1;
   }
-
-  return `${name}: ${lastFailure} — ${url}`;
 }
-
-const results = await Promise.all(targets.map(([name, url]) => check(name, url)));
-const failures = results.filter(Boolean);
-
-if (failures.length) {
-  console.error("\nProfile link health failed:");
-  for (const failure of failures) console.error(`- ${failure}`);
-  process.exit(1);
-}
-
-console.log(`\nProfile link health passed for ${targets.length} critical public links.`);

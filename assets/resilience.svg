@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 265" role="img" aria-labelledby="res-title res-desc">
+  <title id="res-title">Resilience and recovery paths</title>
+  <desc id="res-desc">A flow splits from a request into success or failure, where safe recovery uses visible feedback, bounded retry and an observable result.</desc>
+  <defs>
+    <linearGradient id="res-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#183342"/><stop offset="1" stop-color="#0B1624"/></linearGradient>
+    <linearGradient id="res-accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#AFF5D8"/><stop offset="1" stop-color="#60D3C1"/></linearGradient>
+  </defs>
+  <rect width="560" height="265" rx="17" fill="url(#res-bg)"/>
+  <rect x="1" y="1" width="558" height="263" rx="16" fill="none" stroke="#45646A"/>
+  <g font-family="Arial,sans-serif">
+    <text x="21" y="27" font-size="11" letter-spacing="1.7" font-weight="700" fill="#A5F1DB">SYSTEMS / RESILIENCE</text>
+    <text x="21" y="53" font-size="20" font-weight="700" fill="#EDF9F8">Failure is a path, not an exception.</text>
+    <rect x="21" y="83" width="120" height="117" rx="11" fill="#1C3A45" stroke="#58818B"/>
+    <text x="34" y="108" font-size="11" fill="#ABF1DB" font-weight="700">01  START</text>
+    <text x="34" y="137" font-size="15" fill="#F2FBF8" font-weight="700">Operation</text>
+    <text x="34" y="160" font-size="10.5" fill="#BCD4D6">User intent</text>
+    <text x="34" y="177" font-size="10.5" fill="#BCD4D6">Explicit action</text>
+    <path d="M143 139h29m-6-6 6 6-6 6" stroke="#91E4CC" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="177" y="116" width="92" height="47" rx="10" fill="#24514E" stroke="#6CC4B4"/>
+    <text x="223" y="137" text-anchor="middle" fill="#E5F9F0" font-size="13" font-weight="700">Result?</text>
+    <text x="223" y="151" text-anchor="middle" fill="#B7EBDF" font-size="9">Check outcome</text>
+    <path d="M270 128h28v-29h17m-6-6 6 6-6 6" stroke="#97E5CE" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M270 149h28v40h17m-6-6 6 6-6 6" stroke="#DCC18F" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="317" y="74" width="222" height="70" rx="11" fill="#1D4244" stroke="#60AD9F"/>
+    <text x="331" y="95" font-size="10" font-weight="700" fill="#A6F3CF">SUCCESS</text>
+    <text x="331" y="114" font-size="13" fill="#F3FAF7" font-weight="700">Confirm durable result</text>
+    <text x="331" y="130" font-size="10" fill="#BED8D8">Keep feedback specific</text>
+    <rect x="317" y="154" width="222" height="70" rx="11" fill="#3B3338" stroke="#9E826B"/>
+    <text x="331" y="175" font-size="10" font-weight="700" fill="#F1C99A">FAILURE</text>
+    <text x="331" y="194" font-size="13" fill="#F8F3EE" font-weight="700">Recover safely</text>
+    <text x="331" y="210" font-size="10" fill="#DDD0C9">Clear error · bounded retry</text>
+    <text x="23" y="245" font-size="11" fill="#C7E9E5">Observe the outcome. Avoid invisible or infinite retries.</text>
+  </g>
+</svg>
