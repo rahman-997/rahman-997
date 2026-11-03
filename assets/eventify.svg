@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 235" role="img" aria-label="Eventify project illustration">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#121F2B"/><stop offset="1" stop-color="#0D1622"/></linearGradient></defs>
+<rect width="560" height="235" rx="17" fill="url(#bg)"/><rect x="1" y="1" width="558" height="233" rx="16" fill="none" stroke="#304454"/>
+<path d="M14 213h532" stroke="#68E5C8" stroke-opacity=".42"/>
+<circle cx="511" cy="14" r="75" fill="#68E5C8" opacity=".04"/>
+<rect x="28" y="29" width="41" height="24" rx="7" fill="#68E5C8" fill-opacity=".13" stroke="#68E5C8" stroke-opacity=".4"/>
+<text x="48" y="45" text-anchor="middle" font-size="11" font-family="monospace" font-weight="700" fill="#68E5C8">01</text>
+<text x="28" y="108" font-family="Arial,sans-serif" font-weight="800" font-size="32" fill="#F2F6FA">Eventify</text>
+<text x="29" y="137" font-family="Arial,sans-serif" font-size="10.5" letter-spacing="1.35" fill="#68E5C8">EVENTS / DISTRIBUTED SYSTEMS</text>
+<path d="M29 178h37" stroke="#68E5C8" stroke-width="3" stroke-linecap="round"/>
+<text x="29" y="196" font-family="monospace" font-size="11" fill="#8DABB5">SELECTED PROJECT</text>
+<g font-family="Arial,sans-serif"><rect x="372" y="62" width="159" height="131" rx="13" fill="#14332F" stroke="#46796E"/><rect x="384" y="76" width="135" height="19" rx="6" fill="#24564D"/><circle cx="395" cy="85" r="4" fill="#68E5C8"/><text x="405" y="89" font-size="10" fill="#CBEBE3">Reservations</text><g font-family="monospace" font-size="12" text-anchor="middle"><rect x="385" y="110" width="41" height="29" rx="5" fill="#23594E"/><text x="405" y="130" fill="#68E5C8">12</text><rect x="432" y="110" width="41" height="29" rx="5" fill="#244B48"/><text x="453" y="130" fill="#E2F4EC">13</text><rect x="479" y="110" width="41" height="29" rx="5" fill="#244B48"/><text x="499" y="130" fill="#E2F4EC">14</text></g><path d="M393 164h123" stroke="#4C8A7D" stroke-width="3"/><circle cx="399" cy="164" r="7" fill="#68E5C8"/><circle cx="456" cy="164" r="7" fill="#437D6C"/><circle cx="512" cy="164" r="7" fill="#437D6C"/></g>
+</svg>

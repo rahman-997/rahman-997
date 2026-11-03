@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 418" role="img" aria-labelledby="ssm-title ssm-desc">
+  <title id="ssm-title">Readable mobile service signals</title>
+  <desc id="ssm-desc">A mobile observability illustration shows a request trend with three stacked signal cards for queue movement, dependencies and releases.</desc>
+  <rect width="360" height="418" rx="16" fill="#0D1B2B"/>
+  <rect x="1" y="1" width="358" height="416" rx="15" fill="none" stroke="#49716F"/>
+  <g font-family="Arial,Helvetica,sans-serif">
+    <text x="18" y="28" font-size="10" font-weight="700" letter-spacing="1.5" fill="#A1EEDA">OPERATIONS / SIGNALS</text>
+    <text x="18" y="57" font-size="18" font-weight="700" fill="#F0FBF8">Know what is happening.</text>
+    <text x="18" y="77" font-size="11" fill="#BDD2D6">Illustrative checks, not live metrics</text>
+    <rect x="16" y="94" width="328" height="136" rx="11" fill="#1B3643" stroke="#507678"/>
+    <text x="28" y="118" font-size="12" font-weight="700" fill="#E5F8EF">Request trend</text>
+    <path d="M28 142 H331 M28 172 H331 M28 202 H331" stroke="#3B5C68"/>
+    <path d="M29 187 L60 178 L89 181 L120 160 L150 167 L183 145 L212 155 L244 137 L273 148 L307 134 L330 140" fill="none" stroke="#A3F0D5" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M29 213 L58 211 L88 215 L118 208 L150 214 L180 211 L210 207 L240 210 L271 209 L303 212 L330 208" fill="none" stroke="#E9C38B" stroke-width="2.5" stroke-dasharray="5 4"/>
+    <rect x="16" y="244" width="328" height="48" rx="9" fill="#1B3643" stroke="#507678"/>
+    <circle cx="35" cy="268" r="7" fill="#8AE5BB"/>
+    <text x="54" y="265" font-size="12" font-weight="700" fill="#E6F8F1">Queue movement</text>
+    <text x="54" y="282" font-size="10.5" fill="#BDD2D6">Pending · retries · completion</text>
+    <rect x="16" y="300" width="328" height="48" rx="9" fill="#1B3643" stroke="#507678"/>
+    <circle cx="35" cy="324" r="7" fill="#E8C17D"/>
+    <text x="54" y="321" font-size="12" font-weight="700" fill="#E6F8F1">Dependencies</text>
+    <text x="54" y="338" font-size="10.5" fill="#BDD2D6">Data storage · connectivity</text>
+    <rect x="16" y="356" width="328" height="48" rx="9" fill="#1B3643" stroke="#507678"/>
+    <circle cx="35" cy="380" r="7" fill="#8AE5BB"/>
+    <text x="54" y="377" font-size="12" font-weight="700" fill="#E6F8F1">Release checks</text>
+    <text x="54" y="394" font-size="10.5" fill="#BDD2D6">Deploy · smoke test · verify</text>
+  </g>
+</svg>

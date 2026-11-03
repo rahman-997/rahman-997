@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "description": "Source-of-truth index for the six public repositories referenced by this GitHub profile. Presence here is not evidence of live uptime.",
+  "projects": [
+    {"id":"eventify","title":"Eventify","repo":"https://github.com/rahman-997/eventify","focus":"Waitlists, durable outbox, background jobs, health endpoints","reviewPath":"docs/PROJECT_EVIDENCE_INDEX.md","category":"Systems & reliability"},
+    {"id":"bookhaven","title":"BookHaven","repo":"https://github.com/rahman-997/bookbookhaven","focus":"Checkout, inventory consistency, session boundaries, admin workflows","reviewPath":"docs/PROJECT_EVIDENCE_INDEX.md","category":"Commerce & data"},
+    {"id":"mizan-finance","title":"Mizan Finance","repo":"https://github.com/rahman-997/mizan-finance","focus":"Browser-local persistence, Arabic RTL, accessible budgeting UI","reviewPath":"docs/PROJECT_EVIDENCE_INDEX.md","category":"Privacy & UX"},
+    {"id":"fitflow-gym","title":"FitFlow","repo":"https://github.com/rahman-997/fitflow-gym","focus":"PWA behavior, guided UI states, accessible timers","reviewPath":"docs/PROJECT_EVIDENCE_INDEX.md","category":"Accessible product UX"},
+    {"id":"venues-api","title":"Venues API","repo":"https://github.com/rahman-997/venues-api","focus":"HTTP contracts, bounded validation, error formatting","reviewPath":"docs/PROJECT_EVIDENCE_INDEX.md","category":"API design"},
+    {"id":"portfolio","title":"Engineering Portfolio","repo":"https://github.com/rahman-997/portfolio","focus":"Project case studies, presentation, continuous delivery","reviewPath":"docs/PROJECT_EVIDENCE_INDEX.md","category":"Communication"}
+  ]
+}

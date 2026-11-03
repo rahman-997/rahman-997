@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 235" role="img" aria-label="FitFlow project illustration">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#121F2B"/><stop offset="1" stop-color="#0D1622"/></linearGradient></defs>
+<rect width="560" height="235" rx="17" fill="url(#bg)"/><rect x="1" y="1" width="558" height="233" rx="16" fill="none" stroke="#304454"/>
+<path d="M14 213h532" stroke="#FFBC90" stroke-opacity=".42"/>
+<circle cx="511" cy="14" r="75" fill="#FFBC90" opacity=".04"/>
+<rect x="28" y="29" width="41" height="24" rx="7" fill="#FFBC90" fill-opacity=".13" stroke="#FFBC90" stroke-opacity=".4"/>
+<text x="48" y="45" text-anchor="middle" font-size="11" font-family="monospace" font-weight="700" fill="#FFBC90">03</text>
+<text x="28" y="108" font-family="Arial,sans-serif" font-weight="800" font-size="32" fill="#F2F6FA">FitFlow</text>
+<text x="29" y="137" font-family="Arial,sans-serif" font-size="10.5" letter-spacing="1.35" fill="#FFBC90">FITNESS / OFFLINE PWA</text>
+<path d="M29 178h37" stroke="#FFBC90" stroke-width="3" stroke-linecap="round"/>
+<text x="29" y="196" font-family="monospace" font-size="11" fill="#8DABB5">SELECTED PROJECT</text>
+<g font-family="Arial,sans-serif"><circle cx="446" cy="127" r="67" stroke="#554238" fill="#272832" stroke-width="11"/><circle cx="446" cy="127" r="67" stroke="#FFBC90" fill="none" stroke-width="11" stroke-dasharray="310 421" transform="rotate(-90 446 127)" stroke-linecap="round"/><text x="446" y="128" text-anchor="middle" font-family="Arial,sans-serif" font-size="31" font-weight="800" fill="#F9EDE4">04:30</text><text x="446" y="149" text-anchor="middle" font-family="monospace" font-size="11" fill="#FFBC90">FOCUS TIMER</text></g>
+</svg>

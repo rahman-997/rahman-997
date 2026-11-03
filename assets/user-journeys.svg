@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 268" role="img" aria-labelledby="uj-title uj-desc">
+  <title id="uj-title">User journeys and interface states</title>
+  <desc id="uj-desc">Four small interface panels illustrate a user's action, loading, success and recoverable error, with a consistent mint and navy design language.</desc>
+  <defs>
+    <linearGradient id="uj-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17333C"/><stop offset="1" stop-color="#0B1625"/></linearGradient>
+    <linearGradient id="uj-cta" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#B5F5D8"/><stop offset="1" stop-color="#66D1C6"/></linearGradient>
+  </defs>
+  <rect width="560" height="268" rx="17" fill="url(#uj-bg)"/>
+  <rect x="1" y="1" width="558" height="266" rx="16" fill="none" stroke="#42656D"/>
+  <g font-family="Arial,Helvetica,sans-serif">
+    <text x="21" y="28" font-size="10" font-weight="700" letter-spacing="1.8" fill="#A5F3D6">UX / STATES</text>
+    <text x="21" y="56" font-size="20" font-weight="700" fill="#EFFCF8">Every state deserves a design.</text>
+    <text x="21" y="76" font-size="10.5" fill="#B6D2D4">Action · Waiting · Outcome · Recovery</text>
+    <g>
+      <rect x="19" y="96" width="124" height="144" rx="10" fill="#18333E" stroke="#476973"/>
+      <text x="31" y="115" font-size="9" letter-spacing="1" fill="#A0EAD0">01 / READY</text>
+      <rect x="32" y="132" width="98" height="33" rx="6" fill="#294A54"/>
+      <rect x="39" y="141" width="49" height="4" rx="2" fill="#8DAEB6"/>
+      <rect x="39" y="152" width="73" height="4" rx="2" fill="#607E87"/>
+      <rect x="32" y="181" width="98" height="27" rx="6" fill="url(#uj-cta)"/>
+      <text x="81" y="198" text-anchor="middle" font-size="10" font-weight="700" fill="#12382F">Continue</text>
+      <text x="31" y="226" font-size="8.5" fill="#C4DBDE">Clear next action</text>
+    </g>
+    <g>
+      <rect x="151" y="96" width="124" height="144" rx="10" fill="#18333E" stroke="#476973"/>
+      <text x="163" y="115" font-size="9" letter-spacing="1" fill="#A0EAD0">02 / LOADING</text>
+      <circle cx="213" cy="160" r="18" fill="none" stroke="#436E75" stroke-width="5"/>
+      <path d="M213 142 A18 18 0 0 1 231 160" fill="none" stroke="#A6F2D4" stroke-width="5" stroke-linecap="round"/>
+      <rect x="173" y="192" width="80" height="6" rx="3" fill="#3D6570"/>
+      <text x="163" y="226" font-size="8.5" fill="#C4DBDE">Honest progress</text>
+    </g>
+    <g>
+      <rect x="283" y="96" width="124" height="144" rx="10" fill="#18333E" stroke="#476973"/>
+      <text x="295" y="115" font-size="9" letter-spacing="1" fill="#A0EAD0">03 / SUCCESS</text>
+      <circle cx="345" cy="163" r="23" fill="#27665B"/>
+      <path d="M334 163 l8 8 15 -17" fill="none" stroke="#C6FFE6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="345" y="199" text-anchor="middle" font-size="9.5" fill="#DBF9F0">Saved</text>
+      <text x="295" y="226" font-size="8.5" fill="#C4DBDE">Useful confirmation</text>
+    </g>
+    <g>
+      <rect x="415" y="96" width="126" height="144" rx="10" fill="#18333E" stroke="#476973"/>
+      <text x="427" y="115" font-size="9" letter-spacing="1" fill="#A0EAD0">04 / RECOVER</text>
+      <rect x="429" y="134" width="98" height="41" rx="7" fill="#443D40" stroke="#B99277"/>
+      <circle cx="441" cy="148" r="6" fill="#F5C18C"/>
+      <text x="453" y="150" font-size="8.7" fill="#F9E4D4">Try again</text>
+      <text x="437" y="165" font-size="8" fill="#E7CEC1">Input preserved</text>
+      <rect x="429" y="186" width="98" height="22" rx="6" fill="#2E5759" stroke="#72BDB2"/>
+      <text x="478" y="200" text-anchor="middle" font-size="9" fill="#E0F9F0">Retry safely</text>
+      <text x="427" y="226" font-size="8.5" fill="#C4DBDE">Recoverable failure</text>
+    </g>
+  </g>
+</svg>

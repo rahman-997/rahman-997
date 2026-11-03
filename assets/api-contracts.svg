@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 253" role="img" aria-labelledby="api-title api-desc">
+  <title id="api-title">API contracts and predictable data boundaries</title>
+  <desc id="api-desc">A request flows through validation, domain logic and a response; a lower bar highlights clear schemas, ownership and versioned behavior.</desc>
+  <defs>
+    <linearGradient id="api-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#173342"/><stop offset="1" stop-color="#0A1723"/></linearGradient>
+    <linearGradient id="api-mint" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#B4F4D7"/><stop offset="1" stop-color="#61D5C1"/></linearGradient>
+  </defs>
+  <rect width="560" height="253" rx="17" fill="url(#api-bg)"/>
+  <rect x="1" y="1" width="558" height="251" rx="16" fill="none" stroke="#41626B"/>
+  <circle cx="520" cy="12" r="92" fill="#27776C" opacity=".12"/>
+  <g font-family="Arial,sans-serif">
+    <text x="21" y="27" font-size="11" letter-spacing="1.7" font-weight="700" fill="#A6F0DB">BACKEND / CONTRACTS</text>
+    <text x="21" y="55" font-size="20" font-weight="700" fill="#F0FAF7">Predictability starts at the boundary.</text>
+    <g>
+      <rect x="20" y="82" width="119" height="112" rx="11" fill="#1B3641" stroke="#52727C"/>
+      <rect x="154" y="82" width="119" height="112" rx="11" fill="#1B3641" stroke="#52727C"/>
+      <rect x="288" y="82" width="119" height="112" rx="11" fill="#1B3641" stroke="#52727C"/>
+      <rect x="422" y="82" width="119" height="112" rx="11" fill="#1B3641" stroke="#52727C"/>
+      <g fill="url(#api-mint)" font-size="11" font-weight="700">
+        <text x="31" y="104">01  REQUEST</text><text x="165" y="104">02  CHECK</text><text x="299" y="104">03  MODEL</text><text x="433" y="104">04  RETURN</text>
+      </g>
+      <g fill="#F0F9F7" font-size="13" font-weight="700">
+        <text x="31" y="130">HTTP input</text><text x="165" y="130">Validation</text><text x="299" y="130">Data rules</text><text x="433" y="130">Response</text>
+      </g>
+      <g fill="#B9D3D8" font-size="10">
+        <text x="31" y="152">Parameters</text><text x="165" y="152">Types + guards</text><text x="299" y="152">Ownership</text><text x="433" y="152">Status codes</text>
+        <text x="31" y="169">Auth context</text><text x="165" y="169">Safe errors</text><text x="299" y="169">Consistency</text><text x="433" y="169">Clear payload</text>
+      </g>
+    </g>
+    <g stroke="#8BDCCA" stroke-width="1.9" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="M140 138h12l-5-5m5 5-5 5"/><path d="M274 138h12l-5-5m5 5-5 5"/><path d="M408 138h12l-5-5m5 5-5 5"/></g>
+    <rect x="20" y="209" width="520" height="27" rx="8" fill="#153B36" stroke="#3C7A70"/>
+    <text x="280" y="227" text-anchor="middle" font-size="11.5" fill="#C7F6E6">Validate early · Keep ownership explicit · Test the contract</text>
+  </g>
+</svg>

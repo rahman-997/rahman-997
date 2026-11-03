@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 418" role="img" aria-labelledby="ujm-title ujm-desc">
+  <title id="ujm-title">Interface states on narrow screens</title>
+  <desc id="ujm-desc">A readable two-by-two grid shows ready, loading, success and recoverable error states in a mobile-sized illustration.</desc>
+  <rect width="360" height="418" rx="16" fill="#0D1B2B"/>
+  <rect x="1" y="1" width="358" height="416" rx="15" fill="none" stroke="#49716F"/>
+  <g font-family="Arial,Helvetica,sans-serif">
+    <text x="18" y="28" font-size="10" font-weight="700" letter-spacing="1.6" fill="#9DEBD4">UX / INTERFACE STATES</text>
+    <text x="18" y="57" font-size="18" font-weight="700" fill="#F0FBF8">Design every outcome.</text>
+    <text x="18" y="77" font-size="11" fill="#BDD2D6">Feedback makes interactions trustworthy.</text>
+    <rect x="16" y="97" width="158" height="141" rx="11" fill="#1B3643" stroke="#507678"/>
+    <text x="29" y="118" font-size="11" font-weight="700" fill="#A8EFDB">01  READY</text>
+    <rect x="29" y="133" width="130" height="35" rx="6" fill="#304F59"/>
+    <rect x="40" y="146" width="91" height="7" rx="3.5" fill="#9CB8BC"/>
+    <rect x="29" y="182" width="130" height="35" rx="6" fill="#9AE9C9"/>
+    <text x="94" y="204" text-anchor="middle" font-size="12" font-weight="700" fill="#16382F">Continue</text>
+    <rect x="186" y="97" width="158" height="141" rx="11" fill="#1B3643" stroke="#507678"/>
+    <text x="199" y="118" font-size="11" font-weight="700" fill="#A8EFDB">02  LOADING</text>
+    <circle cx="265" cy="172" r="20" fill="none" stroke="#476B76" stroke-width="6"/>
+    <path d="M265 152 A20 20 0 0 1 285 172" fill="none" stroke="#A5F4D8" stroke-width="6" stroke-linecap="round"/>
+    <text x="265" y="217" text-anchor="middle" font-size="11" fill="#C9E4E0">Working...</text>
+    <rect x="16" y="251" width="158" height="146" rx="11" fill="#1B3643" stroke="#507678"/>
+    <text x="29" y="272" font-size="11" font-weight="700" fill="#A8EFDB">03  SUCCESS</text>
+    <circle cx="94" cy="321" r="26" fill="#236557"/>
+    <path d="M81 322 l9 9 18 -20" fill="none" stroke="#D3FFEA" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="94" y="376" font-size="12" text-anchor="middle" fill="#E0FBEE">Saved</text>
+    <rect x="186" y="251" width="158" height="146" rx="11" fill="#1B3643" stroke="#507678"/>
+    <text x="199" y="272" font-size="11" font-weight="700" fill="#A8EFDB">04  RECOVER</text>
+    <rect x="199" y="288" width="132" height="49" rx="7" fill="#4A3B40" stroke="#BB916D"/>
+    <text x="211" y="308" font-size="12" fill="#F7D9BE">Try again</text>
+    <text x="211" y="325" font-size="10" fill="#EDC9B9">Input is safe</text>
+    <rect x="199" y="349" width="132" height="34" rx="6" fill="#345E5D" stroke="#8EDCCE"/>
+    <text x="265" y="370" font-size="11" text-anchor="middle" fill="#E3FBF6">Retry safely</text>
+  </g>
+</svg>

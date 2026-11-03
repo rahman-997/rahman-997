@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 235" role="img" aria-label="Portfolio project illustration">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#121F2B"/><stop offset="1" stop-color="#0D1622"/></linearGradient></defs>
+<rect width="560" height="235" rx="17" fill="url(#bg)"/><rect x="1" y="1" width="558" height="233" rx="16" fill="none" stroke="#304454"/>
+<path d="M14 213h532" stroke="#F6A7CF" stroke-opacity=".42"/>
+<circle cx="511" cy="14" r="75" fill="#F6A7CF" opacity=".04"/>
+<rect x="28" y="29" width="41" height="24" rx="7" fill="#F6A7CF" fill-opacity=".13" stroke="#F6A7CF" stroke-opacity=".4"/>
+<text x="48" y="45" text-anchor="middle" font-size="11" font-family="monospace" font-weight="700" fill="#F6A7CF">06</text>
+<text x="28" y="108" font-family="Arial,sans-serif" font-weight="800" font-size="32" fill="#F2F6FA">Portfolio</text>
+<text x="29" y="137" font-family="Arial,sans-serif" font-size="10.5" letter-spacing="1.35" fill="#F6A7CF">CASE STUDIES / PRODUCT WORK</text>
+<path d="M29 178h37" stroke="#F6A7CF" stroke-width="3" stroke-linecap="round"/>
+<text x="29" y="196" font-family="monospace" font-size="11" fill="#8DABB5">SELECTED PROJECT</text>
+<g font-family="Arial,sans-serif"><rect x="367" y="66" width="162" height="126" rx="12" fill="#342636" stroke="#77596C"/><rect x="378" y="79" width="140" height="102" rx="8" fill="#211D2C" stroke="#6A5062"/><rect x="378" y="79" width="140" height="21" rx="8" fill="#4C354B"/><circle cx="391" cy="89" r="4" fill="#F6A7CF"/><circle cx="402" cy="89" r="4" fill="#B06D8E"/><rect x="390" y="114" width="57" height="8" rx="4" fill="#F6A7CF"/><rect x="390" y="130" width="84" height="5" rx="2" fill="#8E7188"/><rect x="390" y="141" width="67" height="5" rx="2" fill="#74576F"/><rect x="480" y="113" width="25" height="49" rx="5" fill="#764765"/></g>
+</svg>
