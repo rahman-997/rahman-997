@@ -228,3 +228,26 @@ test('ignores image-only links while keeping adjacent actual destinations', () =
   const markdown = '![Screenshot](https://images.example.com/preview.png) [Open](https://example.com/app)';
   assert.deepEqual(extractExternalLinks(markdown), ['https://example.com/app']);
 });
+
+test('allows a Render host a longer second probe after a timeout', async () => {
+  let calls = 0;
+  const result = await checkLink('https://demo.onrender.com', {
+    timeoutMs: 5, coldStartRetryMs: 250, wait: async () => {},
+    fetchImpl: (_url, { signal }) => new Promise((resolve, reject) => {
+      const attempt = ++calls;
+      const timer = setTimeout(() => resolve({ status: 200 }), attempt === 1 ? 1000 : 25);
+      signal.addEventListener('abort', () => { clearTimeout(timer); reject(new Error('aborted')); }, { once: true });
+    }),
+  });
+  assert.equal(result.ok, true);
+  assert.equal(result.attempts, 2);
+});
+
+test('still reports a Render host that times out twice', async () => {
+  const result = await checkLink('https://demo.onrender.com', {
+    timeoutMs: 3, coldStartRetryMs: 10, wait: async () => {},
+    fetchImpl: (_url, { signal }) => new Promise((_, reject) =>
+      signal.addEventListener('abort', () => reject(new Error('aborted')), { once: true })),
+  });
+  assert.deepEqual([result.ok, result.attempts, result.error], [false, 2, 'Timed out after 10ms']);
+});
