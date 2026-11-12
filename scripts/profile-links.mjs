@@ -98,14 +98,16 @@ export async function checkLink(url, {
   fetchImpl = fetch,
   attempts = 2,
   timeoutMs = 25_000,
+  coldStartRetryMs = 75_000,
   wait = defaultWait,
   retryDelayMs = 1_200,
 } = {}) {
   let lastError = 'Unknown failure';
+  let probeTimeout = timeoutMs;
 
   for (let attempt = 1; attempt <= attempts; attempt++) {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), timeoutMs);
+    const timeout = setTimeout(() => controller.abort(), probeTimeout);
     let retryable = true;
 
     try {
@@ -134,8 +136,11 @@ export async function checkLink(url, {
       retryable = status === 408 || status === 429 || status >= 500;
     } catch (error) {
       lastError = controller.signal.aborted
-        ? `Timed out after ${timeoutMs}ms`
+        ? `Timed out after ${probeTimeout}ms`
         : (error?.message ?? String(error));
+      if (controller.signal.aborted && new URL(url).hostname.endsWith('.onrender.com')) {
+        probeTimeout = Math.max(timeoutMs, coldStartRetryMs);
+      }
     } finally {
       clearTimeout(timeout);
     }
