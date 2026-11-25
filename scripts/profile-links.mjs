@@ -84,9 +84,19 @@ export function extractExternalLinks(markdown) {
   }
 
   // GitHub README cards use HTML anchors around local SVG previews.
-  const anchor = /<a\b[^>]*?\bhref\s*=\s*(['"])(https?:\/\/[^'"<>\s]+)\1[^>]*>/gi;
+  // Tokenize attributes so data-href and text inside other values are ignored.
+  const anchor = /<a(?=[\s/>])((?:[^"'<>]|"[^"]*"|'[^']*')*)>/gi;
   for (const match of content.matchAll(anchor)) {
-    hits.push({ index: match.index, url: match[2] });
+    const attributes = /([^\s=<>/]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s<>]+)))?/g;
+    for (const attribute of match[1].matchAll(attributes)) {
+      if (attribute[1].toLowerCase() !== 'href') continue;
+      // HTML uses the first href attribute when duplicates are present.
+      const url = attribute[2] ?? attribute[3];
+      if (url && /^https?:\/\/[^'"<>\s]+$/i.test(url)) {
+        hits.push({ index: match.index, url });
+      }
+      break;
+    }
   }
 
   hits.sort((a, b) => a.index - b.index);
